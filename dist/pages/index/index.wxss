@@ -1,0 +1,106 @@
+/**index.wxss**/
+
+.top-nav {
+  width: 100%;
+  height: 188rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  background-color: #4a90e2;
+  color: #fff;
+  font-size: 24rpx;
+  padding: 0 20rpx;
+}
+
+.booking {
+  background-color: #fff;
+}
+.booking .weui-cell__ft_in-access{
+  padding-right: 40rpx;
+}
+
+.top-nav .nav-item {
+  flex: 1;
+  text-align: center;
+}
+
+.nav-item view {
+  padding: 8rpx 0 0 0;
+}
+
+.nav-item image {
+  width: 68rpx;
+  height: 68rpx;
+  vertical-align: middle;
+}
+
+.select-tile {
+  height: 98rpx;
+  line-height: 98rpx;
+  text-align: center;
+  color: #000;
+}
+
+.selects {
+  position: relative;
+}
+
+.selects .weui-cell {
+  height: 120rpx;
+  padding: 0 30rpx;
+}
+
+.selects .weui-cell .active {
+  color: #000;
+}
+
+.selects .weui-cell::before {
+  left: -30rpx;
+}
+
+.search {
+  padding: 27rpx 30rpx;
+}
+
+.search button {
+  height: 88rpx;
+  line-height: 88rpx;
+}
+
+.toggle-direction {
+  position: absolute;
+  background-color: #fff;
+  left: 50%;
+  top: 120rpx;
+  height: 46rpx;
+  width: 46rpx;
+  margin-top: -23rpx;
+  margin-left: -23rpx;
+  z-index: 999;
+  border-radius: 50%;
+}
+
+.toggle-direction image {
+  width: 100%;
+  height: 100%;
+}
+
+.bn-list {
+  margin: 24rpx 0 0 0;
+}
+
+.bn-list .weui-media-box__title {
+  font-size: 32rpx;
+  padding: 0 0 10rpx 0;
+}
+.bn-list .weui-media-box__hd_in-appmsg{
+  margin: 0 0 0 20rpx;
+}
+.bn-list image {
+  width: 240rpx;
+  height: 160rpx;
+  vertical-align: middle;
+}
+

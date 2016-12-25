@@ -1,0 +1,50 @@
+<view class="container page-tickets">
+  <view class="route">
+    <view>{{setout}} 至 {{destination}}</view>
+    <block wx:if="{{duration}}">
+      <view class="duration">(约{{duration}})</view>
+    </block>
+  </view>
+  <view class="toggle-date">
+    <view class="decrease weui-cell__ft_in-access" bindtap="decrease"></view>
+    <view class="cur-date">{{showDate}}</view>
+    <view class="increase weui-cell__ft_in-access" bindtap="increase"></view>
+  </view>
+  <view class="weui-panel weui-panel_access ticket-list">
+    <view class="weui-panel__bd">
+      <view class="weui-media-box weui-media-box_appmsg ticket-item" hover-class="weui-cell_active">
+        <view class="weui-media-box__bd">
+          <view class="type">普通舱</view>
+        </view>
+        <view class="weui-media-box__bd center">
+          <view class="stock">剩余123张</view>
+        </view>
+        <view class="weui-media-box__bd">
+          <view class="price">230</view>
+        </view>
+        <view class="weui-media-box__bd">
+          <navigator url="" class="buy-btn">
+            <button size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}"> 预定 </button>
+          </navigator>
+        </view>
+      </view>
+
+      <view class="weui-media-box weui-media-box_appmsg ticket-item" hover-class="weui-cell_active">
+        <view class="weui-media-box__bd">
+          <view class="type">普通舱</view>
+        </view>
+        <view class="weui-media-box__bd center">
+          <view class="stock">剩余123张</view>
+        </view>
+        <view class="weui-media-box__bd">
+          <view class="price">230</view>
+        </view>
+        <view class="weui-media-box__bd">
+          <navigator url="" class="buy-btn">
+            <button size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}"> 预定 </button>
+          </navigator>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

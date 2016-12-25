@@ -1,13 +1,20 @@
 {
   "pages": [
+    "pages/orderinfo/orderinfo",
+    "pages/selectrider/selectrider",
+    "pages/index/index",
+    "pages/fillorder/fillorder",
+    "pages/tickets/tickets",
+    "pages/tickettype/tickettype",
+    "pages/setout/setout",
+    "pages/destination/destination",
+    "pages/user/user",
     "example/index",
-
     "example/button/button",
     "example/list/list",
     "example/input/input",
     "example/slider/slider",
     "example/uploader/uploader",
-
     "example/article/article",
     "example/badge/badge",
     "example/flex/flex",
@@ -19,7 +26,6 @@
     "example/panel/panel",
     "example/preview/preview",
     "example/progress/progress",
-
     "example/actionsheet/actionsheet",
     "example/dialog/dialog",
     "example/msg/msg",
@@ -27,17 +33,42 @@
     "example/msg/msg_fail",
     "example/picker/picker",
     "example/toast/toast",
-
     "example/navbar/navbar",
     "example/tabbar/tabbar",
-
     "example/searchbar/searchbar"
   ],
   "window": {
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "WeUI for 小程序",
-    "navigationBarBackgroundColor": "#f8f8f8",
-    "backgroundColor": "#f8f8f8"
+    "navigationBarTextStyle": "#fff",
+    "navigationBarTitleText": "订票小程序",
+    "navigationBarBackgroundColor": "#000",
+    "backgroundColor": "#efefef",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": "true"
+  },
+  "tabBar": {
+    "color": "#9DACB7F",
+    "selectedColor": "#78C652",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/tabBar/tabBar_button_home_nselected@2x.png",
+        "selectedIconPath": "images/tabBar/tabBar_button_home_default@2x.png"
+      },
+      {
+        "pagePath": "example/index",
+        "text": "WeUI",
+        "iconPath": "images/tabBar/tabBar_button_classification_nselected@2x.png",
+        "selectedIconPath": "images/tabBar/tabBar_button_classific_default@2x.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "images/tabBar/tabBar_button_center_nselected@2x.png",
+        "selectedIconPath": "images/tabBar/tabBar_button_center_default@2x.png"
+      }
+    ]
   },
   "networkTimeout": {
     "request": 10000,

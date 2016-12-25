@@ -1,0 +1,77 @@
+<view class="container page-fillinfo">
+  <view class="ticket-info">
+    <view class="time">
+      12月10日 星期日 16:00
+    </view>
+    <view class="route">
+      <view class="setout">
+        <image src="../../images/tow_icon_service.png"></image> 蛇口港
+      </view>
+      <view class="line">
+        <image src="../../images/icon_dashed_white.png"></image>
+      </view>
+      <view class="duration">
+        <image src="../../images/tow_icon_service.png"></image> 香港机场</view>
+    </view>
+  </view>
+  <view class="user-info">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">曹妍，430**********0099</view>
+        <view class="weui-cell__ft delete">删除</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">张三，430**********0099</view>
+        <view class="weui-cell__ft delete">删除</view>
+      </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <navigator url="" class="weui-cell weui-cell_access add-user" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+          <image src="../../images/icon_add_purple.png"></image>
+        </view>
+        <view class="weui-cell__bd">添加成年票</view>
+      </navigator>
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <navigator url="" class="weui-cell weui-cell_access add-user" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+          <image src="../../images/icon_add_purple.png"></image>
+        </view>
+        <view class="weui-cell__bd">添加儿童票</view>
+      </navigator>
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">联系人电话 18039304940</view>
+        <view class="weui-cell__ft"></view>
+      </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <icon type="circle" size="18" wx:if="{{false}}"></icon>
+          <icon  type="success" size="18" wx:if="{{true}}"></icon>
+          购买乘车险
+          </view>
+          <view class="weui-cell__ft">
+            <icon class="" type="info" size="18"></icon>
+          </view>
+        </view>
+      </view>
+      <view class="weui-cells weui-cells_after-title">
+        <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">订单须知</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+      </view>
+    </view>
+
+    <view class="order-confirm">
+        <view>订单金额：</view>
+        <view class="total-price">230</view>
+        <view>
+            <button  size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}"> 确定 </button>
+        </view>
+    </view>
+  </view>

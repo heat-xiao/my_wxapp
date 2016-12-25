@@ -1,0 +1,26 @@
+.container{
+    font-size: 30rpx;
+}
+.searchbar-result{
+   margin: 96rpx 0 0 0; 
+}
+.searchbar-result:before{
+    display: none;
+}
+
+.weui-search-bar__text{
+    font-size: 26rpx;
+}
+
+.weui-search-bar{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    background-color:none;
+}
+
+.searchbar-result .weui-cell__bd{
+    height: 50rpx;
+    line-height: 50rpx
+}

@@ -10,7 +10,7 @@ icon {
   margin-top: 1.17647059em;
   background-color: #FFFFFF;
   line-height: 1.41176471;
-  font-size: 17px;
+  font-size: 30rpx;
 }
 .weui-cells:before {
   content: " ";
@@ -19,8 +19,8 @@ icon {
   top: 0;
   right: 0;
   height: 1px;
-  border-top: 1rpx solid #D9D9D9;
-  color: #D9D9D9;
+  border-top: 1rpx solid #e5e5e5;
+  color: #e5e5e5;
 }
 .weui-cells:after {
   content: " ";
@@ -29,8 +29,8 @@ icon {
   bottom: 0;
   right: 0;
   height: 1px;
-  border-bottom: 1rpx solid #D9D9D9;
-  color: #D9D9D9;
+  border-bottom: 1rpx solid #e5e5e5;
+  color: #e5e5e5;
 }
 .weui-cells__title {
   margin-top: .77em;
@@ -67,8 +67,8 @@ icon {
   top: 0;
   right: 0;
   height: 1px;
-  border-top: 1rpx solid #D9D9D9;
-  color: #D9D9D9;
+  border-top: 1rpx solid #e5e5e5;
+  color: #e5e5e5;
   left: 15px;
 }
 .weui-cell:first-child:before {
@@ -112,7 +112,7 @@ icon {
   top: -2px;
   position: absolute;
   top: 50%;
-  margin-top: -4px;
+  margin-top: -3px;
   right: 2px;
 }
 .weui-cell_link {
@@ -204,8 +204,8 @@ icon {
   top: 0;
   right: 0;
   height: 1px;
-  border-top: 1rpx solid #D9D9D9;
-  color: #D9D9D9;
+  border-top: 1rpx solid #e5e5e5;
+  color: #e5e5e5;
 }
 .weui-form-preview:after {
   content: " ";
@@ -214,8 +214,8 @@ icon {
   bottom: 0;
   right: 0;
   height: 1px;
-  border-bottom: 1rpx solid #D9D9D9;
-  color: #D9D9D9;
+  border-bottom: 1rpx solid #e5e5e5;
+  color: #e5e5e5;
 }
 .weui-form-preview__value {
   font-size: 14px;
@@ -236,8 +236,8 @@ icon {
   bottom: 0;
   right: 0;
   height: 1px;
-  border-bottom: 1rpx solid #D9D9D9;
-  color: #D9D9D9;
+  border-bottom: 1rpx solid #e5e5e5;
+  color: #e5e5e5;
   left: 15px;
 }
 .weui-form-preview__bd {
@@ -322,7 +322,7 @@ icon {
   height: 2.58823529em;
   min-height: 2.58823529em;
   line-height: 2.58823529em;
-  border-right: 1rpx solid #D9D9D9;
+  border-right: 1rpx solid #e5e5e5;
 }
 .weui-select:before {
   content: " ";
@@ -434,7 +434,7 @@ icon {
   margin-bottom: 9px;
   width: 77px;
   height: 77px;
-  border: 1px solid #D9D9D9;
+  border: 1px solid #e5e5e5;
 }
 .weui-uploader__input-box:before,
 .weui-uploader__input-box:after {
@@ -444,7 +444,7 @@ icon {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  background-color: #D9D9D9;
+  background-color: #e5e5e5;
 }
 .weui-uploader__input-box:before {
   width: 2px;
@@ -629,8 +629,8 @@ icon {
   font-size: 12px;
 }
 .weui-grids {
-  border-top: 1rpx solid #D9D9D9;
-  border-left: 1rpx solid #D9D9D9;
+  border-top: 1rpx solid #e5e5e5;
+  border-left: 1rpx solid #e5e5e5;
   overflow: hidden;
 }
 .weui-grid {
@@ -639,8 +639,8 @@ icon {
   padding: 20px 10px;
   width: 33.33333333%;
   box-sizing: border-box;
-  border-right: 1rpx solid #D9D9D9;
-  border-bottom: 1rpx solid #D9D9D9;
+  border-right: 1rpx solid #e5e5e5;
+  border-bottom: 1rpx solid #e5e5e5;
 }
 .weui-grid_active {
   background-color: #ECECEC;
@@ -985,7 +985,7 @@ icon {
 .weui-search-bar__text {
   display: inline-block;
   font-size: 14px;
-  vertical-align: middle;
+  /*vertical-align: middle;*/
 }
 .weui-search-bar__form {
   position: relative;
@@ -1007,7 +1007,7 @@ icon {
 .weui-search-bar__input {
   height: 28px;
   line-height: 28px;
-  font-size: 14px;
+  /*font-size: 14px;*/
 }
 .weui-icon-clear {
   position: absolute;
