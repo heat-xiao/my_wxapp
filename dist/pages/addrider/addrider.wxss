@@ -1,0 +1,4 @@
+/* pages/addrider/addrider.wxss */
+.weui-cell {
+  height: 91rpx;
+}

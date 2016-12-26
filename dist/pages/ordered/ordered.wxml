@@ -10,8 +10,9 @@
     <view class="info-item">下单时间：2016.09.09 19:20</view>
   </view>
   <view class="order-wrap">
-    <template is="order-before-pay" />
+    <template is="order-after-pay" />   
   </view>
+
   <view class="weui-cells">
     <view class="weui-cell">
       <view class="weui-cell__bd">联系人电话 18039304940</view>
@@ -24,14 +25,13 @@
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
   </view>
-  <view class="ft-topay">
-    <navigator url="" class="weui-cell" hover-class="weui-cell_active">
-      <view class="weui-cell__bd">
-        <button class="cancel-btn" type="default" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}">取消</button>
-      </view>
-      <view class="weui-cell__bd">
-        <button class="topay-btn" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}">去支付</button>
-      </view>
-    </navigator>
+
+  <view class="ft-delete-tickets">
+    <view class="weui-cells">
+      <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+        <view class="weui-cell__ft" style="color: #4a90e2;">可退票</view>
+      </navigator>
+    </view>
   </view>
+
 </view>

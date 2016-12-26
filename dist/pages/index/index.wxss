@@ -1,24 +1,10 @@
-/**index.wxss**/
+  /**index.wxss**/
 
 .top-nav {
-  width: 100%;
   height: 188rpx;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
   background-color: #4a90e2;
   color: #fff;
   font-size: 24rpx;
-  padding: 0 20rpx;
-}
-
-.booking {
-  background-color: #fff;
-}
-.booking .weui-cell__ft_in-access{
-  padding-right: 40rpx;
 }
 
 .top-nav .nav-item {
@@ -26,39 +12,40 @@
   text-align: center;
 }
 
-.nav-item view {
-  padding: 8rpx 0 0 0;
-}
-
-.nav-item image {
+.top-nav .nav-item image {
   width: 68rpx;
   height: 68rpx;
   vertical-align: middle;
+  margin: 0 0 8rpx 0;
 }
 
-.select-tile {
-  height: 98rpx;
-  line-height: 98rpx;
-  text-align: center;
-  color: #000;
+.booking-wrap{
+  background-color: #fff;
+}
+.selects-wrap .weui-cell__ft_in-access{
+  padding-right: 40rpx;
 }
 
-.selects {
+.selects-wrap{
   position: relative;
+  margin: 0
 }
 
-.selects .weui-cell {
+.selects-wrap .weui-cell {
   height: 120rpx;
-  padding: 0 30rpx;
 }
 
-.selects .weui-cell .active {
-  color: #000;
+.selects-wrap .weui-cell .active {
+  color: #2c2c2c;
 }
 
-.selects .weui-cell::before {
+.selects-wrap .weui-cell::before {
   left: -30rpx;
 }
+.selects-wrap picker{
+  border-top:1px #e5e5e5 solid;
+}
+
 
 .search {
   padding: 27rpx 30rpx;
@@ -103,4 +90,3 @@
   height: 160rpx;
   vertical-align: middle;
 }
-

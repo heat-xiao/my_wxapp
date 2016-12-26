@@ -1,5 +1,5 @@
 <view class="container page-tickets">
-  <view class="route">
+  <view class="route flex-column">
     <view>{{setout}} 至 {{destination}}</view>
     <block wx:if="{{duration}}">
       <view class="duration">(约{{duration}})</view>
@@ -10,35 +10,33 @@
     <view class="cur-date">{{showDate}}</view>
     <view class="increase weui-cell__ft_in-access" bindtap="increase"></view>
   </view>
-  <view class="weui-panel weui-panel_access ticket-list">
-    <view class="weui-panel__bd">
-      <navigator url="../tickettype/tickettype?destination={{destination}}&setout={{setout}}&date={{date}}" class="weui-media-box weui-media-box_appmsg ticket-item" hover-class="weui-cell_active">
-        <view class="weui-media-box__bd left">
+    <view class="weui-cells ticket-list">
+      <navigator url="../tickettype/tickettype?destination={{destination}}&setout={{setout}}&date={{date}}" class="weui-cell ticket-item" hover-class="weui-cell_active">
+        <view class="weui-cell__ft left">
           <view class="weui-media-box__title">16:00</view>
         </view>
-        <view class="weui-media-box__bd center">
+        <view class="weui-cell__bd center">
           <view class="start">蛇口港</view>
           <view class="end">香港机场</view>
         </view>
-        <view class="weui-media-box__bd right">
+        <view class="weui-cell__ft right">
           <view class="stock">剩余123张</view>
           <view class="price">230</view>
         </view>
       </navigator>
 
-      <navigator url="" class="weui-media-box weui-media-box_appmsg ticket-item" hover-class="weui-cell_active">
-        <view class="weui-media-box__bd left">
+      <navigator url="../tickettype/tickettype?destination={{destination}}&setout={{setout}}&date={{date}}" class="weui-cell ticket-item" hover-class="weui-cell_active">
+        <view class="weui-cell__ft left">
           <view class="weui-media-box__title">16:00</view>
         </view>
-        <view class="weui-media-box__bd center">
+        <view class="weui-cell__bd center">
           <view class="start">蛇口港</view>
           <view class="end">香港机场</view>
         </view>
-        <view class="weui-media-box__bd right">
+        <view class="weui-cell__ft right">
           <view class="stock">剩余123张</view>
           <view class="price">230</view>
         </view>
       </navigator>
     </view>
-  </view>
 </view>

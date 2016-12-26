@@ -1,11 +1,18 @@
 {
   "pages": [
+    "pages/addrider/addrider",
+    "pages/index/index",
+    
+    
+    "pages/frequentrider/frequentrider",
+    "pages/bounceinfo/bounceinfo",
+    "pages/bounced/bounced",
+    "pages/ordered/ordered",
     "pages/orderinfo/orderinfo",
     "pages/selectrider/selectrider",
-    "pages/index/index",
-    "pages/fillorder/fillorder",
     "pages/tickets/tickets",
     "pages/tickettype/tickettype",
+    "pages/fillorder/fillorder",
     "pages/setout/setout",
     "pages/destination/destination",
     "pages/user/user",

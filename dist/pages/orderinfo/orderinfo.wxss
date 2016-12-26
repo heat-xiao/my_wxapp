@@ -1,113 +1,35 @@
-.ticket-info {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  background-color: #4a90e2;
-  color: #fff;
-  padding: 40rpx 50rpx;
-  height: 236rpx;
-}
 
-.order-info{
-  display: flex;
-  width: 100%;
+.ordered{
   height: 155rpx;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0 30rpx;
-  }
-.order-info .info-item{
-  padding: 5rpx 0;
+  align-items: flex-start;
   font-size: 26rpx;
 }
-.route {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  background-color: #4a90e2;
-  color: #fff;
-  padding: 50rpx 0;
-  font-size: 36rpx;
+.ordered .info-item{
+  padding: 6rpx 0;
 }
 
-.ticket-info .line {
-  flex: 1;
-  padding: 0 40rpx;
-  text-align: center;
-}
-
-.line image {
-  height: 1rpx;
-  width: 100%;
-  vertical-align: middle;
-}
-
-.setout image, .duration image {
-  height: 36rpx;
-  width: 36rpx;
-  vertical-align: middle;
-  display: inline-block;
-  margin: 0 6rpx 0 0;
-}
-
-.user-info .weui-cells_after-title {
-  margin: 0 0 20rpx 0;
-}
-
-.user-info .weui-cell {
-  padding: 0 30rpx;
-  height: 91rpx;
-}
-
-.user-info .delete {
-  color: #ea5e78;
-  font-size: 30rpx;
-}
-
-.add-user .weui-cell__bd{
+.ticket-type{
   color: #4a90e2;
+  margin: 0 20rpx 0 0 ;
 }
 
-.add-user  image{
-  margin: -4rpx 10rpx 0 0 ;
-  vertical-align: middle;
-  width: 28rpx;
-  height: 28rpx;
+.ft-topay{
+  position: fixed;
+  width: 100%;
+  height: 91rpx;
+  bottom: 29rpx;
 }
 
-.order-confirm{
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 139rpx;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    background-color: #fff;
-    padding: 0 30rpx;
+.ft-topay button.cancel-btn{
+  height: 91rpx;
+  background-color: #fff;
+  color: #2c2c2c;
+  margin: 0 20rpx 0 0;
+  line-height: 91rpx;
 }
 
-.order-confirm .total-price{
-    flex: 1;
-    padding: 0 30rpx;
-    font-size: 36rpx;
-    color: #f5a623;
-}
-
-.order-confirm .total-price::before{
-    content: "¥";
-}
-
-.order-confirm button{
-    width: 208rpx;
-    height: 88rpx;
-    line-height: 88rpx;
+.ft-topay button.topay-btn{
+  height: 91rpx;
+  line-height: 91rpx;
+  margin: 0 0 0 20rpx;
 }

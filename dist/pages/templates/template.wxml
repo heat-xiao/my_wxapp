@@ -1,0 +1,74 @@
+<template name="ticket-info">
+  <view class="flex-column ticket-info">
+    <view class="flex-row time">
+      <view class="date">12月10日 星期日</view>
+      <view class="hour">16:00</view>
+    </view>
+    <view class="flex-row route">
+      <view class="setout">
+        <image src="../../images/tow_icon_service.png"></image>蛇口港
+      </view>
+      <view class="line">
+        <image src="../../images/icon_dashed_white.png"></image>
+      </view>
+      <view class="duration">
+        <image src="../../images/tow_icon_service.png"></image>香港机场</view>
+    </view>
+  </view>
+</template>
+<template name="ft-fixed-cart">
+  <view class="flex-row ft-fixed-cart">
+    <view>订单金额：</view>
+    <view class="price">230</view>
+    <view>
+      <button size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}">确定</button>
+    </view>
+  </view>
+</template>
+<template name="order-after-pay">
+  <view class="weui-cells">
+    <view>
+      <view class="weui-cell">
+        <view>成人票</view>
+        <view class="weui-cell__bd center">3张</view>
+        <view class="price">230</view>
+      </view>
+      <view class="weui-cell">
+        <view>儿童票</view>
+        <view class="weui-cell__bd center">1张</view>
+        <view class="price">230</view>
+      </view>
+    </view>
+    <view class="weui-cell">
+      <view>保险</view>
+      <view class="weui-cell__bd center">3份</view>
+      <view class="price">30</view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__bd">总计：</view>
+      <view class="price">230</view>
+    </view>
+  </view>
+</template>
+
+
+<template name="order-before-pay">
+  <view class="weui-cells">
+      <view>
+        <view class="weui-cell">
+          <view class="ticket-type">成人票</view>
+          <view class="weui-cell__bd">曹妍，430**********0099</view>
+          <view class="price">230</view>
+        </view>
+        <view class="weui-cell">
+          <view class="ticket-type">儿童票</view>
+          <view class="weui-cell__bd">张三，430**********0099</view>
+          <view class="price">230</view>
+        </view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">总计：</view>
+        <view class="price">230</view>
+      </view>
+    </view> 
+</template>
