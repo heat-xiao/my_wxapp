@@ -1,2 +1,28 @@
-<!--pages/user/user.wxml-->
-<text>pages/user/user.wxml</text>
+
+<!--index.wxml-->
+<view class="container">
+  <view class="flex-row user">
+    <view class="avatar">{{avatar}}</view>
+    <view class="name">名字</view>
+  </view>
+  <view class="weui-cells user-info">
+    <view class="weui-cell">
+      <view class="weui-cell__hd">电话</view>
+      <view class="weui-cell__bd">15899999999</view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd">证件</view>
+      <view class="weui-cell__bd">4210394844848484848</view>
+    </view>
+  </view>
+  <view class="weui-cells other-info">
+    <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">常用乘客</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+    <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">关于我们</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+  </view>
+</view>

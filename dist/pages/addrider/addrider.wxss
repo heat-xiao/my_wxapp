@@ -2,3 +2,17 @@
 .weui-cell {
   height: 91rpx;
 }
+
+.weui-input{
+  height: 91rpx;
+  line-height: 91rpx;
+}
+.weui-cell__label{
+  height: 91prx;
+  line-height: 91rpx;
+  width: 120rpx;
+}
+
+.addrider-btn{
+  padding: 46rpx 30rpx;
+}

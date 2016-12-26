@@ -11,7 +11,7 @@
     <view class="increase weui-cell__ft_in-access" bindtap="increase"></view>
   </view>
     <view class="weui-cells ticket-list">
-      <navigator url="../tickettype/tickettype?destination={{destination}}&setout={{setout}}&date={{date}}" class="weui-cell ticket-item" hover-class="weui-cell_active">
+      <view class="weui-cell ticket-item" hover-class="weui-cell_active">
         <view class="weui-cell__ft">
           <view class="type">普通舱</view>
         </view>
@@ -26,20 +26,23 @@
             <button size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}"> 预定 </button>
           </navigator>
         </view>
-      </navigator>
+      </view>
 
-      <navigator url="../tickettype/tickettype?destination={{destination}}&setout={{setout}}&date={{date}}" class="weui-cell ticket-item" hover-class="weui-cell_active">
-        <view class="weui-cell__ft left">
-          <view class="weui-media-box__title">16:00</view>
+      <view class="weui-cell ticket-item" hover-class="weui-cell_active">
+        <view class="weui-cell__ft">
+          <view class="type">普通舱</view>
         </view>
         <view class="weui-cell__bd center">
-          <view class="start">蛇口港</view>
-          <view class="end">香港机场</view>
-        </view>
-        <view class="weui-cell__ft right">
           <view class="stock">剩余123张</view>
+        </view>
+        <view class="weui-cell__ft">
           <view class="price">230</view>
         </view>
-      </navigator>
+        <view class="weui-cell__ft">
+          <navigator url="" class="buy-btn">
+            <button size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}"> 预定 </button>
+          </navigator>
+        </view>
+      </view>
     </view>
 </view>

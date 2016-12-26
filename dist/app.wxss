@@ -11,6 +11,8 @@ button {
   background-color: #4a90e2;
   color: #fff;
   font-size: 30rpx;
+  height: 91rpx;
+  line-height: 91rpx;
 }
 
 .weui-cells{

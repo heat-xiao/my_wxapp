@@ -3,7 +3,13 @@ var app = getApp()
 Page({
     data: {
         inputShowed: false,
-        inputVal: ""
+        inputVal: "",
+        searchResult: [
+            { name: "深圳", id: 1 },
+            { name: "广州", id: 2 },
+            { name: "北京", id: 3 },
+            { name: "上海", id: 4 }
+        ]
     },
     showInput: function () {
         this.setData({
@@ -26,9 +32,9 @@ Page({
             inputVal: e.detail.value
         });
     },
-    selectSetout: function(e){
-      var setout = e.currentTarget.dataset.value;
-      wx.setStorageSync('setout', setout);
-      wx.navigateBack();
+    selectSetout: function (e) {
+        var setout = e.currentTarget.dataset.value;
+        wx.setStorageSync('setout', setout);
+        wx.navigateBack();
     }
 });

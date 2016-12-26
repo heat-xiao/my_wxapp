@@ -1,10 +1,6 @@
-//index.js
-
 import util from '../../utils/util.js'
-var app = getApp()
 Page({
   data: {
-    userInfo: {},
     iconUrl: [
       "../../images/tow_icon_order.png",
       "../../images/tow_icon_my.png",
@@ -12,6 +8,7 @@ Page({
       "../../images/tow_icon_service.png",
       "../../images/tow_icon_change_blue.png"
     ],
+    bannerData:[] ,
     setout: wx.getStorageSync('setout'),
     destination: wx.getStorageSync('destination'),
     todayDate: new Date(),

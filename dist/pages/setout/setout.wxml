@@ -16,25 +16,10 @@
       </view>
       <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
     </view>
-    <view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}">
-      <view bindtap="selectSetout" class="weui-cell" hover-class="weui-cell_active" data-value="深圳">
+    <view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}" >
+      <view wx:for="{{searchResult}}" wx:key="{{item.id}}" bindtap="selectSetout" class="weui-cell" hover-class="weui-cell_active" data-value="{{item.name}}">
         <view class="weui-cell__bd">
-          <view>深圳</view>
-        </view>
-      </view>
-      <view bindtap="selectSetout" class="weui-cell" hover-class="weui-cell_active" data-value="广州">
-        <view class="weui-cell__bd">
-          <view>广州</view>
-        </view>
-      </view>
-      <view bindtap="selectSetout" class="weui-cell" hover-class="weui-cell_active" data-value="上海">
-        <view class="weui-cell__bd">
-          <view>上海</view>
-        </view>
-      </view>
-      <view bindtap="selectSetout" class="weui-cell" hover-class="weui-cell_active" data-value="北京">
-        <view class="weui-cell__bd">
-          <view>北京</view>
+          <view>{{item.name}}</view>
         </view>
       </view>
     </view>

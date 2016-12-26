@@ -16,7 +16,13 @@
   box-sizing: border-box;
   padding: 0;
 }
-
+.toggle-date .weui-cell__ft_in-access{
+  padding: 0
+}
+.toggle-date .decrease, .toggle-date .increase{
+    height: 98rpx;
+    width: 98rpx;
+}
 .toggle-date .decrease:after {
   transform: rotate(225deg);
   left:40rpx;
