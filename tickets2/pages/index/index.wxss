@@ -2,7 +2,7 @@
 
 .top-nav {
   height: 188rpx;
-  background-color: #4a90e2;
+  background-color: #7688d6;
   color: #fff;
   font-size: 24rpx;
 }
@@ -19,8 +19,15 @@
   margin: 0 0 8rpx 0;
 }
 
+
+.booking{
+  background-color: #7688d6;
+  padding: 30rpx 30rpx 80rpx 30rpx;
+}
 .booking-wrap{
   background-color: #fff;
+  
+  border-radius: 20rpx;
 }
 .selects-wrap .weui-cell__ft_in-access{
   padding-right: 40rpx;
@@ -28,7 +35,8 @@
 
 .selects-wrap{
   position: relative;
-  margin: 0
+  margin: 0;
+  background-color: #fff;
 }
 
 .selects-wrap .weui-cell {
@@ -56,7 +64,6 @@
 }
 
 .toggle-direction {
-  background-color: #fff;
   border-radius: 50%;
   height: 46rpx;
   width: 46rpx;
@@ -68,19 +75,32 @@
   vertical-align: middle;
 }
 
-.bn-list {
-  margin: 24rpx 0 0 0;
+.selects-wrap .place{
+  height: 180rpx;
 }
 
-.bn-list .weui-media-box__title {
+.place .destination{
+  text-align: right
+}
+
+
+.place .label{
+  font-size: 24rpx;
+  color: #C8C8CD;
+  margin: 0 0 8rpx 0;
+}
+
+.place .text{
+  color: #C8C8CD;
   font-size: 32rpx;
-  padding: 0 0 10rpx 0;
+  font-weight: 600;
 }
-.bn-list .weui-media-box__hd_in-appmsg{
-  margin: 0 0 0 20rpx;
+
+
+.bn-wrap{
+  margin: 30rpx 0 0 0;
 }
-.bn-list image {
-  width: 240rpx;
-  height: 160rpx;
-  vertical-align: middle;
+.bn-wrap image{
+  width: 100%;
+  height: 400rpx;
 }
