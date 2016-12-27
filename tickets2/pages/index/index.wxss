@@ -1,0 +1,86 @@
+  /**index.wxss**/
+
+.top-nav {
+  height: 188rpx;
+  background-color: #4a90e2;
+  color: #fff;
+  font-size: 24rpx;
+}
+
+.top-nav .nav-item {
+  flex: 1;
+  text-align: center;
+}
+
+.top-nav .nav-item image {
+  width: 68rpx;
+  height: 68rpx;
+  vertical-align: middle;
+  margin: 0 0 8rpx 0;
+}
+
+.booking-wrap{
+  background-color: #fff;
+}
+.selects-wrap .weui-cell__ft_in-access{
+  padding-right: 40rpx;
+}
+
+.selects-wrap{
+  position: relative;
+  margin: 0
+}
+
+.selects-wrap .weui-cell {
+  height: 120rpx;
+}
+
+.selects-wrap .weui-cell .active {
+  color: #2c2c2c;
+}
+
+.selects-wrap .weui-cell::before {
+  left: 0;
+}
+.selects-wrap picker{
+  border-top:1px #e5e5e5 solid;
+}
+
+.search {
+  padding: 27rpx 30rpx;
+}
+
+.search button {
+  height: 88rpx;
+  line-height: 88rpx;
+}
+
+.toggle-direction {
+  background-color: #fff;
+  border-radius: 50%;
+  height: 46rpx;
+  width: 46rpx;
+}
+
+.toggle-direction image {
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.bn-list {
+  margin: 24rpx 0 0 0;
+}
+
+.bn-list .weui-media-box__title {
+  font-size: 32rpx;
+  padding: 0 0 10rpx 0;
+}
+.bn-list .weui-media-box__hd_in-appmsg{
+  margin: 0 0 0 20rpx;
+}
+.bn-list image {
+  width: 240rpx;
+  height: 160rpx;
+  vertical-align: middle;
+}

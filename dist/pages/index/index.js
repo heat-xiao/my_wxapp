@@ -41,16 +41,16 @@ Page({
       setout: wx.getStorageSync('setout'),
       destination: wx.getStorageSync('destination')
     })
-  }
+  },
 
-  //通过缓存传递参数
-  // searchTickets : function(e){
-  //   var that = this
-  //   wx.setStorageSync('destination', that.data.destination);
-  //   wx.setStorageSync('setout', that.data.setout);
-  //   wx.setStorageSync('date',that.data.date);
-  //    wx.navigateTo({
-  //      url: '../tickets/tickets'
-  //    })
-  // } 
+  // 通过缓存传递参数
+  searchTicket : function(e){
+    var that = this
+    wx.setStorageSync('destination', that.data.destination);
+    wx.setStorageSync('setout', that.data.setout);
+    wx.setStorageSync('date',that.data.date);
+     wx.navigateTo({
+       url: '../tickets/tickets'
+     })
+  } 
 })

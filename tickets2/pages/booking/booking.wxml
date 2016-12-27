@@ -1,0 +1,31 @@
+<view class="container page-booking">
+    <view class="booking-wrap">
+        <view class="weui-cells selects-wrap">
+        <navigator url="../setout/setout" class="weui-cell" hover-class="weui-cell_active">
+            <view class="weui-cell__bd">出发地</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access {{setout ? 'active' : '' }}">{{setout ? setout : '选择' }}</view>
+        </navigator>
+        <view class="toggle-direction" bindtap="toggleDirection">
+            <image src="../../images/tow_icon_change_blue.png"></image>
+        </view>
+        <navigator url="../destination/destination" class="weui-cell" hover-class="weui-cell_active">
+            <view class="weui-cell__bd">目的地</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access  {{destination ? 'active' : '' }}">{{destination ? destination : '选择' }}</view>
+        </navigator>
+            
+        <picker mode="date" value="{{date}}" start="{{todayDate}}" end="" bindchange="bindDateChange">
+            <view class="weui-cell" hover-class="weui-cell_active">
+            <view class="weui-cell__bd">出发时间</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access {{date ? 'active' : '' }}">
+                <view class="picker">
+                {{showDate}}
+                </view>
+            </view>
+            </view>
+        </picker>
+        </view>
+        <view class="search">
+        <button bindtap="searchTicket" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}"> 查询 </button>
+        </view>
+    </view>
+</view>

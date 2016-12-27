@@ -1,0 +1,63 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/booking/booking",
+    "pages/myorder/myorder",
+    "pages/fillorder/fillorder",
+    "pages/useredit/useredit",
+    "pages/user/user",
+    "pages/succeed/succeed",
+    "pages/addrider/addrider",
+    "pages/frequentrider/frequentrider",
+    "pages/afterbounce/afterbounce",
+    "pages/beforebounce/beforebounce",
+    "pages/ordered/ordered",
+    "pages/orderinfo/orderinfo",
+    "pages/selectrider/selectrider",
+    "pages/tickets/tickets",
+    "pages/tickettype/tickettype",
+    "pages/setout/setout",
+    "pages/destination/destination"
+  ],
+  "window": {
+    "navigationBarTextStyle": "#fff",
+    "navigationBarTitleText": "订票小程序",
+    "navigationBarBackgroundColor": "#2c2c2c",
+    "backgroundColor": "#efefef",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": "true"
+  },
+  "tabBar": {
+    "backgroundColor": "#2c2c2c",
+    "color": "#999999",
+    "selectedColor": "#fff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/three_icon_home.png",
+        "selectedIconPath": "images/three_icon_home_select.png"
+      },
+      {
+        "pagePath": "pages/booking/booking",
+        "text": "订票",
+        "iconPath": "images/three_icon_order.png",
+        "selectedIconPath": "images/three_icon_order_select.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "images/three_icon_my.png",
+        "selectedIconPath": "images/three_icon_my_select.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
+}

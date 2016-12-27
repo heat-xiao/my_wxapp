@@ -1,0 +1,35 @@
+
+.ordered{
+  height: 155rpx;
+  align-items: flex-start;
+  font-size: 26rpx;
+}
+.ordered .info-item{
+  padding: 6rpx 0;
+}
+
+.ticket-type{
+  color: #4a90e2;
+  margin: 0 20rpx 0 0 ;
+}
+
+.ft-topay{
+  position: fixed;
+  width: 100%;
+  height: 91rpx;
+  bottom: 29rpx;
+}
+
+.ft-topay button.cancel-btn{
+  height: 91rpx;
+  background-color: #fff;
+  color: #2c2c2c;
+  margin: 0 20rpx 0 0;
+  line-height: 91rpx;
+}
+
+.ft-topay button.topay-btn{
+  height: 91rpx;
+  line-height: 91rpx;
+  margin: 0 0 0 20rpx;
+}

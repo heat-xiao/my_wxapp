@@ -1,0 +1,37 @@
+
+<!--引入模板-->
+<import src="../templates/template.wxml" />
+<view class="container page-order">
+  <view class="bounced-info">
+    <view class="flex-column bounced-ticket-info ">
+      <view class="flex-row time">
+        <view class="date">12月10日 星期日</view>
+        <view class="hour">16:00</view>
+      </view>
+
+      <view class="label flex-row">
+          <view>出发地</view>
+          <view class="line"></view>
+          <view >目的地</view>
+      </view>
+      <view class="route flex-row">
+          <view class="setout"> 蛇口港</view>
+          <view class="line">
+            <image src="../../images/icon_dashed_grey.png"></image>
+            <image src="../../images/icon_dashed_grey.png"></image>
+            <image src="../../images/icon_dashed_grey.png"></image>
+            <image src="../../images/icon_dashed_grey.png"></image>
+          </view>
+          <view class="duration">香港码头</view>
+      </view>
+    </view>
+    <view class="order-wrap">
+      <template is="order-before-pay" />
+    </view>
+
+  </view>
+  <view class="bounced-tip">
+        敦所有的主要火车站和地铁站都关闭了。敦所有的主要火车站和地铁站都关闭了。
+    </view>
+  <template is="ft-fixed-cart" />
+</view>
