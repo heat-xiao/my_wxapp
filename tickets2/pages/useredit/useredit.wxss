@@ -1,7 +1,7 @@
 /* pages/user/user.wxss */
 .user{
     height: 188rpx;
-    background-color: #4a90e2;
+    background-color: #7688d6;
     color: #fff;
 }
 .avatar{

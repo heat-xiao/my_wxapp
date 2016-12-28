@@ -8,7 +8,7 @@ page {
 }
 
 button {
-  background-color: #4a90e2;
+  background-color: #ea5e78;
   color: #fff;
   font-size: 30rpx;
   height: 91rpx;
@@ -63,7 +63,7 @@ button {
 /*------------头部车票信息------------*/
 
 .ticket-info {
-  background-color: #4a90e2;
+  background-color: #7688d6;
   color: #fff;
   height: 236rpx;
 }
@@ -113,7 +113,7 @@ button {
   flex: 1;
   padding: 0 30rpx;
   font-size: 36rpx;
-  color: #f5a623;
+  color: #e65973;
 }
 
 .ft-fixed-cart button {

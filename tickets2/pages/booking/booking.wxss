@@ -1,6 +1,11 @@
+  /**index.wxss**/
+
+.booking{
+  background-color: #7688d6;
+  padding: 30rpx 30rpx 80rpx 30rpx;
+}
 .booking-wrap{
   background-color: #fff;
-  margin: 30rpx;
   border-radius: 20rpx;
 }
 .selects-wrap .weui-cell__ft_in-access{
@@ -9,12 +14,10 @@
 
 .selects-wrap{
   position: relative;
-  margin: 0
+  margin: 0;
+  background-color: #fff;
 }
 
-.selects-wrap::before{
-    border:0;
-}
 .selects-wrap .weui-cell {
   height: 120rpx;
 }
@@ -30,9 +33,8 @@
   border-top:1px #e5e5e5 solid;
 }
 
-
 .search {
-  padding: 27rpx 30rpx 50rpx 30rpx;
+  padding: 27rpx 30rpx;
 }
 
 .search button {
@@ -41,19 +43,34 @@
 }
 
 .toggle-direction {
-  position: absolute;
-  background-color: #fff;
-  left: 50%;
-  top: 120rpx;
+  border-radius: 50%;
   height: 46rpx;
   width: 46rpx;
-  margin-top: -23rpx;
-  margin-left: -23rpx;
-  z-index: 999;
-  border-radius: 50%;
 }
 
 .toggle-direction image {
   width: 100%;
   height: 100%;
+  vertical-align: middle;
+}
+
+.selects-wrap .place{
+  height: 180rpx;
+}
+
+.place .destination{
+  text-align: right
+}
+
+
+.place .label{
+  font-size: 24rpx;
+  color: #C8C8CD;
+  margin: 0 0 8rpx 0;
+}
+
+.place .text{
+  color: #C8C8CD;
+  font-size: 32rpx;
+  font-weight: 600;
 }

@@ -22,7 +22,7 @@
 }
 
 .bounced-ticket-info .time{
-  background-color: #4a90e2;
+  background-color: #7688d6;
   color: #fff;
   height: 88rpx;
   line-height: 88rpx;
