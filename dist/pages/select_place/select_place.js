@@ -4,12 +4,19 @@ Page({
     data: {
         inputShowed: false,
         inputVal: "",
-        searchResult: [
-            { name: "深圳", id: 1 },
-            { name: "广州", id: 2 },
-            { name: "北京", id: 3 },
-            { name: "上海", id: 4 }
-        ]
+        direction: "",
+        searchResult: ["深圳", "广州", "北京", "上海"]
+    },
+    onLoad: function (options) {
+        wx.setNavigationBarTitle({
+            title: options.direction == "source" ? "选择出发地" : "选择目的地",
+            success: function (res) {
+                // success
+            }
+        });
+        this.setData({
+            direction: options.direction,
+        })
     },
     showInput: function () {
         this.setData({
@@ -32,9 +39,8 @@ Page({
             inputVal: e.detail.value
         });
     },
-    selectSetout: function(e){
-      var destination = e.currentTarget.dataset.value;
-      wx.setStorageSync('destination', destination);
-      wx.navigateBack();
+    selectPlace: function (e) {
+        wx.setStorageSync(this.data.direction, e.currentTarget.dataset.place);
+        wx.navigateBack();
     }
 });

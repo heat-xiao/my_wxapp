@@ -9,7 +9,7 @@ Page({
       "../../images/tow_icon_change_blue.png"
     ],
     bannerData:[] ,
-    setout: wx.getStorageSync('setout'),
+    source: wx.getStorageSync('source'),
     destination: wx.getStorageSync('destination'),
     todayDate: new Date(),
     showDate: util.formatTime(new Date()),
@@ -20,10 +20,9 @@ Page({
   toggleDirection : function () {
     var that = this  
     that.setData({
-      setout: that.data.destination,
-      destination: that.data.setout
-    })
-    
+      source: that.data.destination,
+      destination: that.data.source
+    })   
   },
   
  //时间选择
@@ -38,7 +37,7 @@ Page({
   onShow: function() {
     var that = this
     that.setData({
-      setout: wx.getStorageSync('setout'),
+      source: wx.getStorageSync('source'),
       destination: wx.getStorageSync('destination')
     })
   },
@@ -47,7 +46,7 @@ Page({
   searchTicket : function(e){
     var that = this
     wx.setStorageSync('destination', that.data.destination);
-    wx.setStorageSync('setout', that.data.setout);
+    wx.setStorageSync('source', that.data.source);
     wx.setStorageSync('date',that.data.date);
      wx.navigateTo({
        url: '../tickets/tickets'

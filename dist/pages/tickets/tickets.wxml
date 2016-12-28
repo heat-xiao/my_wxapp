@@ -1,6 +1,6 @@
 <view class="container page-tickets">
   <view class="route flex-column">
-    <view>{{ticketInfo.setout}} 至 {{ticketInfo.destination}}</view>
+    <view>{{ticketInfo.source}} 至 {{ticketInfo.destination}}</view>
     <block wx:if="{{ticketInfo.duration}}">
       <view class="duration">(约{{ticketInfo.duration}})</view>
     </block>

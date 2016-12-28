@@ -17,9 +17,9 @@
       <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
     </view>
     <view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}" >
-      <view wx:for="{{searchResult}}" wx:key="{{item.id}}" bindtap="selectSetout" class="weui-cell" hover-class="weui-cell_active" data-value="{{item.name}}">
+      <view wx:for="{{searchResult}}" wx:key="{{index}}" wx:for-item="place" bindtap="selectPlace" class="weui-cell" hover-class="weui-cell_active" data-place="{{place}}">
         <view class="weui-cell__bd">
-          <view>{{item.name}}</view>
+          <view>{{place}}</view>
         </view>
       </view>
     </view>

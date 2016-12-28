@@ -4,6 +4,7 @@ Page({
   data: {
     ticketInfo: [],
   },
+
   decrease: function () {
     var that = this
     var newDate = new Date(that.data.date);
@@ -29,20 +30,20 @@ Page({
 
     //通过url传递参数
     // that.setData({
-    //   setout: options.setout,
+    //   source: options.source,
     //   destination: options.destination, 
     //   date:options.date,
     //   showDate:util.formatTime(options.date)
     // })
 
     // 通过出发地和目的地查出相关的车票;
-    var setout = wx.getStorageSync('setout');
+    var source = wx.getStorageSync('source');
     var destination = wx.getStorageSync('destination');
     var date = wx.getStorageSync('date');
 
     //在此模拟接口得出的json
     var ticketInfo = {
-      setout: setout,
+      source: source,
       destination: destination,
       date: date,
       duration:"2小时",
