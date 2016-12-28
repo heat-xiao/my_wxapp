@@ -1,6 +1,5 @@
 {
   "pages": [
-    "example/index",
     "pages/index/index",
     "pages/select_place/select_place",
     "pages/booking/booking",
