@@ -1,5 +1,6 @@
-//获取应用实例
-var app = getApp()
+
+import api from '../../utils/api.js'
+
 Page({
     data: {
         inputShowed: false,
@@ -34,9 +35,23 @@ Page({
             inputVal: ""
         });
     },
-    inputTyping: function (e) {
-        this.setData({
-            inputVal: e.detail.value
+    searchPlace: function (e) {
+        console.log(e)
+        var that = this;
+        api.getPlaceByKeyword({
+            data: {
+                keyword: e.detail.value,
+            },
+            success: (res) => {
+                console.log(res)
+                if (res.data && res.data != {}) {
+                    // success
+                    that.setData({
+                        inputVal: e.detail.value,
+                        searchResult: res.data.resultData,
+                    });
+                }
+            }
         });
     },
     selectPlace: function (e) {
