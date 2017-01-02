@@ -4,7 +4,7 @@ Page({
     setout: wx.getStorageSync('setout'),
     destination: wx.getStorageSync('destination'),
     todayDate: new Date(),
-    showDate: util.formatTime(new Date()),
+    showDate: util.formatTime(new Date(),1),
     date:new Date()
   },
   
@@ -22,7 +22,7 @@ Page({
   bindDateChange: function(e) {
     var that = this
     this.setData({
-      showDate:util.formatTime( e.detail.value),
+      showDate:util.formatTime(e.detail.value,1),
       date:e.detail.value
     })
   },

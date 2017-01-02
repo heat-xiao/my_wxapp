@@ -25,13 +25,11 @@ import api from 'utils/api.js'
 App({
   onLaunch: function () {
     
-    console.log('启动小程序了~~~');
-
     // 小程序启动首先需要获取用户信息
     // 首先获取缓存的用户信息
     var userInfo = wx.getStorageSync('userInfo')
     if (userInfo) {
-      console.log('user exist');
+      console.log(userInfo);
       return
     }
 
@@ -56,16 +54,13 @@ App({
                     method: 'POST',
                     data: {
                       encryptedData: r2.encryptedData,
-                      openid: r1.data.resultData.openid,
+                      openId: r1.data.resultData.openId,
                       iv: r2.iv
                     },
                     success: function (r3) {
                       console.log('register success:', r3.data)
                       // 将用户信息存入缓存(数据结构如上注释)
-                      wx.setStorage({
-                        key: "userInfo",
-                        data: r3.data.resultData
-                      })
+                       wx.setStorageSync('userInfo', r3.data.resultData);
                     }
                   })
                 }
@@ -74,10 +69,7 @@ App({
             else {
               // 将用户信息存入缓存
               console.log('已经注册过了', r1.data.resultData);
-              wx.setStorage({
-                key: "userInfo",
-                data: r1.data.resultData
-              })
+              wx.setStorageSync('userInfo', r1.data.resultData);
 
             }
           }

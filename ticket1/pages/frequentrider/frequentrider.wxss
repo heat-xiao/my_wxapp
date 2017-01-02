@@ -1,12 +1,12 @@
-.selectrider .idcard{
+.identity-info .identity-id{
      font-size: 26rpx;
      color: #858585;
      padding: 10rpx 0 0 0;
 }
-.selectrider .weui-cell{
+.identity-info .weui-cell{
      height: 148rpx;
 }
-.selectrider .rider-info{
+.identity-info .identity-item{
     padding: 0 0 0 24rpx;
 }
 

@@ -6,10 +6,15 @@
 }
 .avatar{
     height: 100rpx;
-    width: 100rpx;
-    border-radius: 50%;
-    background-color: #fff;  
+    width: 100rpx; 
     margin: 0 35rpx 0 5rpx;
+}
+
+.avatar image{
+    height: 100%;
+    width: 100%;
+    border-radius:50%;
+    vertical-align: middle;
 }
 
 .name{

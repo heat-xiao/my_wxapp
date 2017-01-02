@@ -36,7 +36,6 @@ Page({
         });
     },
     searchPlace: function (e) {
-        console.log(e)
         var that = this;
         api.getPlaceByKeyword({
             data: {

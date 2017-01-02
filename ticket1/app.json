@@ -1,10 +1,15 @@
 {
   "pages": [
-    "pages/index/index",
+    "pages/order_list/order_list",
+    
+     "pages/index/index",
+    "pages/insurance_introduce/insurance_introduce",
+    "pages/traffic_guide/traffic_guide",   
+    "pages/confirm_order/confirm_order",
+    "pages/select_rider/select_rider",
+    "pages/edit_phonenumber/edit_phonenumber",
     "pages/select_place/select_place",
     "pages/booking/booking",
-    "pages/myorder/myorder",
-    "pages/fillorder/fillorder",
     "pages/useredit/useredit",
     "pages/user/user",
     "pages/succeed/succeed",
@@ -13,8 +18,7 @@
     "pages/afterbounce/afterbounce",
     "pages/beforebounce/beforebounce",
     "pages/ordered/ordered",
-    "pages/orderinfo/orderinfo",
-    "pages/selectrider/selectrider",
+    "pages/order_detail/order_detail",
     "pages/tickets/tickets",
     "pages/tickettype/tickettype"
   ],

@@ -1,25 +1,27 @@
 <view class="container">
+<form class="identity-info" bindsubmit="submitIdentity">
   <view class="weui-cells">
     <view class="weui-cell" hover-class="weui-cell_active">
       <view class="weui-cell__label">姓名</view>
-      <view class="weui-cell__bd weui-cell__ft_in-access">
-        <input class="weui-input" placeholder="乘车人姓名" />
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="乘车人姓名"  value="{{name?name:''}}" name="name"/>
       </view>
     </view>
     <view class="weui-cell" hover-class="weui-cell_active">
       <view class="weui-cell__label">证件</view>
-      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" class="weui-cell__bd">
-        <view class="weui-cell__ft_in-access">身份证</view>
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{identityTypeArray}}" range-key="value" class="weui-cell__bd">
+        <view class="weui-cell__ft_in-access">{{identityTypeArray[index].value}}</view>
       </picker>
     </view>
     <view class="weui-cell" hover-class="weui-cell_active">
-      <view class="weui-cell__label"> 证件号</view>
-      <view class="weui-cell__bd weui-cell__ft_in-access">
-        <input class="weui-input" placeholder="填写证件号码" />
+      <view class="weui-cell__label">证件号</view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="填写证件号码" value="{{identityNo?identityNo:''}}" name="identityNo"/>
       </view>
     </view>
   </view>
   <view class="addrider-btn">
-    <button bindtap="searchTickets" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}">确定</button>
+    <button formType="submit">确定</button>
   </view>
+  </form>
 </view>

@@ -1,28 +1,31 @@
 
 <!--index.wxml-->
 <view class="container">
-  <navigator url="../useredit/useredit" class="flex-row user">
-    <view class="avatar">{{avatar}}</view>
-    <view class="name">名字</view>
-  </navigator>
-  <view class="weui-cells user-info">
+  <view class="flex-row user">
+    <view class="avatar"><image src="{{profileInfo.avatar}}"></image></view>
+    <view class="name">{{profileInfo.nickname}}</view>
+  </view>
+  <navigator url="../edit_phonenumber/edit_phonenumber?phoneNumber={{profileInfo.phoneNumber}}" class="weui-cells user-info">
     <view class="weui-cell">
       <view class="weui-cell__hd">电话</view>
-      <view class="weui-cell__bd">15899999999</view>
+      <view class="weui-cell__bd">{{profileInfo.phoneNumber}}</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access">{{!profileInfo.phoneNumber ?'请添加您的手机号' :''}}</view>
     </view>
-    <view class="weui-cell">
-      <view class="weui-cell__hd">证件</view>
-      <view class="weui-cell__bd">4210394844848484848</view>
-    </view>
-  </view>
+  </navigator>
   <view class="weui-cells other-info">
     <navigator url="../frequentrider/frequentrider" class="weui-cell" hover-class="weui-cell_active">
       <view class="weui-cell__bd">常用乘客</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+
+    <navigator url="../traffic_guide/traffic_guide" class="weui-cell" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">交通指南</view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
     <navigator url="" class="weui-cell" hover-class="weui-cell_active">
       <view class="weui-cell__bd">关于我们</view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
+
   </view>
 </view>

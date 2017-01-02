@@ -1,0 +1,13 @@
+<view class="container">
+  <view class="weui-cells">
+    <view class="weui-cell" hover-class="weui-cell_active">
+      <view class="weui-cell__label">手机号码</view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="填写手机号码" value="{{phoneNumber}}" bindblur ="getInputValue"/>
+      </view>
+    </view>
+  </view>
+  <view class="addrider-btn">
+    <button bindtap="savePhoneNumber" loading="{{loading}}">确定</button>
+  </view>
+</view>

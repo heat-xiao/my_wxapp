@@ -94,3 +94,8 @@
     text-align: right;
 }
 
+
+
+.ticket-list.disabled .price{
+    color: #bbbbbb
+}

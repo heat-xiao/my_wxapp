@@ -1,27 +1,26 @@
+import api from '../../utils/api.js'
+
 Page({
     data: {
-
-        checkboxItems: [
-            {name: '曹妍', idcard:'430**********0099',value: '0', checked: true},
-            {name: '张三', idcard:'430**********0099', value: '1'},
-            {name: '李四', idcard:'430**********0099', value: '2'}
-        ]
+        identityTypeArray: {
+            "IDCARD": "身份证", "MTP": "台胞证", "PASSPORT": "护照", "REENTRY_PERMIT": "回乡证", "OFFICIAL_CARD": "军官证", "RESIDENCE_PERMIT": "外国人居留证", "OTHER": "其他"
+        },
+         identitys: []
     },
-    checkboxChange: function (e) {
-
-        var checkboxItems = this.data.checkboxItems, values = e.detail.value;
-        for (var i = 0, lenI = checkboxItems.length; i < lenI; ++i) {
-            checkboxItems[i].checked = false;
-
-            for (var j = 0, lenJ = values.length; j < lenJ; ++j) {
-                if(checkboxItems[i].value == values[j]){
-                    checkboxItems[i].checked = true;
-                    break;
+    onShow: function (options) {
+        var that = this
+        api.getIdentitys({
+            data: {
+                accountId: wx.getStorageSync('userInfo').accountId,
+            },
+            success: (res) => {
+                if (res.data && res.data != {}) {
+                    that.setData({
+                        identitys: res.data.resultData,
+                    });
                 }
             }
-        }
-        this.setData({
-            checkboxItems: checkboxItems
         });
-    }
+    },
+
 });

@@ -6,10 +6,13 @@
 
 .operate button {
   font-size: 26rpx;
-  height: 44rpx;
+  height: 50rpx;
   line-height: 44rpx;
-  width: 105rpx;
-  padding: 0;
+  padding: 3rpx 20rpx;
+}
+
+.operate button.gray{
+  background-color: #bbbbbb;
 }
 
 .price {

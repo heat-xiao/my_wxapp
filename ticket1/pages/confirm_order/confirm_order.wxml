@@ -1,0 +1,76 @@
+
+<view class="container page-fillorder">
+  <view class="flex-column ticket-info">
+    <view class="flex-row time">
+      <view class="date">{{showDate}}</view>
+      <view class="hour">{{ticketInfo.disabledTickets[index].departureTime}}</view>
+    </view>
+    <view class="flex-row route">
+      <view class="setout">
+        <image src="../../images/tow_icon_service.png"></image>{{ticketInfo.source}}
+      </view>
+      <view class="line">
+        <image src="../../images/icon_dashed_white.png"></image>
+      </view>
+      <view class="duration">
+        <image src="../../images/tow_icon_service.png"></image>{{ticketInfo.destination}}</view>
+    </view>
+  </view>
+  <view class="fill-info">
+    <view class="weui-cells" wx:if="{{selectIdentitys.length > 0}}">
+      <view class="weui-cell" wx:for="{{selectIdentitys}}" wx:key="{{item.identityId}}">
+        <view class="weui-cell__bd">{{item.name}}，{{item.identityNo}}</view>
+        <view class="weui-cell__ft" style="color:#ea5e78" id="{{index}}" bindtap="removeSelect">删除</view>
+      </view>
+    </view>
+    <view class="weui-cells add-rider">
+      <navigator url="../select_rider/select_rider" class="weui-cell" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+          <image src="../../images/icon_add_purple.png"></image>
+        </view>
+        <view class="weui-cell__bd">添加成年票</view>
+      </navigator>
+      <view class="weui-cell" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+          <image src="../../images/icon_add_purple.png"></image>
+        </view>
+        <view class="weui-cell__bd">添加儿童票</view>
+      </view>
+    </view>
+    <view class="weui-cells">
+      <view class="weui-cell">
+        <view style="padding-right:20rpx;">联系人电话</view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="填写证件号码" value="{{phoneNumber}}" bindblur="getPhoneNumber" />
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells">
+      <view class="weui-cell insurance">
+        <icon type="success" size="18" wx:if="{{needInsurance}}" bindtap="radioInsurance"></icon>
+        <icon type="circle" size="18" wx:if="{{!needInsurance}}" bindtap="radioInsurance"></icon>
+        <view class="radio">购买乘车险</view>
+        <view class="price">{{insurancePrice}}</view>
+        <view class="weui-cell__bd num">X {{adultNum+childNum}}</view>
+        <view class="weui-cell__ft">
+          <navigator url="../insurance_introduce/insurance_introduce">
+            <icon type="info" size="18"></icon>
+          </navigator>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells">
+      <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">订单须知</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+    </view>
+  </view>
+  <view class="flex-row ft-fixed-cart">
+    <view>订单金额：</view>
+    <view class="price">{{ticketPrice*adultNum+childPrice*childNum+(adultNum+childNum)*insurancePrice*(needInsurance?1:0)}}</view>
+    <view>
+      <button bindtap="confirmOrder" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}">确定</button>
+    </view>
+  </view>
+</view>

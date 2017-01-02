@@ -35,7 +35,7 @@ const getAdOnHome = (params) => wxRequest(params, `${host}/home`)
 
 const getPlaceByKeyword = (params) => wxRequest(params, `${host}/home/place/select`)
 
-const getTicketsByFilter = (params) => wxRequest(params, `${host}/home/ticket/search`)
+const getTickets = (params) => wxRequest(params, `${host}/home/ticket/search`)
 
 const createOrder = (params) => wxRequest(params, `${host}/home/order/create`)
 
@@ -45,11 +45,17 @@ const getOrderDetial = (params) => wxRequest(params, `${host}/account/order/deta
 
 const applyRefund = (params) => wxRequest(params, `${host}/account/order/refund`)
 
-const getProfile = (params) => wxRequest(params, `${host}/account/profile/edit`)
+const getProfile = (params) => wxRequest(params, `${host}/account/profile`)
+
+const editProfile = (params) => wxRequest(params, `${host}/account/profile/edit`)
 
 const getIdentitys = (params) => wxRequest(params, `${host}/account/identity/mine`)
 
-const addIdentity = (params) => wxRequest(params, `${host}/account/identity/edit`)
+const getInsuranceIntroduce = (params) => wxRequest(params, `${host}/common/insurance/introduce`)
+
+const getTrafficGuide = (params) => wxRequest(params, `${host}/common/traffic/guide`)
+
+const editIdentity = (params) => wxRequest(params, `${host}/account/identity/edit`)
 
 const deleteIdentity = (params) => wxRequest(params, `${host}/account/identity/delete`)
 
@@ -57,19 +63,25 @@ const setDefaultIdentity = (params) => wxRequest(params, `${host}/account/identi
 
 const upload = (params) => wxRequest(params, `${host}/common/upload`)
 
+const orderPay = (params) => wxRequest(params, `${host}/home/order/pay`)
+
 module.exports = {
   getUserInfoBycode,
   UserRegister,
   getAdOnHome,
   getPlaceByKeyword,
-  getTicketsByFilter,
+  getTickets,
   createOrder,
   getOrderList,
   getOrderDetial,
   applyRefund,
   getProfile,
+  editProfile,
   getIdentitys,
-  addIdentity,
+  getInsuranceIntroduce,
+  getTrafficGuide,
+  editIdentity,
   deleteIdentity,
-  setDefaultIdentity
+  setDefaultIdentity,
+  orderPay
 }
