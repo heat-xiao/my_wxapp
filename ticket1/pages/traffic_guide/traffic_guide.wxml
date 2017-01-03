@@ -1,3 +1,3 @@
 <view class="container">
-    <image src="{{guidePic}}" mode="widthFix"></image>
+    <image src="{{guidePic}}" mode="widthFix" style="width:100%"></image>
 </view>
