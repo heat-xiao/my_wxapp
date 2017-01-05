@@ -1,6 +1,6 @@
 {
   "pages": [
-     "pages/index/index",
+    "pages/index/index",
     "pages/order_list/order_list",
     "pages/insurance_introduce/insurance_introduce",
     "pages/traffic_guide/traffic_guide",   

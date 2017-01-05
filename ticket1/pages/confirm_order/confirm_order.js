@@ -30,10 +30,24 @@ Page({
     });
   },
 
+  // onShow: function () {
+  //   var that = this
+  //   var selectIdentitys = wx.getStorageSync('selectIdentitys')
+  //   if (selectIdentitys) {
+  //     that.setData({
+  //       selectIdentitys: selectIdentitys,
+  //       adultNum: selectIdentitys.length
+  //     });
+  //   }
+  // },
+
   onShow: function () {
     var that = this
-    var selectIdentitys = wx.getStorageSync('selectIdentitys')
-    if (selectIdentitys) {
+    var allIdentitys = wx.getStorageSync('allIdentitys')
+    var selectIds = wx.getStorageSync('selectIds')
+
+    
+    if (selectIds) {
       that.setData({
         selectIdentitys: selectIdentitys,
         adultNum: selectIdentitys.length
@@ -52,6 +66,8 @@ Page({
     });    
     wx.setStorageSync('selectIdentitys', selectIdentitys);
   },
+
+  
   radioInsurance: function () {
     var that = this
     that.setData({

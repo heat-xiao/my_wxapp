@@ -1,11 +1,11 @@
 <view class="container page-selectrider">
   <view class="weui-cells selectrider">
     <checkbox-group bindchange="checkboxChange">
-      <label class="weui-cell weui-check__label" wx:for="{{checkboxItems}}" wx:key="{{item.identityId}}">
-        <checkbox class="weui-check" value="{{item.identityId}}" checked="{{item.checked}}" />
+      <label class="weui-cell weui-check__label" wx:for="{{allIdentitys}}" wx:key="{{item.identityId}}">
+        <checkbox class="weui-check" value="{{item.identityId}}" checked="{{selectIds[item.identityId]}}"  />
         <view class="weui-cell__hd weui-check__hd_in-checkbox">
-          <icon class="weui-icon-checkbox_circle" type="circle" size="18" wx:if="{{!item.checked}}"></icon>
-          <icon class="weui-icon-checkbox_success" type="success" size="18" wx:if="{{item.checked}}"></icon>
+          <icon class="weui-icon-checkbox_circle" type="circle" size="18" wx:if="{{!selectIds[item.identityId]}}"></icon>
+          <icon class="weui-icon-checkbox_success" type="success" size="18" wx:if="{{selectIds[item.identityId]}}"></icon>
         </view>
         <view class="weui-cell__bd rider-info">
             <view>{{item.name}}</view>

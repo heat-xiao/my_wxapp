@@ -6,7 +6,7 @@ Page({
         inputShowed: false,
         inputVal: "",
         direction: "",
-        searchResult: ["深圳", "广州", "北京", "上海"]
+        searchResult: []
     },
     onLoad: function (options) {
         wx.setNavigationBarTitle({
