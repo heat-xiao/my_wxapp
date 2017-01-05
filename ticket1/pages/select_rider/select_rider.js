@@ -63,10 +63,10 @@ Page({
                 if (res.data && res.data != {}) {
                     that.setData({
                         allIdentitys: res.data.resultData,
-                        selectIds:wx.getStorageSync('selectIds')
+                        selectIds:this.transfer2Obj(wx.getStorageSync('selectIds'))
                     });
 
-                    wx.setStorageSync('allIdentitys', allIdentitys);
+                    wx.setStorageSync('allIdentitys', res.data.resultData);
                 }
             }
         });
@@ -76,7 +76,7 @@ Page({
     checkboxChange: function (e) {
         let checkedIds = e.detail.value;
         console.log(checkedIds);
-        wx.setStorageSync('selectIds', this.transfer2Obj(checkedIds));
+        wx.setStorageSync('selectIds', checkedIds)
         this.setData({selectIds: this.transfer2Obj(checkedIds)})
     },
     transfer2Obj: function(arr) {

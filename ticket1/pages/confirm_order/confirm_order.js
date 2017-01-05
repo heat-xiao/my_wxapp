@@ -21,8 +21,8 @@ Page({
             phoneNumber: res.data.resultData.phoneNumber,
             index: index,
             ticketInfo: ticketInfo,
-            ticketPrice: ticketInfo.disabledTickets[index].ticketPrice/100,
-            childPrice: ticketInfo.disabledTickets[index].childPrice/100,
+            ticketPrice: ticketInfo.disabledTickets[index].ticketPrice / 100,
+            childPrice: ticketInfo.disabledTickets[index].childPrice / 100,
             showDate: util.formatTime(ticketInfo.departureDate, 1)
           });
         }
@@ -44,17 +44,18 @@ Page({
   onShow: function () {
     var that = this
     var allIdentitys = wx.getStorageSync('allIdentitys')
-    var selectIds = wx.getStorageSync('selectIds')
-
-    
-    if (selectIds) {
-      that.setData({
-        selectIdentitys: selectIdentitys,
-        adultNum: selectIdentitys.length
-      });
+    if (allIdentitys) {
+      console.log(allIdentitys.find(this.findSelectIds))
     }
+
   },
-  
+
+  findSelectIds: function (identitys) {
+    var selectIds = wx.getStorageSync('selectIds')
+    return identitys.identityId === 3;
+
+  },
+
   removeSelect: function (e) {
     var that = this
     var removeIndex = e.currentTarget.id
@@ -63,11 +64,11 @@ Page({
     that.setData({
       selectIdentitys: selectIdentitys,
       adultNum: selectIdentitys.length
-    });    
+    });
     wx.setStorageSync('selectIdentitys', selectIdentitys);
   },
 
-  
+
   radioInsurance: function () {
     var that = this
     that.setData({
