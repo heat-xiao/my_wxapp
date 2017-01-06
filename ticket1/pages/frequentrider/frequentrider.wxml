@@ -1,11 +1,12 @@
 <view class="container page-selectrider">
   <view class="weui-cells identity-info" wx:if="{{identitys.length > 0}}" >
-      <navigator url="../addrider/addrider?identityId={{item.identityId}}&&name={{item.name}}&&identityNo={{item.identityNo}}&&identityType={{item.identityType}}" class="weui-cell" wx:for="{{identitys}}" wx:key="{{item.identityId}}">
+      <navigator  class="weui-cell" bindtouchstart="drawStart" bindtouchmove="drawMove" wx:for="{{identitys}}" wx:key="{{item.identityId}}" id="{{item.identityId}}" style="right:{{item.right}}" url="../addrider/addrider?identityId={{item.identityId}}&&name={{item.name}}&&identityNo={{item.identityNo}}&&identityType={{item.identityType}}"  >
         <view class="weui-cell__bd identity-item">
             <view class="name">{{item.name}}</view>
             <view class="identity-id">{{identityTypeArray[item.identityType]}}：{{item.identityNo}}</view>
         </view>
         <view class="weui-cell__ft_in-access"></view>
+        <view class="remove" data-identityid="{{item.identityId}}" catchtap="delIdentity">删除</view>  
       </navigator>
   </view>
   <view wx:else class="empty-data">您还没有添加乘客</view>

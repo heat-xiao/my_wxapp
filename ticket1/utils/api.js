@@ -5,7 +5,7 @@ const wxRequest = (params, url) => {
     icon: 'loading'
   })
   wx.request({
-    url: url,
+    url: params.url? `${url}${params.url}`:url,
     data: params.data || {},
     method: params.method || 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
     header: {

@@ -10,7 +10,8 @@ Page({
   onLoad: function (options) {
     var that = this
     var ticketInfo = wx.getStorageSync('ticketInfo');
-    var index = parseInt(options.index);
+    // var index = parseInt(options.index);
+    var index = 0;
     api.getProfile({
       data: {
         accountId: wx.getStorageSync('userInfo').accountId,
@@ -30,44 +31,38 @@ Page({
     });
   },
 
-  // onShow: function () {
-  //   var that = this
-  //   var selectIdentitys = wx.getStorageSync('selectIdentitys')
-  //   if (selectIdentitys) {
-  //     that.setData({
-  //       selectIdentitys: selectIdentitys,
-  //       adultNum: selectIdentitys.length
-  //     });
-  //   }
-  // },
-
   onShow: function () {
     var that = this
-    var allIdentitys = wx.getStorageSync('allIdentitys')
-    if (allIdentitys) {
-      console.log(allIdentitys.find(this.findSelectIds))
-    }
-
-  },
-
-  findSelectIds: function (identitys) {
     var selectIds = wx.getStorageSync('selectIds')
-    return identitys.identityId === 3;
-
+    that.getIdentityById(selectIds)
   },
 
   removeSelect: function (e) {
     var that = this
-    var removeIndex = e.currentTarget.id
-    var selectIdentitys = that.data.selectIdentitys
-    selectIdentitys.splice(removeIndex, 1)
-    that.setData({
-      selectIdentitys: selectIdentitys,
-      adultNum: selectIdentitys.length
+    var removeId = e.currentTarget.id
+    var selectIds = wx.getStorageSync('selectIds')
+    var selectIds = selectIds.filter(function (item) {
+      return item != removeId
     });
-    wx.setStorageSync('selectIdentitys', selectIdentitys);
+    that.getIdentityById(selectIds)
+    wx.setStorageSync('selectIds', selectIds);
   },
 
+  getIdentityById: function (ids) {
+    var that = this
+    var allIdentitys = wx.getStorageSync('allIdentitys')
+    var selectIdentitys = []
+    if (allIdentitys) {
+      ids.forEach(function (id) {
+        selectIdentitys.push(allIdentitys.find(function (item) {
+          return item.identityId === + id
+        }))
+      })
+      that.setData({
+        selectIdentitys: selectIdentitys
+      });
+    }
+  },
 
   radioInsurance: function () {
     var that = this

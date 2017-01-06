@@ -10,11 +10,11 @@
   left: -30rpx;
 }
 
-.add-rider .weui-cell__bd {
+.add-adult .weui-cell__bd {
   color: #4a90e2;
 }
 
-.add-rider  image {
+.add-adult  image {
   margin: -4rpx 10rpx 0 0;
   vertical-align: middle;
   width: 28rpx;
