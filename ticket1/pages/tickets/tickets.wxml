@@ -2,7 +2,7 @@
   <view class="route flex-column">
     <view>{{ticketInfo.source}} 至 {{ticketInfo.destination}}</view>
     <block wx:if="{{ticketInfo.hoursAway}}">
-      <view class="duration">(约{{ticketInfo.hoursAway}})</view>
+      <view class="duration">(约{{ticketInfo.hoursAway}}小时)</view>
     </block>
   </view>
   <view class="toggle-date">
@@ -10,38 +10,41 @@
     <picker class="cur-date" mode="date" value="{{date}}" start="" end="" bindchange="bindDateChange">{{showDate}}</picker>
     <view class="increase weui-cell__ft_in-access" bindtap="increase"></view>
   </view>
-  <view class="weui-cells ticket-list enabled" wx:if="{{ticketInfo.disabledTickets.length > 0}}">
-    <navigator wx:for="{{ticketInfo.disabledTickets}}" wx:key="{{item.id}}" url="../confirm_order/confirm_order?index={{index}}" class="weui-cell ticket-item" hover-class="weui-cell_active">
-      <view class="weui-cell__ft left">
-        {{item.departureTime}}
-      </view>
-      <view class="weui-cell__bd center">
+  <view wx:if="{{ticketInfo.enabledTickets.length>0||ticketInfo.disabledTickets.length>0}}">
+    <view class="weui-cells ticket-list enabled" wx:if="{{ticketInfo.enabledTickets.length > 0}}">
+      <navigator wx:for="{{ticketInfo.enabledTickets}}" wx:key="{{item.id}}" url="../confirm_order/confirm_order?index={{index}}" class="weui-cell ticket-item" hover-class="weui-cell_active">
+        <view class="weui-cell__ft left">
+          {{item.departureTime}}
+        </view>
+        <view class="weui-cell__bd center">
 
-        <!--<view class="start">{{item.start}}</view>
+          <!--<view class="start">{{item.start}}</view>
           <view class="end">{{item.end}}</view>-->
-        <view class="shiftNo">班次：{{item.shiftNo}}</view>
-      </view>
-      <view class="weui-cell__ft right">
-        <view class="stock">剩余{{item.remainTickets}}张</view>
-        <view class="price">{{item.ticketPrice/100}}</view>
-      </view>
-    </navigator>
-  </view>
-  <view class="weui-cells ticket-list disabled" wx:if="{{ticketInfo.disabledTickets.length > 0}}">
-    <view wx:for="{{ticketInfo.disabledTickets}}" wx:key="{{item.id}}" class="weui-cell ticket-item" hover-class="weui-cell_active">
-      <view class="weui-cell__ft left">
-        {{item.departureTime}}
-      </view>
-      <view class="weui-cell__bd center">
-        <!--<view class="start">{{item.start}}</view>
+          <view class="shiftNo">班次：{{item.shiftNo}}</view>
+        </view>
+        <view class="weui-cell__ft right">
+          <view class="stock">剩余{{item.remainTickets}}张</view>
+          <view class="price">{{item.ticketPrice/100}}</view>
+        </view>
+      </navigator>
+    </view>
+    <view class="weui-cells ticket-list disabled" wx:if="{{ticketInfo.disabledTickets.length > 0}}">
+      <view wx:for="{{ticketInfo.disabledTickets}}" wx:key="{{item.id}}" class="weui-cell ticket-item" hover-class="weui-cell_active">
+        <view class="weui-cell__ft left">
+          {{item.departureTime}}
+        </view>
+        <view class="weui-cell__bd center">
+
+          <!--<view class="start">{{item.start}}</view>
           <view class="end">{{item.end}}</view>-->
-        <view class="shiftNo">班次：{{item.shiftNo}}</view>
-      </view>
-      <view class="weui-cell__ft right">
-        <view class="stock">已发车</view>
-        <view class="price">{{item.ticketPrice/100}}</view>
+          <view class="shiftNo">班次：{{item.shiftNo}}</view>
+        </view>
+        <view class="weui-cell__ft right">
+          <view class="stock">已发车</view>
+          <view class="price">{{item.ticketPrice/100}}</view>
+        </view>
       </view>
     </view>
-  </view>
-   <view wx:else class="empty-data">无车票信息</view>
+</view>
+<view wx:else class="empty-data">无车票信息</view>
 </view>

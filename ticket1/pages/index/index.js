@@ -64,7 +64,7 @@ Page({
     };
     wx.setStorageSync('destination', that.data.destination);
     wx.setStorageSync('source', that.data.source);
-    wx.setStorageSync('date', that.data.date);
+    wx.setStorageSync('date', '2017-01-31');
     wx.navigateTo({
       url: '../tickets/tickets'
     })

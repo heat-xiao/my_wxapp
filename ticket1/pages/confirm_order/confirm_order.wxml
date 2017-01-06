@@ -18,26 +18,36 @@
   </view>
   <view class="fill-info">
     
-    <view class="weui-cells add-adult">
-      <view class="" wx:if="{{selectIdentitys.length > 0}}">
-        <view class="weui-cell" wx:for="{{selectIdentitys}}" wx:key="{{item.identityId}}">
+    <view class="weui-cells add-rider">
+      <view wx:if="{{adultIdentitys.length > 0}}">
+        <view class="weui-cell" wx:for="{{adultIdentitys}}" wx:key="{{item.identityId}}">
           <view class="weui-cell__bd">{{item.name}}，{{item.identityNo}}</view>
-          <view class="weui-cell__ft" style="color:#ea5e78" id="{{item.identityId}}" bindtap="removeSelect">删除</view>
+          <view class="weui-cell__ft" style="color:#ea5e78" id="{{item.identityId}}" bindtap="removeAdult">删除</view>
         </view>
       </view>  
       <navigator url="../select_rider/select_rider" class="weui-cell" hover-class="weui-cell_active">
         <view class="weui-cell__hd">
           <image src="../../images/icon_add_purple.png"></image>
         </view>
-        <view class="weui-cell__bd">添加成年票</view>
+        <view class="weui-cell__bd label">添加成年票</view>
       </navigator>
       
     </view>
 
-    <view class="weui-cells">
-      <view class="weui-cell" hover-class="weui-cell_active">
-        <view class="weui-cell__hd">添加儿童票</view>
-        <view class="weui-cell__bd"></view>
+    <view class="weui-cells add-rider">
+
+      <view wx:if="{{childIdentitys.length > 0}}">
+        <view class="weui-cell" wx:for="{{childIdentitys}}" wx:key="{{item.identityId}}">
+          <view class="weui-cell__bd">{{item.name}}，{{item.identityNo}} (儿童票)</view>
+          <view class="weui-cell__ft" style="color:#ea5e78" id="{{index}}" bindtap="removeChild">删除</view>
+        </view>
+      </view>
+
+      <view class="weui-cell" hover-class="weui-cell_active" bindtap="addChildTicket">
+        <view class="weui-cell__hd">
+          <image src="../../images/icon_add_purple.png"></image>
+        </view>
+        <view class="weui-cell__bd label">添加儿童票</view>
       </view>
     </view>
     <view class="weui-cells">
@@ -77,3 +87,14 @@
     </view>
   </view>
 </view>
+
+<view wx:if="{{showActionSheet}}" class="masklayer" style="height:{{deviceHeight}}px" bindtap="hideMask"></view>
+
+<view wx class="actionsheet" style="bottom:{{showActionSheet?'0px':-deviceHeight/2+'px'}};">
+    <view class="label">使用成人证件买儿童票</view>
+    <view class="weui-cells">
+      <view class="weui-cell" hover-class="weui-cell_active" wx:for="{{adultIdentitys}}" id="{{item.identityId}}" wx:key="{{item.identityId}}" bindtap="selectIdentityForChild">
+        <view class="weui-cell__bd">{{item.name}}</view>
+      </view>
+    </view>
+  </view>

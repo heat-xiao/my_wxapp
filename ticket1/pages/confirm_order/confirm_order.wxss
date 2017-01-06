@@ -2,19 +2,19 @@
   margin: 0 0 20rpx 0;
 }
 
-.fill-info  .weui-cell {
+.weui-cell {
   height: 91rpx;
 }
 
-.fill-info .weui-cell::before{
+.weui-cell::before{
   left: -30rpx;
 }
 
-.add-adult .weui-cell__bd {
+.add-rider .weui-cell__bd.label{
   color: #4a90e2;
 }
 
-.add-adult  image {
+.add-rider  image {
   margin: -4rpx 10rpx 0 0;
   vertical-align: middle;
   width: 28rpx;
@@ -40,4 +40,31 @@
 
 .insurance icon{
   margin:-4rpx 0 0 0;
+}
+
+.masklayer{
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  z-index: 98;
+}
+
+.actionsheet{
+  position: fixed;
+  width: 100%;
+  background-color: #fff;
+  z-index: 999;
+  transition: all .3s ease;
+}
+
+.actionsheet .weui-cell{
+  height: 98rpx;
+}
+.actionsheet .label {
+  height: 98rpx;
+  line-height: 98rpx;
+  text-align: center
 }
