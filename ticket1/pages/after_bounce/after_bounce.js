@@ -4,7 +4,8 @@ Page({
   data: {
     status: {
       "UNPAID": "待支付", "FINISHED": "已完成", "REFUNDING": "退票中", "REFUSED": "退票被拒绝", "REFUNDED": "退票完成"
-    }
+    },
+    REFUND_INTRODUCE: wx.getStorageSync('configInfo').REFUND_INTRODUCE
   },
 
   onLoad: function (options) {
@@ -46,10 +47,10 @@ Page({
       }
     });
   },
-  
-  payOrder: function () {
+
+  applyRefund: function () {
     var that = this
-    api.orderPay({
+    api.applyRefund({
       data: {
         orderNo: that.data.orderNo,
         openId: wx.getStorageSync('userInfo').openId,

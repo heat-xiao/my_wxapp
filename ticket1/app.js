@@ -24,11 +24,21 @@ import api from 'utils/api.js'
 
 App({
   onLaunch: function () {
-    
+    //获取系统配置
+    api.getSysconfig({
+      url: `?q=REFUND_INTRODUCE,VALIDATE_IDENTITY,INSURANCE_PRICE`,
+      success: (res) => {
+        if (res.data && res.data != {}) {      
+          wx.setStorageSync('configInfo', res.data.resultData);
+        }
+      }
+    });
+
     // 小程序启动首先需要获取用户信息
     // 首先获取缓存的用户信息
     var userInfo = wx.getStorageSync('userInfo')
     if (userInfo) {
+      
       console.log(userInfo);
       return
     }
@@ -60,7 +70,7 @@ App({
                     success: function (r3) {
                       console.log('register success:', r3.data)
                       // 将用户信息存入缓存(数据结构如上注释)
-                       wx.setStorageSync('userInfo', r3.data.resultData);
+                      wx.setStorageSync('userInfo', r3.data.resultData);
                     }
                   })
                 }
@@ -78,6 +88,8 @@ App({
       }
     })
     console.log('小程序启动完成了~~~');
+
+
   },
 
   globalData: {

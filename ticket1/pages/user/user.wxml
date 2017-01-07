@@ -2,7 +2,9 @@
 <!--index.wxml-->
 <view class="container">
   <view class="flex-row user">
-    <view class="avatar"><image src="{{profileInfo.avatar}}"></image></view>
+    <view class="avatar">
+      <image src="{{profileInfo.avatar}}"></image>
+    </view>
     <view class="name">{{profileInfo.nickname}}</view>
   </view>
   <navigator url="../edit_phonenumber/edit_phonenumber?phoneNumber={{profileInfo.phoneNumber}}" class="weui-cells user-info">
@@ -17,7 +19,10 @@
       <view class="weui-cell__bd">常用乘客</view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
-
+    <navigator url="../order_list/order_list" class="weui-cell" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">我的订单</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
     <navigator url="../traffic_guide/traffic_guide" class="weui-cell" hover-class="weui-cell_active">
       <view class="weui-cell__bd">交通指南</view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
@@ -26,6 +31,5 @@
       <view class="weui-cell__bd">关于我们</view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
-
   </view>
 </view>

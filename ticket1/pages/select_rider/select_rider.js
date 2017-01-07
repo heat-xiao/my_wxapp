@@ -5,10 +5,8 @@ Page({
             "IDCARD": "身份证", "MTP": "台胞证", "PASSPORT": "护照", "REENTRY_PERMIT": "回乡证", "OFFICIAL_CARD": "军官证", "RESIDENCE_PERMIT": "外国人居留证", "OTHER": "其他"
         }
     },
-    onLoad: function (options) {
+    onLoad: function () {
         var that = this
-
-        options.ticketType
         
         api.getIdentitys({
             data: {

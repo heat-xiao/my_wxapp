@@ -5,7 +5,7 @@ const wxRequest = (params, url) => {
     icon: 'loading'
   })
   wx.request({
-    url: params.url? `${url}${params.url}`:url,
+    url: params.url ? `${url}${params.url}` : url,
     data: params.data || {},
     method: params.method || 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
     header: {
@@ -27,9 +27,9 @@ const wxRequest = (params, url) => {
   })
 }
 
-const getUserInfoBycode =(params)=> wxRequest(params,`${host}/account/wx/info`)
+const getUserInfoBycode = (params) => wxRequest(params, `${host}/account/wx/info`)
 
-const UserRegister =(params)=> wxRequest(params,`${host}/account/register`)
+const UserRegister = (params) => wxRequest(params, `${host}/account/register`)
 
 const getAdOnHome = (params) => wxRequest(params, `${host}/home`)
 
@@ -65,6 +65,8 @@ const upload = (params) => wxRequest(params, `${host}/common/upload`)
 
 const orderPay = (params) => wxRequest(params, `${host}/home/order/pay`)
 
+const getSysconfig = (params) => wxRequest(params, `${host}/common/sysconfig`)
+
 module.exports = {
   getUserInfoBycode,
   UserRegister,
@@ -83,5 +85,6 @@ module.exports = {
   editIdentity,
   deleteIdentity,
   setDefaultIdentity,
-  orderPay
+  orderPay,
+  getSysconfig
 }

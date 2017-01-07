@@ -1,8 +1,8 @@
 <view class="container page-tickets">
   <view class="route flex-column">
-    <view>{{ticketInfo.source}} 至 {{ticketInfo.destination}}</view>
-    <block wx:if="{{ticketInfo.hoursAway}}">
-      <view class="duration">(约{{ticketInfo.hoursAway}}小时)</view>
+    <view>{{ticketData.source}} 至 {{ticketData.destination}}</view>
+    <block wx:if="{{ticketData.hoursAway}}">
+      <view class="duration">(约{{ticketData.hoursAway}}小时)</view>
     </block>
   </view>
   <view class="toggle-date">
@@ -10,9 +10,9 @@
     <picker class="cur-date" mode="date" value="{{date}}" start="" end="" bindchange="bindDateChange">{{showDate}}</picker>
     <view class="increase weui-cell__ft_in-access" bindtap="increase"></view>
   </view>
-  <view wx:if="{{ticketInfo.enabledTickets.length>0||ticketInfo.disabledTickets.length>0}}">
-    <view class="weui-cells ticket-list enabled" wx:if="{{ticketInfo.enabledTickets.length > 0}}">
-      <navigator wx:for="{{ticketInfo.enabledTickets}}" wx:key="{{item.id}}" url="../confirm_order/confirm_order?index={{index}}" class="weui-cell ticket-item" hover-class="weui-cell_active">
+  <view wx:if="{{ticketData.enabledTickets.length>0||ticketData.disabledTickets.length>0}}">
+    <view class="weui-cells ticket-list enabled" wx:if="{{ticketData.enabledTickets.length > 0}}">
+      <navigator wx:for="{{ticketData.enabledTickets}}" wx:key="{{item.id}}" url="../confirm_order/confirm_order?ticketId={{item.ticketId}}" class="weui-cell ticket-item" hover-class="weui-cell_active">
         <view class="weui-cell__ft left">
           {{item.departureTime}}
         </view>
@@ -28,8 +28,8 @@
         </view>
       </navigator>
     </view>
-    <view class="weui-cells ticket-list disabled" wx:if="{{ticketInfo.disabledTickets.length > 0}}">
-      <view wx:for="{{ticketInfo.disabledTickets}}" wx:key="{{item.id}}" class="weui-cell ticket-item" hover-class="weui-cell_active">
+    <view class="weui-cells ticket-list disabled" wx:if="{{ticketData.disabledTickets.length > 0}}">
+      <view wx:for="{{ticketData.disabledTickets}}" wx:key="{{item.id}}" class="weui-cell ticket-item" hover-class="weui-cell_active">
         <view class="weui-cell__ft left">
           {{item.departureTime}}
         </view>

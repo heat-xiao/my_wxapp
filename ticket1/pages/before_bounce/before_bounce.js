@@ -4,7 +4,9 @@ Page({
   data: {
     status: {
       "UNPAID": "待支付", "FINISHED": "已完成", "REFUNDING": "退票中", "REFUSED": "退票被拒绝", "REFUNDED": "退票完成"
-    }
+    },
+    REFUND_INTRODUCE: wx.getStorageSync('configInfo').REFUND_INTRODUCE
+
   },
 
   onLoad: function (options) {
@@ -46,20 +48,11 @@ Page({
       }
     });
   },
-  
-  payOrder: function () {
+
+  confirmBounce: function () {
     var that = this
-    api.orderPay({
-      data: {
-        orderNo: that.data.orderNo,
-        openId: wx.getStorageSync('userInfo').openId,
-      },
-      method: "POST",
-      success: (res) => {
-        if (res.data && res.data != {}) {
-          console.log(res)
-        }
-      }
-    });
+    wx.navigateTo({
+      url: `../after_bounce/after_bounce?orderNo=${that.data.orderNo}`
+    })
   }
 })

@@ -11,7 +11,7 @@ Page({
     var that = this
     api.getOrderList({
       data: {
-        accountId: 1,
+        accountId: wx.getStorageSync('userInfo').accountId,
       },
       success: (res) => {
         if (res.data && res.data != {}) {

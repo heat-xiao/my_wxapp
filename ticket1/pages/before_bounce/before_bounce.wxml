@@ -1,0 +1,69 @@
+
+<!--引入模板-->
+<import src="../templates/template.wxml" />
+<view class="container page-order">
+  <view class="bounced-info">
+    <view class="flex-column bounced-ticket-info ">
+      <view class="flex-row time">
+        <view class="date">{{showDate}}</view>
+        <view class="hour">{{departureTime}}</view>
+      </view>
+
+      <view class="label flex-row">
+          <view>出发地</view>
+          <view class="line"></view>
+          <view >目的地</view>
+      </view>
+
+      <view class="route flex-row">
+          <view class="setout">{{orderDetail.source}}</view>
+          <view class="line">
+            <image src="../../images/icon_dashed_grey.png"></image>
+            <image src="../../images/icon_dashed_grey.png"></image>
+            <image src="../../images/icon_dashed_grey.png"></image>
+            <image src="../../images/icon_dashed_grey.png"></image>
+          </view>
+          <view class="duration">{{orderDetail.destination}}</view>
+      </view>
+    </view>
+    <view class="tickets-wrap">
+      <view class="weui-cells" wx:if="{{orderDetail.orderStatus=='FINISHED'}}">
+      <view class="adult-tickets" wx:if="{{adultIdentitys.length>0}}">
+        <view class="weui-cell">
+          <view>成人票</view>
+          <view class="weui-cell__bd center">{{adultIdentitys.length}}张</view>
+          <view class="price">{{adultIdentitys.length*orderDetail.ticketPrice/100}}</view>
+        </view>
+      </view>
+      <view class="child-tickets" wx:if="{{childIdentitys.length>0}}">
+        <view class="weui-cell">
+          <view>儿童票</view>
+          <view class="weui-cell__bd center">{{childIdentitys.length}}张</view>
+          <view class="price">{{childIdentitys.length*orderDetail.childPrice/100}}</view>
+        </view>
+      </view>
+      <view class="weui-cell" wx:if="{{orderDetail.totalInsurance}}">
+        <view>保险</view>
+        <view class="weui-cell__bd center">{{adultIdentitys.length+childIdentitys.length}}份</view>
+        <view class="price">{{orderDetail.totalInsurance/100}}</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">总计：</view>
+        <view class="price">{{(orderDetail.totalPrice+orderDetail.totalInsurance)/100}}</view>
+      </view>
+    </view>
+    </view>
+
+    
+  </view>
+  <view class="bounced-tip">
+      退票说明：{{REFUND_INTRODUCE}}
+  </view>
+  <view class="flex-row ft-fixed-cart">
+    <view>订单金额：</view>
+    <view class="price">{{(orderDetail.totalPrice+orderDetail.totalInsurance)/100}}</view>
+    <view>
+      <button  bindtap="confirmBounce">确定</button>
+    </view>
+  </view>
+</view>

@@ -11,8 +11,7 @@ function formatTime(time,hasweek) {
     return month+'月'+day+'日'+ ' '+ weekArry[weekDay.getDay()]
   }else{
     return formatdate
-  }
-  
+  } 
 }
 
 function formatNumber(n) {

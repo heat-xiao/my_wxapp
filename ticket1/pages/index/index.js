@@ -37,8 +37,10 @@ Page({
     // wx.clearStorageSync()
     var that = this
     that.setData({
-      source: wx.getStorageSync('source'),
-      destination: wx.getStorageSync('destination')
+      // source: wx.getStorageSync('source'),
+      // destination: wx.getStorageSync('destination'),
+      source: '深圳北站',
+      destination: '东莞总站'
     })
     wx.removeStorageSync('selectIdentitys')
   },
@@ -62,6 +64,8 @@ Page({
       })
       return;
     };
+    // wx.setStorageSync('destination', that.data.destination);
+    // wx.setStorageSync('source', that.data.source);
     wx.setStorageSync('destination', that.data.destination);
     wx.setStorageSync('source', that.data.source);
     wx.setStorageSync('date', '2017-01-31');

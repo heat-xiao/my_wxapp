@@ -1,26 +1,43 @@
 import util from '../../utils/util.js'
 import api from '../../utils/api.js'
-var allIdentitys = wx.getStorageSync('allIdentitys')
 
 Page({
   data: {
+    needIndentityty: wx.getStorageSync('configInfo').VALIDATE_IDENTITY,
+    insurancePrice: wx.getStorageSync('configInfo').INSURANCE_PRICE / 100,
+    showActionSheet: false,
     needInsurance: true,
-    insurancePrice: 10,
     adultIdentitys: [],
     childIdentitys: []
   },
+  
+  onShow: function () {
+    var that = this
+    var childIds = wx.getStorageSync('childIds')
+    var selectIds = wx.getStorageSync('selectIds')
+    if (selectIds.length) {
+      that.getAdultIdentityById(selectIds)
+    }
+    if (childIds.length) {
+      that.getChildIdentityById(childIds)
+    }
+  },
+
   onLoad: function (options) {
     var that = this
-    var ticketInfo = wx.getStorageSync('ticketInfo');
-    var index = parseInt(options.index);
     util.getSystemInfo({
       success: (res) => {
         that.setData({
           deviceHeight: res.windowHeight,
-          showActionSheet: false
         });
       }
     });
+    var ticketData = wx.getStorageSync('ticketData');
+
+    //根据车票ID获取车票信息
+    var ticketInfo = ticketData.enabledTickets.find(function (item) {
+      return item.ticketId == parseInt(options.ticketId)
+    })
 
     api.getProfile({
       data: {
@@ -29,33 +46,43 @@ Page({
       success: (res) => {
         if (res.data && res.data != {}) {
           that.setData({
+            hoursAway: ticketData.hoursAway,
             phoneNumber: res.data.resultData.phoneNumber,
-            index: index,
             ticketInfo: ticketInfo,
-            ticketPrice: ticketInfo.enabledTickets[index].ticketPrice / 100,
-            childPrice: ticketInfo.enabledTickets[index].childPrice / 100,
-            showDate: util.formatTime(ticketInfo.departureDate, 1)
+            showDate: util.formatTime(ticketData.departureDate, 1)
           });
         }
       }
     });
-  },
 
-  onShow: function () {
-    var that = this
-    var childIds = wx.getStorageSync('childIds')
-    var selectIds = wx.getStorageSync('selectIds')
-    if (selectIds) {
-      that.getAdultIdentityById(selectIds)
-    }
-    if (childIds) {
-      that.getChildIdentityById(childIds)
+    //获取所有乘客信息(需要身份信息请求)
+    if (wx.getStorageSync('configInfo').VALIDATE_IDENTITY) {
+      api.getIdentitys({
+        data: {
+          accountId: wx.getStorageSync('userInfo').accountId,
+        },
+        success: (res) => {
+          if (res.data && res.data != {}) {
+            wx.setStorageSync('allIdentitys', res.data.resultData);
+            var allIdentitys = res.data.resultData
+            var adultIdentitys = allIdentitys.find(function (item) {
+              return item.defaultStatus == '1'
+            })
+            if (adultIdentitys) {
+              that.setData({
+                adultIdentitys: adultIdentitys,
+              });
+            }
+          }
+        }
+      });
     }
   },
 
   //成人信息处理
   getAdultIdentityById: function (ids) {
     var that = this
+    var allIdentitys = wx.getStorageSync('allIdentitys')
     var adultIdentitys = []
     if (allIdentitys) {
       ids.forEach(function (id) {
@@ -63,6 +90,7 @@ Page({
           return item.identityId === + id
         }))
       })
+
       that.setData({
         adultIdentitys: adultIdentitys
       });
@@ -84,6 +112,7 @@ Page({
   //儿童票信息处理
   getChildIdentityById: function (ids) {
     var that = this
+    var allIdentitys = wx.getStorageSync('allIdentitys')
     var childIdentitys = []
     if (allIdentitys) {
       ids.forEach(function (id) {
@@ -98,16 +127,18 @@ Page({
     wx.setStorageSync('childIds', ids);
   },
 
+
   addChildTicket: function () {
     var that = this
-    var childIds = wx.getStorageSync('childIds')
-    var selectIds = wx.getStorageSync('selectIds')
+    var childIds = wx.getStorageSync('childIds') ? wx.getStorageSync('childIds') : []
+    var selectIds = wx.getStorageSync('selectIds') ? wx.getStorageSync('selectIds') : []
     if (selectIds.length > 1) {
       that.setData({
         showActionSheet: true
       });
     } else if (selectIds.length == 1) {
-      childIds.push(selectIds[0].identityId)
+      console.log(selectIds)
+      childIds.push(selectIds[0])
       that.getChildIdentityById(childIds)
     } else {
       return
@@ -147,10 +178,68 @@ Page({
     });
   },
 
-  confirmOrder: function (e) {
+  getPhoneNumber: function (e) {
     var that = this
-    wx.redirectTo({
-      url: '../orderinfo/orderinfo'
-    })
+    if (!(/^1[34578]\d{9}$/.test(e.detail.value))) {
+      wx.showToast({
+        title: '请正确填写手机号码',
+        icon: 'loading',
+        duration: 1000
+      })
+      return;
+    } else {
+
+      that.setData({
+        phoneNumber: e.detail.value
+      });
+    }
+  },
+
+  confirmOrder: function (e) {
+
+    var that = this
+    if (that.data.needIndentityty) {
+      var adultDatas = []
+      var childDatas = []
+
+      that.data.adultIdentitys.forEach(function (item) {
+        adultDatas.push({ "amounts": 1, "ticketType": "ADULT", "identityId": item.identityId })
+      })
+      that.data.childIdentitys.forEach(function (item) {
+        childDatas.push({ "amounts": 1, "ticketType": "CHILD", "identityId": item.identityId })
+      })
+
+      var tickets = adultDatas.concat(childDatas);
+
+      if (!tickets.length) {
+        wx.showToast({
+          title: '请添加乘客信息',
+          icon: 'loading',
+          duration: 1000
+        })
+        return;
+      }
+    }else{
+        
+    }
+    api.createOrder({
+      data: {
+        accountId: wx.getStorageSync('userInfo').accountId,
+        ticketId: that.data.ticketInfo.ticketId,
+        priceId: that.data.ticketInfo.priceId,
+        phoneNumber: that.data.phoneNumber,
+        needInsurance: that.data.needInsurance,
+        tickets: tickets
+      },
+      method: "POST",
+      success: (res) => {
+
+        if (res.data && res.data.resultStatus) {
+          wx.navigateTo({
+            url: `../order_detail/order_detail?orderNo=${res.data.resultData.orderNo}`
+          })
+        }
+      }
+    });
   }
 })
