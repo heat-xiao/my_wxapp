@@ -64,7 +64,7 @@
         <icon type="circle" size="18" wx:if="{{!needInsurance}}" bindtap="radioInsurance"></icon>
         <view class="radio">购买乘车险</view>
         <view class="price">{{insurancePrice}}</view>
-        <view class="weui-cell__bd num">X {{adultNum+childNum}}</view>
+        <view class="weui-cell__bd num">X {{adultIdentitys.length+childIdentitys.length}}</view>
         <view class="weui-cell__ft">
           <navigator url="../insurance_introduce/insurance_introduce">
             <icon type="info" size="18"></icon>
@@ -81,7 +81,7 @@
   </view>
   <view class="flex-row ft-fixed-cart">
     <view>订单金额：</view>
-    <view class="price">{{ticketPrice*adultNum+childPrice*childNum+(adultNum+childNum)*insurancePrice*(needInsurance?1:0)}}</view>
+    <view class="price">{{ticketPrice*adultIdentitys.length+childPrice*childIdentitys.length+(adultIdentitys.length+childIdentitys.length)*insurancePrice*(needInsurance?1:0)}}</view>
     <view>
       <button bindtap="confirmOrder" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}">确定</button>
     </view>

@@ -1,13 +1,13 @@
 import util from '../../utils/util.js'
 import api from '../../utils/api.js'
 var allIdentitys = wx.getStorageSync('allIdentitys')
-var childIdentitys = []  //从成年信息中构建
+
 Page({
   data: {
     needInsurance: true,
     insurancePrice: 10,
-    adultNum: 0,
-    childNum: 0
+    adultIdentitys: [],
+    childIdentitys: []
   },
   onLoad: function (options) {
     var that = this
@@ -41,6 +41,18 @@ Page({
     });
   },
 
+  onShow: function () {
+    var that = this
+    var childIds = wx.getStorageSync('childIds')
+    var selectIds = wx.getStorageSync('selectIds')
+    if (selectIds) {
+      that.getAdultIdentityById(selectIds)
+    }
+    if (childIds) {
+      that.getChildIdentityById(childIds)
+    }
+  },
+
   //成人信息处理
   getAdultIdentityById: function (ids) {
     var that = this
@@ -55,68 +67,70 @@ Page({
         adultIdentitys: adultIdentitys
       });
     }
-  },
-
-  onShow: function () {
-    var that = this
-    var selectIds = wx.getStorageSync('selectIds');
-    if (selectIds) {
-      that.getAdultIdentityById(selectIds)
-    }
+    wx.setStorageSync('selectIds', ids);
   },
 
   removeAdult: function (e) {
     var that = this
     var removeId = e.currentTarget.id
     var selectIds = wx.getStorageSync('selectIds')
-    var selectIds = selectIds.filter(function (item) {
+    selectIds = selectIds.filter(function (item) {
       return item != removeId
     });
     that.getAdultIdentityById(selectIds)
-    wx.setStorageSync('selectIds', selectIds);
   },
 
 
   //儿童票信息处理
-  getChildIdentityById: function (id) {
+  getChildIdentityById: function (ids) {
     var that = this
+    var childIdentitys = []
     if (allIdentitys) {
-      childIdentitys.push(allIdentitys.find(function (item) {
-        return item.identityId === + id
-      }))
+      ids.forEach(function (id) {
+        childIdentitys.push(allIdentitys.find(function (item) {
+          return item.identityId === + id
+        }))
+      })
       that.setData({
         childIdentitys: childIdentitys
       });
     }
+    wx.setStorageSync('childIds', ids);
   },
 
   addChildTicket: function () {
     var that = this
-    if (that.data.adultIdentitys.length > 1) {
+    var childIds = wx.getStorageSync('childIds')
+    var selectIds = wx.getStorageSync('selectIds')
+    if (selectIds.length > 1) {
       that.setData({
         showActionSheet: true
       });
+    } else if (selectIds.length == 1) {
+      childIds.push(selectIds[0].identityId)
+      that.getChildIdentityById(childIds)
     } else {
-      that.getChildIdentityById(that.data.adultIdentitys[0].identityId)
+      return
     }
   },
 
   selectIdentityForChild: function (e) {
     var that = this
     var identityId = e.currentTarget.id
+    var childIds = wx.getStorageSync('childIds')
+    childIds.push(identityId)
     that.setData({
       showActionSheet: false
     });
-    that.getChildIdentityById(identityId)
+    that.getChildIdentityById(childIds)
   },
 
   removeChild: function (e) {
     var that = this
     var removeIndex = e.currentTarget.id
-
-    that.setData({
-      childIdentitys: childIdentitys
-    });
+    var childIds = wx.getStorageSync('childIds')
+    childIds.splice(removeIndex, 1);
+    that.getChildIdentityById(childIds)
   },
 
   hideMask: function () {
@@ -135,7 +149,6 @@ Page({
 
   confirmOrder: function (e) {
     var that = this
-
     wx.redirectTo({
       url: '../orderinfo/orderinfo'
     })

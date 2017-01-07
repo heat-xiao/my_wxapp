@@ -1,3 +1,6 @@
+.fill-info{
+  padding: 0 0 140rpx 0;
+}
 .fill-info .weui-cells {
   margin: 0 0 20rpx 0;
 }
