@@ -14,6 +14,16 @@ Page({
     date: new Date()
   },
 
+  onShow: function () {
+    var that = this
+    that.setData({
+      // source: wx.getStorageSync('source'),
+      // destination: wx.getStorageSync('destination'),
+      source: '深圳北站',
+      destination: '东莞总站'
+    })
+  },
+
   //切换方向
   toggleDirection: function () {
     var that = this
@@ -32,18 +42,7 @@ Page({
     })
   },
 
-  onShow: function () {
-    // wx.clearStorage();
-    // wx.clearStorageSync()
-    var that = this
-    that.setData({
-      // source: wx.getStorageSync('source'),
-      // destination: wx.getStorageSync('destination'),
-      source: '深圳北站',
-      destination: '东莞总站'
-    })
-    wx.removeStorageSync('selectIdentitys')
-  },
+
 
   // 通过缓存传递参数
   searchTicket: function (e) {
@@ -64,8 +63,6 @@ Page({
       })
       return;
     };
-    // wx.setStorageSync('destination', that.data.destination);
-    // wx.setStorageSync('source', that.data.source);
     wx.setStorageSync('destination', that.data.destination);
     wx.setStorageSync('source', that.data.source);
     wx.setStorageSync('date', '2017-01-31');

@@ -10,7 +10,7 @@ Page({
     adultIdentitys: [],
     childIdentitys: []
   },
-  
+
   onShow: function () {
     var that = this
     var childIds = wx.getStorageSync('childIds')
@@ -25,6 +25,7 @@ Page({
 
   onLoad: function (options) {
     var that = this
+  
     util.getSystemInfo({
       success: (res) => {
         that.setData({
@@ -32,6 +33,8 @@ Page({
         });
       }
     });
+
+    //搜索出来的所有车票
     var ticketData = wx.getStorageSync('ticketData');
 
     //根据车票ID获取车票信息
@@ -39,6 +42,7 @@ Page({
       return item.ticketId == parseInt(options.ticketId)
     })
 
+    //获取联系电话通过拿到用户信息
     api.getProfile({
       data: {
         accountId: wx.getStorageSync('userInfo').accountId,
@@ -76,6 +80,11 @@ Page({
           }
         }
       });
+    } else {
+      that.setData({
+        adultAmounts: 0,
+        childAmounts: 0,
+      });
     }
   },
 
@@ -98,6 +107,7 @@ Page({
     wx.setStorageSync('selectIds', ids);
   },
 
+//删除成人票
   removeAdult: function (e) {
     var that = this
     var removeId = e.currentTarget.id
@@ -127,7 +137,7 @@ Page({
     wx.setStorageSync('childIds', ids);
   },
 
-
+  //添加儿童票
   addChildTicket: function () {
     var that = this
     var childIds = wx.getStorageSync('childIds') ? wx.getStorageSync('childIds') : []
@@ -145,6 +155,7 @@ Page({
     }
   },
 
+  //使用成人证件买儿童票
   selectIdentityForChild: function (e) {
     var that = this
     var identityId = e.currentTarget.id
@@ -156,6 +167,7 @@ Page({
     that.getChildIdentityById(childIds)
   },
 
+  //删除儿童票
   removeChild: function (e) {
     var that = this
     var removeIndex = e.currentTarget.id
@@ -164,6 +176,7 @@ Page({
     that.getChildIdentityById(childIds)
   },
 
+  //点击遮罩层隐藏其本身
   hideMask: function () {
     var that = this
     that.setData({
@@ -171,6 +184,47 @@ Page({
     });
   },
 
+  //减少成年票
+  decreaseAdult: function () {
+    var that = this
+    if (!that.data.adultAmounts) {
+      return
+    }
+    that.setData({
+      adultAmounts: that.data.adultAmounts - 1
+    });
+
+  },
+
+  //增加成年票
+  increaseAdult: function () {
+    var that = this
+    that.setData({
+      adultAmounts: that.data.adultAmounts + 1
+    });
+
+  },
+
+  //减少儿童票
+  decreaseChild: function () {
+    var that = this
+    if (!that.data.childAmounts) {
+      return
+    }
+    that.setData({
+      childAmounts: that.data.childAmounts - 1
+    });
+  },
+
+  //增加儿童票
+  increaseChild: function () {
+    var that = this
+    that.setData({
+      childAmounts: that.data.childAmounts + 1
+    });
+  },
+
+ //是否买保险
   radioInsurance: function () {
     var that = this
     that.setData({
@@ -178,6 +232,7 @@ Page({
     });
   },
 
+  //修改手机号
   getPhoneNumber: function (e) {
     var that = this
     if (!(/^1[34578]\d{9}$/.test(e.detail.value))) {
@@ -188,7 +243,6 @@ Page({
       })
       return;
     } else {
-
       that.setData({
         phoneNumber: e.detail.value
       });
@@ -199,9 +253,9 @@ Page({
 
     var that = this
     if (that.data.needIndentityty) {
+      //需要身份信息
       var adultDatas = []
       var childDatas = []
-
       that.data.adultIdentitys.forEach(function (item) {
         adultDatas.push({ "amounts": 1, "ticketType": "ADULT", "identityId": item.identityId })
       })
@@ -219,8 +273,17 @@ Page({
         })
         return;
       }
-    }else{
-        
+    } else {
+      //不需要身份信息
+      var tickets = [{
+        "amounts": that.data.adultAmounts,
+        "ticketType": "ADULT",
+        "identityId": 0
+      }, {
+        "amounts": that.data.childAmounts,
+        "ticketType": "CHILD",
+        "identityId": 0
+      }]
     }
     api.createOrder({
       data: {
@@ -233,7 +296,6 @@ Page({
       },
       method: "POST",
       success: (res) => {
-
         if (res.data && res.data.resultStatus) {
           wx.navigateTo({
             url: `../order_detail/order_detail?orderNo=${res.data.resultData.orderNo}`

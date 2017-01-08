@@ -71,3 +71,19 @@
   line-height: 98rpx;
   text-align: center
 }
+
+.no-identity .weui-cell {
+  height: 120rpx;
+}
+.no-identity .price{
+  text-align: right;
+}
+.decrease, .increase{
+  height: 54rpx;
+  width: 80rpx;
+  text-align: center;
+  line-height: 50rpx;
+  border: 2rpx #bbbbbb solid;
+  border-radius: 6rpx;
+  font-size: 40rpx;
+}

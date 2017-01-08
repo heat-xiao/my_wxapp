@@ -23,18 +23,33 @@
     </view>
     <view class="tickets-wrap">
       <view class="weui-cells" wx:if="{{orderDetail.orderStatus=='FINISHED'}}">
-        <view class="adult-tickets" wx:if="{{adultIdentitys.length>0}}">
-          <view class="weui-cell">
-            <view>成人票</view>
-            <view class="weui-cell__bd center">{{adultIdentitys.length}}张</view>
-            <view class="price">{{adultIdentitys.length*orderDetail.ticketPrice/100}}</view>
+        <view wx:if="{{needIndentityty}}">
+          <view class="weui-cell adult-tickets" wx:if="{{adultIdentitys.length>0}}" wx:for="{{adultIdentitys}}" wx:key="{{item.identityId}}">
+            <view class="ticket-type">成人票</view>
+            <view class="weui-cell__bd">{{item.name}}，{{item.identityNo}}</view>
+            <view class="price">{{orderDetail.ticketPrice/100}}</view>
+          </view>
+          <view class="weui-cell child-tickets" wx:if="{{childIdentitys.length>0}}" wx:for="{{childIdentitys}}" wx:key="{{item.identityId}}">
+            <view class="ticket-type">儿童票</view>
+            <view class="weui-cell__bd">{{item.name}}，{{item.identityNo}}</view>
+            <view class="price">{{orderDetail.childPrice/100}}</view>
+          </view>
+          <view class="weui-cell" wx:if="{{orderDetail.totalInsurance}}">
+            <view>保险</view>
+            <view class="weui-cell__bd center">{{adultIdentitys.length+childIdentitys.length}}份</view>
+            <view class="price">{{orderDetail.totalInsurance/100}}</view>
           </view>
         </view>
-        <view class="child-tickets" wx:if="{{childIdentitys.length>0}}">
-          <view class="weui-cell">
+        <view wx:if="{{!needIndentityty}}">
+          <view class="weui-cell adult-tickets" wx:if="{{adultIdentitys.length>0}}">
+            <view>成人票</view>
+            <view class="weui-cell__bd center">{{adultIdentitys[0].amounts}}张</view>
+            <view class="price">{{(adultIdentitys[0].amounts)*(orderDetail.ticketPrice/100)}}</view>
+          </view>
+          <view class="weui-cell child-tickets" wx:if="{{childIdentitys.length>0}}">
             <view>儿童票</view>
-            <view class="weui-cell__bd center">{{childIdentitys.length}}张</view>
-            <view class="price">{{childIdentitys.length*orderDetail.childPrice/100}}</view>
+            <view class="weui-cell__bd center">{{childIdentitys[0].amounts}}张</view>
+            <view class="price">{{childIdentitys[0].amounts*orderDetail.childPrice/100}}</view>
           </view>
         </view>
         <view class="weui-cell" wx:if="{{orderDetail.totalInsurance}}">
@@ -44,7 +59,7 @@
         </view>
         <view class="weui-cell">
           <view class="weui-cell__bd">总计：</view>
-          <view class="price">{{(orderDetail.totalPrice+orderDetail.totalInsurance)/100}}</view>
+          <view class="price">{{(orderDetail.totalPrice+orderDetail.totalInsurance?orderDetail.totalInsurance:0)/100}}</view>
         </view>
       </view>
     </view>

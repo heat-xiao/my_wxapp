@@ -16,7 +16,7 @@
     </view>
   </view>
   <view class="fill-info">
-    <view class="need-identity">
+    <view class="need-identity" wx:if="{{needIndentityty}}">
       <view class="weui-cells">
         <view wx:if="{{adultIdentitys.length > 0}}">
           <view class="weui-cell" wx:for="{{adultIdentitys}}" wx:key="{{item.identityId}}">
@@ -34,7 +34,8 @@
       <view class="weui-cells">
         <view wx:if="{{childIdentitys.length > 0}}">
           <view class="weui-cell" wx:for="{{childIdentitys}}" wx:key="{{item.identityId}}">
-            <view class="weui-cell__bd">{{item.name}}，{{item.identityNo}} (儿童票)</view>
+            <view class="">{{item.name}}，{{item.identityNo}}</view>
+            <view class="weui-cell__bd" style="font-size:24rpx;color:#858585;">(儿童票)</view>
             <view class="weui-cell__ft" style="color:#ea5e78" id="{{index}}" bindtap="removeChild">删除</view>
           </view>
         </view>
@@ -46,19 +47,23 @@
         </view>
       </view>
     </view>
-    <view class="no-identity">
+    <view class="no-identity" wx:if="{{!needIndentityty}}">
       <view class="weui-cells">
         <view class="weui-cell">
-          <view>添加成人票</view>
-          <view class=" weui-cell__bd"></view>
-          <view class="price">100</view>
+          <view class="weui-cell__bd">成人票</view>
+          <view class="decrease" bindtap="decreaseAdult">-</view>
+          <view style="width:90rpx;text-align: center;">{{adultAmounts}}</view>
+          <view class="increase" bindtap="increaseAdult">+</view>
+          <view class="weui-cell__bd price">{{adultAmounts*(ticketInfo.ticketPrice/100)}}</view>
         </view>
       </view>
       <view class="weui-cells">
         <view class="weui-cell">
-          <view>添加儿童票</view>
-          <view class=" weui-cell__bd"></view>
-          <view class="price">100</view>
+          <view class="weui-cell__bd">儿童票</view>
+          <view class="decrease" bindtap="decreaseChild">-</view>
+          <view style="width:90rpx;text-align: center;">{{childAmounts}}</view>
+          <view class="increase" bindtap="increaseChild">+</view>
+          <view class="weui-cell__bd price">{{childAmounts*(ticketInfo.childPrice/100)}}</view>
         </view>
       </view>
     </view>
@@ -70,7 +75,7 @@
         </view>
       </view>
     </view>
-    <view class="weui-cells">
+    <view class="weui-cells" wx:if="{{needIndentityty}}">
       <view class="weui-cell insurance">
         <icon type="success" size="18" wx:if="{{needInsurance}}" bindtap="radioInsurance"></icon>
         <icon type="circle" size="18" wx:if="{{!needInsurance}}" bindtap="radioInsurance"></icon>
@@ -91,9 +96,17 @@
       </navigator>
     </view>
   </view>
-  <view class="flex-row ft-fixed-cart">
+  <view class="flex-row ft-fixed-cart" wx:if="{{needIndentityty}}">
     <view>订单金额：</view>
     <view class="price">{{(ticketInfo.ticketPrice/100)*adultIdentitys.length+(ticketInfo.childPrice/100)*childIdentitys.length+(adultIdentitys.length+childIdentitys.length)*insurancePrice*(needInsurance?1:0)}}</view>
+    <view>
+      <button bindtap="confirmOrder">确定</button>
+    </view>
+  </view>
+
+  <view class="flex-row ft-fixed-cart" wx:if="{{!needIndentityty}}">
+    <view>订单金额：</view>
+    <view class="price">{{(ticketInfo.ticketPrice/100)*adultAmounts+(ticketInfo.childPrice/100)*childAmounts}}</view>
     <view>
       <button bindtap="confirmOrder">确定</button>
     </view>
