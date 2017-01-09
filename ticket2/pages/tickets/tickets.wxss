@@ -47,7 +47,7 @@
 
 .ticket-item .left {
   font-size: 36rpx;
-  color: #7688d6;
+  color: #4a90e2;
 }
 
 .ticket-item .center {
@@ -59,6 +59,7 @@
     width: 30rpx;
     height: 30rpx;
     line-height: 30rpx;
+    background-color: #c2cddb;
     color: #fff;
     border-radius: 50%;
     font-size: 20rpx;
@@ -75,13 +76,11 @@
     margin: 8rpx 0 0 0;
 }
 .ticket-item .start::before{
-    content: "始"; 
-    background-color: #81c635;  
+    content: "始";   
 }
 
 .ticket-item .end::before{
     content: "终";
-    background-color: #e65973;
 }
 
 .ticket-item .stock{
@@ -95,3 +94,8 @@
     text-align: right;
 }
 
+
+
+.ticket-list.disabled .price{
+    color: #bbbbbb
+}

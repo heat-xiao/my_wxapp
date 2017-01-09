@@ -1,18 +1,18 @@
 <template name="ticket-info">
   <view class="flex-column ticket-info">
     <view class="flex-row time">
-      <view class="date">12月10日 星期日</view>
-      <view class="hour">16:00</view>
+      <view class="date">{{showDate}}</view>
+      <view class="hour">{{ticketInfo.departureDate}}</view>
     </view>
     <view class="flex-row route">
       <view class="setout">
-        <image src="../../images/tow_icon_service.png"></image>蛇口港
+        <image src="../../images/tow_icon_service.png"></image>{{ticketInfo.source}}
       </view>
       <view class="line">
         <image src="../../images/icon_dashed_white.png"></image>
       </view>
       <view class="duration">
-        <image src="../../images/tow_icon_service.png"></image>香港机场</view>
+        <image src="../../images/tow_icon_service.png"></image>{{ticketInfo.destination}}</view>
     </view>
   </view>
 </template>

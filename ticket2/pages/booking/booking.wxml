@@ -1,17 +1,17 @@
-<view class="container page-index">
- <view class="booking">
+<view class="container page-booking">
+  <view class="main-box">
     <view class="booking-wrap">
-      <view style="height: 98rpx;line-height: 98rpx;text-align: center;">订票</view>
-      <view class="weui-cells selects-wrap">
+      <view class="weui-cells__title">订票</view>
+      <view class="weui-cells">
         <view class="weui-cell place" hover-class="weui-cell_active">
-          <navigator url="../setout/setout" class="weui-cell__bd" hover-class="weui-cell_active">
+          <navigator url="../select_place/select_place?direction=source" class="weui-cell__bd" hover-class="weui-cell_active">
             <view class="label">出发地</view>
-            <view class="text {{setout ? 'active' : '' }}">{{setout ? setout : '选择' }}</view>
+            <view class="text {{source ? 'active' : '' }}">{{source ? source : '选择' }}</view>
           </navigator>
           <view class="toggle-direction" bindtap="toggleDirection">
-            <image src="../../images/one_icon_change_purple.png"></image>
+            <image src="{{iconUrl[4]}}"></image>
           </view>
-          <navigator url="../destination/destination" class="weui-cell__bd destination" hover-class="weui-cell_active">
+          <navigator url="../select_place/select_place?direction=destination" class="weui-cell__bd destination" hover-class="weui-cell_active">
             <view class="label">出发地</view>
             <view class="text {{destination ? 'active' : '' }}">{{destination ? destination : '选择' }}</view>
           </navigator>
@@ -26,8 +26,8 @@
         </picker>
       </view>
       <view class="search">
-        <button bindtap="searchTicket" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}"> 查询 </button>
+        <button bindtap="searchTicket" loading="{{loading}}"> 查询 </button>
       </view>
     </view>
   </view>
-  </view>
+</view>

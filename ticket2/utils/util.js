@@ -1,12 +1,17 @@
-function formatTime(time) {
+function formatTime(time,hasweek) {
   var weekArry = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
   var date = new Date(time)
   var year = date.getFullYear()
   var month = date.getMonth() + 1
   var day = date.getDate()
+  
   var formatdate = [year, month, day].map(formatNumber).join('-');
   var weekDay = new Date(Date.parse(formatdate.replace(/-/g, "/"))); 
-  return month+'月'+day+'日'+ ' '+ weekArry[weekDay.getDay()]
+  if(hasweek){
+    return month+'月'+day+'日'+ ' '+ weekArry[weekDay.getDay()]
+  }else{
+    return formatdate
+  } 
 }
 
 function formatNumber(n) {

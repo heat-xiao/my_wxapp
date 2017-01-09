@@ -1,35 +1,35 @@
 <view class="container page-index">
   <view class="top-nav flex-row">
-    <view class="nav-item">
+    <navigator url="../order/order_list" class="nav-item">
       <image src="{{iconUrl[0]}}"></image>
-      <view>首页</view>
-    </view>
-    <view class="nav-item">
+      <view>订单</view>
+    </navigator>
+    <navigator url="../user_center/user_center" class="nav-item" open-type="switchTab" >
       <image src="{{iconUrl[1]}}"></image>
       <view>我的</view>
-    </view>
-    <view class="nav-item">
+    </navigator>
+    <navigator url="../traffic_guide/traffic_guide" class="nav-item">
       <image src="{{iconUrl[2]}}"></image>
       <view>交通</view>
-    </view>
-    <view class="nav-item">
+    </navigator>
+    <navigator url="" class="nav-item">
       <image src="{{iconUrl[3]}}"></image>
       <view>客服</view>
-    </view>
+    </navigator>
   </view>
-  <view class="booking">
+  <view class="main-box">
     <view class="booking-wrap">
-      <view style="height: 98rpx;line-height: 98rpx;text-align: center;">订票</view>
-      <view class="weui-cells selects-wrap">
+      <view class="weui-cells__title">订票</view>
+      <view class="weui-cells">
         <view class="weui-cell place" hover-class="weui-cell_active">
-          <navigator url="../setout/setout" class="weui-cell__bd" hover-class="weui-cell_active">
+          <navigator url="../select_place/select_place?direction=source" class="weui-cell__bd" hover-class="weui-cell_active">
             <view class="label">出发地</view>
-            <view class="text {{setout ? 'active' : '' }}">{{setout ? setout : '选择' }}</view>
+            <view class="text {{source ? 'active' : '' }}">{{source ? source : '选择' }}</view>
           </navigator>
           <view class="toggle-direction" bindtap="toggleDirection">
             <image src="{{iconUrl[4]}}"></image>
           </view>
-          <navigator url="../destination/destination" class="weui-cell__bd destination" hover-class="weui-cell_active">
+          <navigator url="../select_place/select_place?direction=destination" class="weui-cell__bd destination" hover-class="weui-cell_active">
             <view class="label">出发地</view>
             <view class="text {{destination ? 'active' : '' }}">{{destination ? destination : '选择' }}</view>
           </navigator>
@@ -44,14 +44,13 @@
         </picker>
       </view>
       <view class="search">
-        <button bindtap="searchTicket" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}"> 查询 </button>
+        <button bindtap="searchTicket" loading="{{loading}}"> 查询 </button>
       </view>
     </view>
   </view>
-
   <view class="bn-wrap">
-    <view class="bn-item">
-      <image src="../../images/list.png"></image>
+    <view class="bn-item" wx:if="{{ads.length>0}}" wx:for="{{ads}}" wx:key="{{index}}">
+      <image src="http://pic.yilos.com/9aa20c1851a596803ee9f5feb36ee644.jpg"></image> 
     </view>
   </view>
-  </view>
+</view>

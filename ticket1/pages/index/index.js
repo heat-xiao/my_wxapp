@@ -1,12 +1,13 @@
 import util from '../../utils/util.js'
+import api from '../../utils/api.js'
 Page({
   data: {
     iconUrl: [
-      "../../images/tow_icon_order.png",
+      "../../images/one_icon_order.png",
       "../../images/tow_icon_my.png",
-      "../../images/tow_icon_traffic.png",
-      "../../images/tow_icon_service.png",
-      "../../images/tow_icon_change_blue.png"
+      "../../images/one_icon_my.png",
+      "../../images/one_icon_service.png",
+      "../../images/one_icon_change_purple.png"
     ],
     bannerData: [],
     todayDate: new Date(), //用于限制时间选择当天前的时间
@@ -22,6 +23,19 @@ Page({
       // source: '深圳北站',
       // destination: '东莞总站'
     })
+  },
+  onLoad: function () {
+    var that = this
+    api.getAdOnHome({
+      success: (res) => {
+        if (res.data && res.data != {} && res.data.resultStatus) {
+          that.setData({
+            ads: res.data.resultData,
+          });
+        }
+      }
+    });
+
   },
 
   //切换方向
@@ -41,8 +55,6 @@ Page({
       date: e.detail.value
     })
   },
-
-
 
   // 通过缓存传递参数
   searchTicket: function (e) {

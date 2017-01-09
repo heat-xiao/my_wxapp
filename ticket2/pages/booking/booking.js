@@ -1,49 +1,63 @@
 import util from '../../utils/util.js'
 Page({
   data: {
-    setout: wx.getStorageSync('setout'),
-    destination: wx.getStorageSync('destination'),
     todayDate: new Date(),
-    showDate: util.formatTime(new Date()),
+    showDate: util.formatTime(new Date(),1),
     date:new Date()
   },
   
   //切换方向
-  toggleDirection : function () {
-    var that = this  
+  toggleDirection: function () {
+    var that = this
     that.setData({
-      setout: that.data.destination,
-      destination: that.data.setout
+      source: that.data.destination,
+      destination: that.data.source
     })
-    
   },
-  
- //时间选择
-  bindDateChange: function(e) {
+
+  onShow: function () {
+    var that = this
+    that.setData({
+      source: wx.getStorageSync('source'),
+      destination: wx.getStorageSync('destination'),
+    })
+  },
+
+  //时间选择
+  bindDateChange: function (e) {
     var that = this
     this.setData({
-      showDate:util.formatTime( e.detail.value),
-      date:e.detail.value
+      showDate: util.formatTime(e.detail.value, 1),
+      date: e.detail.value
     })
   },
 
-  onShow: function() {
-    var that = this
-    that.setData({
-      setout: wx.getStorageSync('setout'),
-      destination: wx.getStorageSync('destination')
-    })
-  },
+  
 
   // 通过缓存传递参数
-  searchTicket : function(e){
+  searchTicket: function (e) {
     var that = this
+    if (!that.data.source) {
+      wx.showToast({
+        title: '请选择出发地',
+        icon: 'loading',
+        duration: 1000
+      })
+      return;
+    };
+    if (!that.data.destination) {
+      wx.showToast({
+        title: '请选择目的地',
+        icon: 'loading',
+        duration: 1000
+      })
+      return;
+    };
     wx.setStorageSync('destination', that.data.destination);
-    wx.setStorageSync('setout', that.data.setout);
-    wx.setStorageSync('date',that.data.date);
-     wx.navigateTo({
-       url: '../tickets/tickets'
-     })
-  } 
+    wx.setStorageSync('source', that.data.source);
+    wx.setStorageSync('date', '2017-01-31');
+    wx.navigateTo({
+      url: '../tickets/tickets'
+    })
+  }
 })
-

@@ -1,4 +1,5 @@
 import util from '../../utils/util.js'
+import api from '../../utils/api.js'
 Page({
   data: {
     iconUrl: [
@@ -8,49 +9,77 @@ Page({
       "../../images/one_icon_service.png",
       "../../images/one_icon_change_purple.png"
     ],
-    bannerData:[] ,
-    setout: wx.getStorageSync('setout'),
-    destination: wx.getStorageSync('destination'),
-    todayDate: new Date(),
-    showDate: util.formatTime(new Date()),
-    date:new Date()
+    bannerData: [],
+    todayDate: new Date(), //用于限制时间选择当天前的时间
+    showDate: util.formatTime(new Date(), 1),
+    date: new Date()
   },
-  
-  //切换方向
-  toggleDirection : function () {
-    var that = this  
-    that.setData({
-      setout: that.data.destination,
-      destination: that.data.setout
-    })
-    
-  },
-  
- //时间选择
-  bindDateChange: function(e) {
+
+  onShow: function () {
     var that = this
-    this.setData({
-      showDate:util.formatTime( e.detail.value),
-      date:e.detail.value
+    that.setData({
+      source: wx.getStorageSync('source'),
+      destination: wx.getStorageSync('destination'),
+      // source: '深圳北站',
+      // destination: '东莞总站'
+    })
+  },
+  onLoad: function () {
+    var that = this
+    api.getAdOnHome({
+      success: (res) => {
+        if (res.data && res.data != {} && res.data.resultStatus) {
+          that.setData({
+            ads: res.data.resultData,
+          });
+        }
+      }
+    });
+
+  },
+
+  //切换方向
+  toggleDirection: function () {
+    var that = this
+    that.setData({
+      source: that.data.destination,
+      destination: that.data.source
     })
   },
 
-  onShow: function() {
+  //时间选择
+  bindDateChange: function (e) {
     var that = this
-    that.setData({
-      setout: wx.getStorageSync('setout'),
-      destination: wx.getStorageSync('destination')
+    this.setData({
+      showDate: util.formatTime(e.detail.value, 1),
+      date: e.detail.value
     })
   },
 
   // 通过缓存传递参数
-  searchTicket : function(e){
+  searchTicket: function (e) {
     var that = this
+    if (!that.data.source) {
+      wx.showToast({
+        title: '请选择出发地',
+        icon: 'loading',
+        duration: 1000
+      })
+      return;
+    };
+    if (!that.data.destination) {
+      wx.showToast({
+        title: '请选择目的地',
+        icon: 'loading',
+        duration: 1000
+      })
+      return;
+    };
     wx.setStorageSync('destination', that.data.destination);
-    wx.setStorageSync('setout', that.data.setout);
-    wx.setStorageSync('date',that.data.date);
-     wx.navigateTo({
-       url: '../tickets/tickets'
-     })
-  } 
+    wx.setStorageSync('source', that.data.source);
+    wx.setStorageSync('date', '2017-01-31');
+    wx.navigateTo({
+      url: '../tickets/tickets'
+    })
+  }
 })

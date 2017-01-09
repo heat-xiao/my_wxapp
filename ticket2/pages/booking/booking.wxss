@@ -1,36 +1,42 @@
-  /**index.wxss**/
 
-.booking{
+.main-box {
   background-color: #7688d6;
   padding: 30rpx 30rpx 80rpx 30rpx;
 }
-.booking-wrap{
-  background-color: #fff;
-  border-radius: 20rpx;
-}
-.selects-wrap .weui-cell__ft_in-access{
-  padding-right: 40rpx;
-}
 
-.selects-wrap{
+.booking-wrap {
   position: relative;
   margin: 0;
   background-color: #fff;
+  border-radius: 20rpx;
 }
 
-.selects-wrap .weui-cell {
-  height: 120rpx;
-}
-
-.selects-wrap .weui-cell .active {
+.booking-wrap .weui-cells__title {
+  height: 98rpx;
+  line-height: 98rpx;
+  text-align: center;
+  margin: 0;
   color: #2c2c2c;
 }
 
-.selects-wrap .weui-cell::before {
+.booking-wrap .weui-cell__ft_in-access {
+  padding-right: 40rpx;
+}
+
+.booking-wrap .weui-cell {
+  height: 120rpx;
+}
+
+.booking-wrap .weui-cell .active {
+  color: #2c2c2c;
+}
+
+.booking-wrap .weui-cell::before {
   left: 0;
 }
-.selects-wrap picker{
-  border-top:1px #e5e5e5 solid;
+
+.booking-wrap picker {
+  border-top: 1px #e5e5e5 solid;
 }
 
 .search {
@@ -54,23 +60,22 @@
   vertical-align: middle;
 }
 
-.selects-wrap .place{
+.booking-wrap .place {
   height: 180rpx;
 }
 
-.place .destination{
-  text-align: right
+.place .destination {
+  text-align: right;
 }
 
-
-.place .label{
+.place .label {
   font-size: 24rpx;
-  color: #C8C8CD;
+  color: #c8c8cd;
   margin: 0 0 8rpx 0;
 }
 
-.place .text{
-  color: #C8C8CD;
+.place .text {
+  color: #c8c8cd;
   font-size: 32rpx;
   font-weight: 600;
 }

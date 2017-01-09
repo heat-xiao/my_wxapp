@@ -15,8 +15,8 @@ button {
   line-height: 91rpx;
 }
 
-.weui-cells{
-  margin: 0
+.weui-cells {
+  margin: 0;
 }
 
 .weui-cell {
@@ -58,6 +58,16 @@ button {
   content: "¥";
 }
 
+.empty-data {
+  text-align: center;
+  padding: 50rpx 0 0 0;
+  color: #999999;
+}
+
+.order-wrap{
+  padding-bottom: 160rpx;
+}
+
 /*--------------------------------*/
 
 /*------------头部车票信息------------*/
@@ -84,7 +94,7 @@ button {
 }
 
 .ticket-info .route .line image {
-  height: 1rpx;
+  height: 4rpx;
   width: 100%;
   vertical-align: middle;
 }
@@ -123,21 +133,25 @@ button {
 }
 
 /*------------订单信息模板-----------*/
-.page-order .weui-cells{
+
+.page-order .weui-cells {
   margin: 0 0 20rpx 0;
   font-size: 26rpx;
 }
+
 .page-order .weui-cell {
   height: 91rpx;
 }
-.page-order .weui-cell::before{
-  right: 30rpx; 
+
+.page-order .weui-cell::before {
+  right: 30rpx;
 }
+
 .order-wrap .price {
   font-size: 30rpx;
 }
 
-.page-order .center{
+.page-order .center {
   text-align: center;
 }
 

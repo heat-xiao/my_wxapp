@@ -1,6 +1,6 @@
 .route {
   height: 120rpx;
-  background-color: #7688d6;
+  background-color: #4a90e2;
   color: #fff;
 }
 .route .duration {
@@ -56,11 +56,33 @@
   font-size: 26rpx;
 }
 
+.ticket-item .center>view::before{
+    width: 30rpx;
+    height: 30rpx;
+    line-height: 30rpx;
+    background-color: #c2cddb;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 20rpx;
+    text-align: center;
+    display: inline-block;
+    margin: 6rpx 15rpx 0 0;
+    vertical-align: top;
+}
 
 .ticket-item{
     color: #858585
 }
+.ticket-item .end{
+    margin: 8rpx 0 0 0;
+}
+.ticket-item .start::before{
+    content: "始";   
+}
 
+.ticket-item .end::before{
+    content: "终";
+}
 
 .ticket-item .stock{
     font-size: 26rpx;
@@ -68,7 +90,7 @@
 
 .ticket-item .price{
     font-size: 36rpx;
-    color: #e65973;
+    color: #f5a623;
     text-align: right;
 }
 
