@@ -1,0 +1,50 @@
+.identity-info .identity-id{
+     font-size: 26rpx;
+     color: #858585;
+     padding: 10rpx 0 0 0;
+}
+.identity-info .weui-cell{
+     height: 148rpx;
+     transition: all .25s ease;
+     position: relative
+}
+
+.weui-cell .remove{  
+    width: 15%;  
+    height: 100%;  
+    background-color: red;  
+    position: absolute;  
+    top: 0;  
+    right: -15%;  
+    display: flex;  
+    justify-content: center;  
+    align-items: center;  
+    color: #fff;
+    z-index: 9999;
+}
+
+.identity-info .identity-item{
+    padding: 0 0 0 24rpx;
+}
+
+.ft-add-rider {
+    position: fixed;
+    width: 100%;
+    height: 98rpx;
+    bottom: 0;
+}
+
+.ft-add-rider .weui-cell {
+  height: 98rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.ft-add-rider  image {
+  margin: -4rpx 10rpx 0 0;
+  vertical-align: middle;
+  width: 28rpx;
+  height: 28rpx;
+}

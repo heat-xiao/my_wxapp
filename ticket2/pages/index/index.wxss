@@ -26,7 +26,6 @@
 }
 .booking-wrap{
   background-color: #fff;
-  
   border-radius: 20rpx;
 }
 .selects-wrap .weui-cell__ft_in-access{

@@ -25,7 +25,7 @@ Page({
 
   onLoad: function (options) {
     var that = this
-  
+
     util.getSystemInfo({
       success: (res) => {
         that.setData({
@@ -48,7 +48,7 @@ Page({
         accountId: wx.getStorageSync('userInfo').accountId,
       },
       success: (res) => {
-        if (res.data && res.data != {}) {
+        if (res.data && res.data != {} && res.data.resultStatus) {
           that.setData({
             hoursAway: ticketData.hoursAway,
             phoneNumber: res.data.resultData.phoneNumber,
@@ -66,7 +66,7 @@ Page({
           accountId: wx.getStorageSync('userInfo').accountId,
         },
         success: (res) => {
-          if (res.data && res.data != {}) {
+          if (res.data && res.data != {} && res.data.resultStatus) {
             wx.setStorageSync('allIdentitys', res.data.resultData);
             var allIdentitys = res.data.resultData
             var adultIdentitys = allIdentitys.find(function (item) {
@@ -75,6 +75,10 @@ Page({
             if (adultIdentitys) {
               that.setData({
                 adultIdentitys: adultIdentitys,
+              });
+            } else {
+              that.setData({
+                adultIdentitys: res.data.resultData[0],
               });
             }
           }
@@ -107,7 +111,7 @@ Page({
     wx.setStorageSync('selectIds', ids);
   },
 
-//删除成人票
+  //删除成人票
   removeAdult: function (e) {
     var that = this
     var removeId = e.currentTarget.id
@@ -224,7 +228,7 @@ Page({
     });
   },
 
- //是否买保险
+  //是否买保险
   radioInsurance: function () {
     var that = this
     that.setData({
@@ -296,9 +300,9 @@ Page({
       },
       method: "POST",
       success: (res) => {
-        if (res.data && res.data.resultStatus) {
+        if (res.data && res.data != {} && res.data.resultStatus) {
           wx.navigateTo({
-            url: `../order_detail/order_detail?orderNo=${res.data.resultData.orderNo}`
+            url: `../order/order_detail/order_detail?orderNo=${res.data.resultData.orderNo}`
           })
         }
       }

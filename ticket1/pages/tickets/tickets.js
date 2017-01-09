@@ -56,12 +56,10 @@ Page({
       data: {
         source: that.data.source,
         destination: that.data.destination,
-        departureDate: util.formatTime(that.data.date, 0)
+        // departureDate: util.formatTime(that.data.date, 0)
       },
       success: (res) => {
-        console.log(res.data.resultData)
-
-        if (res.data && res.data != {}) {
+        if (res.data && res.data != {}&&res.data.resultStatus) {
           that.setData({
             ticketData: res.data.resultData,
           });

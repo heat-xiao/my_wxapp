@@ -17,10 +17,10 @@ Page({
   onShow: function () {
     var that = this
     that.setData({
-      // source: wx.getStorageSync('source'),
-      // destination: wx.getStorageSync('destination'),
-      source: '深圳北站',
-      destination: '东莞总站'
+      source: wx.getStorageSync('source'),
+      destination: wx.getStorageSync('destination'),
+      // source: '深圳北站',
+      // destination: '东莞总站'
     })
   },
 

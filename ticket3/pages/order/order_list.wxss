@@ -1,0 +1,25 @@
+.page-order .weui-cell {
+  font-size: 30rpx;
+  height: 98rpx;
+  line-height: 98rpx;
+}
+
+.operate button {
+  font-size: 26rpx;
+  height: 50rpx;
+  line-height: 44rpx;
+  padding: 3rpx 20rpx;
+}
+
+.operate button.gray{
+  background-color: #bbbbbb;
+}
+
+.price {
+  text-align: center;
+  width: 105rpx;
+}
+
+.route image{
+  height:1rpx;width:100rpx; vertical-align: middle;padding:0 15rpx;
+}

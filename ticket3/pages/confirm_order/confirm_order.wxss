@@ -1,0 +1,89 @@
+.fill-info{
+  padding: 0 0 140rpx 0;
+}
+.fill-info .weui-cells {
+  margin: 0 0 20rpx 0;
+}
+
+.weui-cell {
+  height: 91rpx;
+}
+
+.weui-cell::before{
+  left: -30rpx;
+}
+
+.need-identity .weui-cell__bd.label{
+  color: #4a90e2;
+}
+
+.need-identity  image {
+  margin: -4rpx 10rpx 0 0;
+  vertical-align: middle;
+  width: 28rpx;
+  height: 28rpx;
+}
+
+
+.insurance .price{
+  color: #f5a623;
+  font-size: 26rpx;
+  padding: 0 10rpx 0 0;
+}
+
+.insurance .num{
+  color: #858585;
+  font-size: 26rpx;
+}
+
+.insurance .radio{
+  display: inline-block;
+  padding: 0 16rpx;
+}
+
+.insurance icon{
+  margin:-4rpx 0 0 0;
+}
+
+.masklayer{
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  z-index: 98;
+}
+
+.actionsheet{
+  position: fixed;
+  width: 100%;
+  background-color: #fff;
+  z-index: 999;
+  transition: all .3s ease;
+}
+
+.actionsheet .weui-cell{
+  height: 98rpx;
+}
+.actionsheet .label {
+  height: 98rpx;
+  line-height: 98rpx;
+  text-align: center
+}
+
+.no-identity .weui-cell {
+  height: 120rpx;
+}
+.no-identity .price{
+  text-align: right;
+}
+.decrease, .increase{
+  height: 54rpx;
+  width: 80rpx;
+  text-align: center;
+  line-height: 50rpx;
+  border: 2rpx #bbbbbb solid;
+  border-radius: 6rpx;
+  font-size: 40rpx;
+}

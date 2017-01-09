@@ -1,0 +1,21 @@
+<view class="container page-order">
+  <view class="order-wrap" wx:if="{{orderList.length > 0}}">
+    <view class="weui-cells" wx:for="{{orderList}}" wx:key="{{}}">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">{{item.departureTime}}</view>
+        <navigator url="../order/order_detail/order_detail?orderNo={{item.orderNo}}" class="operate">
+          <button class="{{item.orderStatus=='UNPAID'?'':'gray'}}"> {{status[item.orderStatus]}} </button>
+        </navigator>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd route">
+          {{item.source}}
+          <image src="../../images/icon_dashed_grey.png"></image>
+          {{item.destination}}
+        </view>
+        <view class="price">{{item.totalPrice/100}}</view>
+      </view>
+    </view>
+  </view>
+  <view wx:else class="empty-data">您还没有订单</view>  
+</view>

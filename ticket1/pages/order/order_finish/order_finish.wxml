@@ -1,0 +1,13 @@
+<view class="container page-succeed">
+  <view class="success-wrap">
+    <icon wx:if="{{orderStatus!=='UNPAID'}}" type="success" size="93" color="{{item}}" />
+    <icon wx:else type="warn" size="93" color="{{item}}" />
+    <view class="text">{{tipText}}</view>
+    <navigator url="../../index/index" open-type="switchTab">
+      <button class="continue-buy" plain="{{plain}}">继续购票</button>
+    </navigator>
+    <navigator url="../../order/order_detail/order_detail?orderNo={{orderNo}}" open-type="redirect">
+      <button class="to-orderinfo" plain="{{plain}}">订单详情</button>
+    </navigator>
+  </view>
+</view>

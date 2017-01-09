@@ -1,0 +1,38 @@
+/* pages/user/user.wxss */
+.user{
+    height: 188rpx;
+    background-color: #7688d6;
+    color: #fff;
+}
+.avatar{
+    height: 100rpx;
+    width: 100rpx; 
+    margin: 0 35rpx 0 5rpx;
+}
+
+.avatar image{
+    height: 100%;
+    width: 100%;
+    border-radius:50%;
+    vertical-align: middle;
+}
+
+.name{
+    flex: 1;
+}
+
+.weui-cell{
+    height: 91rpx;
+}
+
+.user-info .weui-cell__hd{
+ width: 90rpx;
+}
+
+.other-info{
+    margin: 35rpx 0 0 0;
+}
+
+.other-info .weui-cell::before{
+    left: -30rpx;
+}

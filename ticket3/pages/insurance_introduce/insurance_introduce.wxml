@@ -1,0 +1,3 @@
+<view class="container">
+    <image src="{{introducePic}}" mode="widthFix" style="width:100%"></image>
+</view>

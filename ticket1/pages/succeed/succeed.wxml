@@ -1,8 +1,0 @@
-<view class="container page-succeed">
-    <view class="success-wrap">
-        <icon type="success" size="93" color="{{item}}"/>
-        <view class="text">购票成功</view>
-        <button class="continue-buy" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}">继续购买</button>
-        <button class="to-orderinfo" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}">订单详情</button>
-    </view>
-</view>
