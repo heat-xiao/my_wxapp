@@ -4,8 +4,8 @@ Page({
   data: {
     iconUrl: [
       "../../images/one_icon_order.png",
-      "../../images/tow_icon_my.png",
       "../../images/one_icon_my.png",
+      "../../images/one_icon_traffic.png",
       "../../images/one_icon_service.png",
       "../../images/one_icon_change_purple.png"
     ],

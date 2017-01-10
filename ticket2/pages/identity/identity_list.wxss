@@ -1,3 +1,9 @@
+
+.identity-info{
+    width: 100%;
+    overflow: hidden;
+}
+
 .identity-info .identity-id{
      font-size: 26rpx;
      color: #858585;

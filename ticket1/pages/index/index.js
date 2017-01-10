@@ -3,11 +3,11 @@ import api from '../../utils/api.js'
 Page({
   data: {
     iconUrl: [
-      "../../images/one_icon_order.png",
+      "../../images/tow_icon_order.png",
       "../../images/tow_icon_my.png",
-      "../../images/one_icon_my.png",
-      "../../images/one_icon_service.png",
-      "../../images/one_icon_change_purple.png"
+      "../../images/tow_icon_traffic.png",
+      "../../images/tow_icon_service.png",
+      "../../images/tow_icon_change_blue.png"
     ],
     bannerData: [],
     todayDate: new Date(), //用于限制时间选择当天前的时间

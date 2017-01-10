@@ -100,6 +100,7 @@ Page({
   },
 
   toRefund: function () {
+    var that = this
     wx.redirectTo({
       url: `../../order/order_refund/order_refund?orderNo=${that.data.orderNo}`
     })

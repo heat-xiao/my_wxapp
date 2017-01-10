@@ -25,7 +25,6 @@ Page({
 
   onLoad: function (options) {
     var that = this
-
     util.getSystemInfo({
       success: (res) => {
         that.setData({
@@ -42,6 +41,12 @@ Page({
       return item.ticketId == parseInt(options.ticketId)
     })
 
+    that.setData({
+      hoursAway: ticketData.hoursAway,
+      ticketInfo: ticketInfo,
+      showDate: util.formatTime(ticketData.departureDate, 1)
+    });
+
     //获取联系电话通过拿到用户信息
     api.getProfile({
       data: {
@@ -50,10 +55,7 @@ Page({
       success: (res) => {
         if (res.data && res.data != {} && res.data.resultStatus) {
           that.setData({
-            hoursAway: ticketData.hoursAway,
             phoneNumber: res.data.resultData.phoneNumber,
-            ticketInfo: ticketInfo,
-            showDate: util.formatTime(ticketData.departureDate, 1)
           });
         }
       }
@@ -61,6 +63,8 @@ Page({
 
     //获取所有乘客信息(需要身份信息请求)
     if (wx.getStorageSync('configInfo').VALIDATE_IDENTITY) {
+
+
       api.getIdentitys({
         data: {
           accountId: wx.getStorageSync('userInfo').accountId,
@@ -68,20 +72,25 @@ Page({
         success: (res) => {
           if (res.data && res.data != {} && res.data.resultStatus) {
             wx.setStorageSync('allIdentitys', res.data.resultData);
+            var defaultId = new Array()
             var allIdentitys = res.data.resultData
-            var adultIdentitys = allIdentitys.find(function (item) {
+            var defaultIdentity = allIdentitys.find(function (item) {
               return item.defaultStatus == '1'
             })
-            if (adultIdentitys) {
-              that.setData({
-                adultIdentitys: adultIdentitys,
-              });
-            } else {
-              that.setData({
-                adultIdentitys: res.data.resultData[0],
-              });
+            if (defaultIdentity) {
+              defaultId.push(defaultIdentity.identityId)
+              if (defaultId.length) {
+                that.getAdultIdentityById(defaultId)
+              }
+            } else if (res.data.resultData.length) {
+              defaultId.push(res.data.resultData[0].identityId)
+              if (defaultId.length) {
+                that.getAdultIdentityById(defaultId)
+              }
             }
           }
+
+
         }
       });
     } else {
@@ -103,7 +112,7 @@ Page({
           return item.identityId === + id
         }))
       })
-
+      console.log(adultIdentitys.length)
       that.setData({
         adultIdentitys: adultIdentitys
       });
@@ -151,7 +160,6 @@ Page({
         showActionSheet: true
       });
     } else if (selectIds.length == 1) {
-      console.log(selectIds)
       childIds.push(selectIds[0])
       that.getChildIdentityById(childIds)
     } else {

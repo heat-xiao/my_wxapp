@@ -42,8 +42,8 @@ Page({
               }
             })
           }
-          var createTime = `${util.formatTime(orderDetail.createTime, 0)} ${new Date(orderDetail.createTime).getHours()}:${new Date(orderDetail.createTime).getMinutes()}`
-          var departureTime = `${new Date(orderDetail.departureTime).getHours()}:${new Date(orderDetail.departureTime).getMinutes()}`
+          var createTime = `${util.formatTime(orderDetail.createTime, 0)} ${that.checkTime(new Date(orderDetail.createTime).getHours())}:${that.checkTime(new Date(orderDetail.createTime).getMinutes())}`
+          var departureTime = `${that.checkTime(new Date(orderDetail.departureTime).getHours())}:${that.checkTime(new Date(orderDetail.departureTime).getMinutes())}`
 
           that.setData({
             orderNo: orderNo,
@@ -58,6 +58,12 @@ Page({
         }
       }
     });
+  },
+
+  checkTime: function (i) {
+    if (i < 10)
+    { i = "0" + i }
+    return i
   },
 
   applyRefund: function () {
