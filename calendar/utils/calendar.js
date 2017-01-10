@@ -226,6 +226,12 @@ function cDay(d) {
 }
 
 
+function checkTime(i) {
+  if (i < 10)
+  { i = "0" + i }
+  return i
+}
+
 //处理公历和农历的日期,以及相关节日
 function drawCld(SY, SM, startD, endD) {
 
@@ -233,7 +239,7 @@ function drawCld(SY, SM, startD, endD) {
   var cld = new calendar(SY, SM);
 
   for (var i = 0; i < 42; i++) {
-    var date,yangDate, yinDate, isAbledDate;
+    var date, yangDate, yinDate, isAbledDate;
     var sD = i - cld.firstWeek;
     if (sD > -1 && sD < cld.length) { //日期内
       yangDate = sD + 1;
@@ -287,7 +293,7 @@ function drawCld(SY, SM, startD, endD) {
       }
       yinDate = cld[sD].isToday ? '今天' : yinDate
 
-      date = `${cld[sD].sYear}-${cld[sD].sMonth}-${cld[sD].sDay}`
+      date = `${cld[sD].sYear}-${checkTime(cld[sD].sMonth)}-${checkTime(cld[sD].sDay)}`
       if (startD <= new Date(date).getTime() && new Date(date).getTime() < endD) {
         isAbledDate = true;
       } else {
@@ -295,11 +301,17 @@ function drawCld(SY, SM, startD, endD) {
       }
 
     } else { //非日期
-      yangDate = ' ';
-      yinDate = ' ';
+      if (i == 34) {
+        break;
+      }
+      date= ''
+      isAbledDate= ''
+      yangDate = '';
+      yinDate = '';
+
     }
 
-    dateItem.push({"date":date, "yinDate": yinDate, "yangDate": yangDate, "isAbledDate": isAbledDate })
+    dateItem.push({ "date": date, "yinDate": yinDate, "yangDate": yangDate, "isAbledDate": isAbledDate })
   }
   return { 'yearMonth': `${SY}年${SM + 1}月`, 'dateItem': dateItem }
 }
@@ -312,7 +324,7 @@ var tD = Today.getDate();
 
 function getCalender(months) {
   var nextMonths = new Array();
-  var startD = new Date().setDate(new Date().getDate() - 1)
+  var startD = new Date().setDate(new Date().getDate())
   var endD = new Date().setDate(new Date().getDate() + 30 * (months - 1))
   var i = 0;
   do {

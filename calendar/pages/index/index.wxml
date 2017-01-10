@@ -8,16 +8,15 @@
     <view class="week-item">五</view>
     <view class="week-item" style="color:#008151">六</view>
   </view>
-
-  <view class="date-wrap" wx:if="{{calendar.length>0}}">
-  <view  wx:for="{{calendar}}" wx:for-item="i">
-    <view class="month-label">{{i.yearMonth}}</view>
-    <view class="dates">
-      <view wx:for="{{i.dateItem}}"  wx:for-item="j" class="date-item {{j.isAbledDate?'active':''}}">
-        <view class="yangli">{{j.yangDate}}</view>
-        <view class="yinli">{{j.yinDate}}</view>
+  <view class="date-wrap" wx:if="{{calendarData.length>0}}">
+    <view wx:for="{{calendarData}}" wx:for-item="i" wx:key="{{index}}">
+      <view class="month-label">{{i.yearMonth}}</view>
+      <view class="dates">
+        <view wx:for="{{i.dateItem}}" wx:for-item="j" wx:key="{{index}}" data-date="{{j.date}}" bindtap="{{j.isAbledDate?'selectDate':''}}" class="date-item{{j.isAbledDate?' abled-date':''}}{{j.date==selectedDate?' selected-date':''}}">
+          <view class="yangli">{{j.yangDate}}</view>
+          <view class="yinli">{{j.yinDate}}</view>
+        </view>
       </view>
-    </view>
     </view>
   </view>
 </view>
