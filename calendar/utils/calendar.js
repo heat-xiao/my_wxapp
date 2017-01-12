@@ -304,8 +304,8 @@ function drawCld(SY, SM, startD, endD) {
       if (i == 34) {
         break;
       }
-      date= ''
-      isAbledDate= ''
+      date = ''
+      isAbledDate = ''
       yangDate = '';
       yinDate = '';
 
@@ -324,7 +324,7 @@ var tD = Today.getDate();
 
 function getCalender(months) {
   var nextMonths = new Array();
-  var startD = new Date().setDate(new Date().getDate())
+  var startD = new Date().setDate(new Date().getDate() - 1)
   var endD = new Date().setDate(new Date().getDate() + 30 * (months - 1))
   var i = 0;
   do {

@@ -39,6 +39,7 @@ App({
     wx.login({
       success: function (r0) {
         console.log('wx login result', r0);
+        
         // 根据code获取用户信息，
         api.getUserInfoBycode({
           data: {
