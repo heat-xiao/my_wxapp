@@ -8954,7 +8954,7 @@
                         p.container.find('.picker-calendar-selected-date').text(inputValue);
                     }
                     if (p.input && p.input.length > 0 && !onlyHeader) {
-                        $(p.input).val(inputValue);
+                        // $(p.input).val(inputValue);
                         $(p.input).trigger('change');
                     }
                         

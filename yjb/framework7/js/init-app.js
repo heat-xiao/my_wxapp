@@ -1,5 +1,5 @@
 var browser = {
-	versions: function() {
+	versions: function () {
 		var u = navigator.userAgent,
 			app = navigator.appVersion;
 		return { //移动终端浏览器版本信息 
@@ -28,14 +28,14 @@ var myApp = new Framework7({
 	animatePages: false,
 	//	modalActionsCloseByOutside:false,
 
-	onAjaxStart: function(xhr) {
+	onAjaxStart: function (xhr) {
 		myApp.showIndicator();
 	},
-	onAjaxComplete: function(xhr) {
+	onAjaxComplete: function (xhr) {
 		myApp.hideIndicator();
 	},
-	onAjaxError: function(xhr) {
-		setTimeout(function() {
+	onAjaxError: function (xhr) {
+		setTimeout(function () {
 			myApp.hideIndicator();
 			myApp.alert('网络异常，请稍后再试！');
 		}, 3000);
@@ -49,24 +49,37 @@ var mainView = myApp.addView('.view-main', {
 });
 
 var $$ = Dom7;
+var myCalendar = myApp.calendar({
+		showContainer: '.year-month',
+		input: '#calendar',
+		dateFormat: 'yyyy.mm.dd',
+		monthNames: ['元月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+		dayNamesShort: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+		maxDate: Date(),
+		onDayClick: function (p, dayContainer, year, month, day) {
+			$$(".day").html(day < 10 ? '0' + day : day);
+			$$(".year-month").html(year + '.' + (parseInt(month) + 1))
+		}
+	});
 
-
-$$(document).on('pageInit', function(e) {
+$$(document).on('pageBeforeInit', function (e) {
 	var that = $$(this);
-	
+
 	var page = e.detail.page;
+	console.log(page)
 	//信息页面逻辑
 	if (page.name === 'index') {
 		$$(".toolbar-inner a").removeClass("active");
-		$$("a.tab-index").addClass("active")
+		$$("a.tab-index").addClass("active");
+
 	}
-	
+
 	//信息页面逻辑
 	if (page.name === 'user') {
 		$$(".toolbar-inner a").removeClass("active");
 		$$("a.tab-user").addClass("active")
 	}
-	
+
 	//信息页面逻辑
 	if (page.name === 'team') {
 		$$(".toolbar-inner a").removeClass("active");
@@ -77,7 +90,7 @@ $$(document).on('pageInit', function(e) {
 	//医生详情页面逻辑
 	if (page.name === 'doctor') {
 		var doctorId = page.query.doctorId;
-		
+
 		$$.ajax({
 			url: "/pro/doctor/info/detail",
 			type: "POST",
@@ -85,17 +98,10 @@ $$(document).on('pageInit', function(e) {
 			data: {
 				doctorId: doctorId
 			},
-			success: function(data) {
-				if (data.status) {
-					myApp.alert(data.msg);
-					return
-				}
-				var doctorInfo = data.data;
+			success: function (data) {
 
-				$$(".doctor").html('<ul><li><a href="#" class="item-link item-content"><div class="item-media doctor-head"><img src="' + doctorInfo.image + '" class="lazy lazy-fadein" height="100%"></div><div class="item-inner doctor-detail"><div class="item-title-row"><div class="doctor-name">' + doctorInfo.name + '</div></div><div class="item-subtitle">' + doctorInfo.hospital_grade + '医院' + doctorInfo.title + '</br>' + doctorInfo.hospital + doctorInfo.clinic_name + '</div></div></a></li></ul><ul class="doctor-info"><li><a href="#" class="item-link item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><span></span>擅长及诊所介绍</div></div><div class="info-text">' + doctorInfo.good_at + '</div></div></a></li><li><a href="#" class="item-link item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><span></span>医学教育背景介绍</div></div><div class="info-text">' + doctorInfo.description + '</div></div></a></li><li><a href="#" class="item-link item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><span></span>学术研究成果</div></div><div class="info-text">' + doctorInfo.achievement + '</div></div></a></li></ul>');
-				$$(".load-icon").hide();
 			},
-			error: function(e) {
+			error: function (e) {
 				if (e.status != 200) {
 					myApp.alert('网络异常，请稍后再试！');
 				}
