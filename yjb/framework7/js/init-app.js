@@ -66,7 +66,7 @@ $$(document).on('pageBeforeInit', function (e) {
 	var that = $$(this);
 
 	var page = e.detail.page;
-	console.log(page)
+
 	//信息页面逻辑
 	if (page.name === 'index') {
 		$$(".toolbar-inner a").removeClass("active");
