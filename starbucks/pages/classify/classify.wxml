@@ -1,0 +1,20 @@
+<view class="classify_page">
+  <view class="search">
+    <input placeholder="搜索" type="search" />
+  </view>
+  <view class="page_wrap">
+    <view class="classify_page_left" style="height:{{deviceHeight}}px">
+      <view class="category_wrap">
+        <block wx:for="{{categoryList}}" wx:key="item.id">
+          <view class="classify_recommendeds_left {{curNav == index ? 'active' : ''}}" data-index="{{index}}" id="{{item.id}}" bindtap="tapCategory">
+            {{item.name}}
+          </view>
+        </block>
+      </view>
+    </view>
+    <view class="classify_page_right">
+      <import src="templates/commpdity_list.wxml" />
+      <template is="commpdity_wrap" data="{{rightArray:commodityList}}" />
+    </view>
+  </view>
+</view>

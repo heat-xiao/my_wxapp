@@ -1,0 +1,46 @@
+/**app.wxss**/
+.contanier {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+}
+
+.banner swiper{
+    width: 100%;
+    height: 375rpx;
+}
+
+.banner swiper image{
+    width: 100%;
+    height: 375rpx;
+}
+
+.banner .wx-swiper-dots.wx-swiper-dots-horizontal{
+     margin-bottom: 24rpx;
+     margin-left:35%;
+}
+
+.banner .wx-swiper-dot{
+    width: 15rpx;
+    height: 15rpx;
+    display: inline-flex;    
+    vertical-align: sub;
+    margin: 0 9rpx;
+}
+
+.banner .wx-swiper-dot::before{
+    content: '';
+    background: rgba(255,255,255,0.3);
+    flex-grow: 1;
+    border-radius: 50%;
+}
+
+.banner .wx-swiper-dot-active::before{
+    content: '';
+    background:rgba(255,255,255,1);
+    flex-grow: 1;
+}
