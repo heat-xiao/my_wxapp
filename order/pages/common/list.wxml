@@ -1,0 +1,30 @@
+<import src="../common/prompt.wxml" />
+<template name="list">
+  <template is="prompt" data="{{ prompt }}" />
+  <view class="weui-panel_access" wx:if="{{commodities.length>0}}">
+    <view class="weui-panel__bd goods-list">
+      <view wx:for="{{ commodities}}" wx:key="item.commodityId" class="weui-media-box weui-media-box_appmsg">
+        <navigator url="/pages/commodity_detail/index?commodityId={{item.commodityId}}" class="weui-media-box__hd weui-media-box__hd_in-appmsg" hover-class="none">
+          <image class="weui-media-box__thumb" src="{{ item.commodityIcon }}" />
+        </navigator>
+        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <navigator url="/pages/commodity_detail/index?commodityId={{item.commodityId}}" class="weui-media-box__title" hover-class="none">{{ item.commodityName }}</navigator>
+          <navigator url="/pages/commodity_detail/index?commodityId={{item.commodityId}}" class="weui-media-box__desc" hover-class="none" wx:if="{{item.commodityDesc!=null}}">
+            {{item.commodityDesc}}
+          </navigator>
+          <navigator url="/pages/commodity_detail/index?commodityId={{item.commodityId}}" class="sales" hover-class="none">已售 {{item.baseSaleCount}}</navigator>
+          <view class="quantity-wrapper flex-row">
+            <navigator url="/pages/commodity_detail/index?commodityId={{item.commodityId}}" class="price" hover-class="none">{{ item.commodityPrice/100 }}</navigator>
+            <view class="quantity-decrease" wx:if="{{!!amount4List[item.commodityId]}}" data-type="decrease" bindtap="addToCart" data-id="{{ item.commodityId }}">
+              <image src="../../assets/images/icon_reduce.png"></image>
+            </view>
+            <text class="quantity" wx:if="{{!!amount4List[item.commodityId]}}">{{ amount4List[item.commodityId] }}</text>
+            <view class="quantity-increase" data-type="increase" bindtap="addToCart" data-id="{{ item.commodityId }}">
+              <image src="../../assets/images/icon_add.png"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

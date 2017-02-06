@@ -1,0 +1,71 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/home/ad/ad_detail",
+    "pages/home/commodity_detail/commodity_detail",
+    "pages/home/commodity_detail/commodity_comment_list",
+    "pages/category/category",
+    "pages/category/search/search",
+    "pages/order/order",
+    "pages/order/orderlist/orderlist",
+    "pages/order/orderlist/order_express/order_express",
+    "pages/order/orderlist/order_comment/order_comment",
+    "pages/order/orderlist/order_detail/order_detail",
+    "pages/order/orderlist/order_refund/order_refund",
+    "pages/order/orderlist/order_finish/order_finish",
+    "pages/order/about_us/about_us",
+    "pages/order/my_coupon/my_coupon",
+    "pages/order/server/server",
+    "pages/shopping/shopping",
+    "pages/shopping/confirm_order/confirm_order",
+    "pages/shopping/pay_success/pay_success",
+    "pages/address_list/address_list",
+    "pages/address_list/address_detail/address_detail",
+    "pages/address_list/address_detail/address_city_list/address_city_list"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#158447",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "商城demo",
+    "backgroundColor": "#efeff4",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": "true"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "images/one/icon_home.png",
+        "selectedIconPath": "images/one/icon_home_select.png"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "text": "分类",
+        "iconPath": "images/icon_fenlei.png",
+        "selectedIconPath": "images/one/icon_classfiy_select.png"
+      },
+      {
+        "pagePath": "pages/shopping/shopping",
+        "text": "购物车",
+        "iconPath": "images/one/icon_shoppinglist.png",
+        "selectedIconPath": "images/one/icon_shoppinglist_select.png"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "text": "我的",
+        "iconPath": "images/one/icon_my.png",
+        "selectedIconPath": "images/one/icon_my_select.png"
+      }
+    ],
+    "color": "#c6c6c6",
+    "selectedColor": "#158447",
+    "backgroundColor": "#f7f7fa",
+    "borderStyle": "white",
+    "position": "bottom"
+  },
+  "networkTimeout": {
+    "request": 5000
+  },
+  "debug": true
+}

@@ -1,0 +1,146 @@
+
+.swiper_box {
+  width: 100%;
+  height: 250rpx;
+}
+
+.swiper_box .wx-swiper-dot {
+  width: 15rpx;
+  height: 15rpx;
+  display: inline-flex;
+  margin: 0 10rpx;
+}
+
+.swiper_box .wx-swiper-dot::before {
+  content: '';
+  background: rgba(255, 255, 255, 0.3);
+  flex-grow: 1;
+  border-radius: 50%;
+}
+
+.swiper_box .wx-swiper-dot-active::before {
+  background: rgba(255, 255, 255, 1);
+}
+
+.navbar {
+  height: 80rpx;
+  border-bottom: 1rpx #e5e5e5 solid;
+}
+
+.navbar .flex-item {
+  flex: 1;
+  text-align: center;
+}
+
+.navbar .flex-item view {
+  display: inline-block;
+  padding: 0 0 2rpx 0;
+  color: #999;
+  border-bottom: 4rpx #F8F8F8 solid;
+  font-size: 26rpx;
+}
+
+.navbar .flex-item view.active {
+  border-bottom: 4rpx #f6a623 solid;
+  color: #222;
+}
+
+.left_tabbar {
+  width: 25%;
+  background-color: #efeff4;
+  font-size: 26rpx;
+}
+
+.left_tabbar_list {
+  width: 100%;
+  height: 100%;
+}
+
+
+@-webkit-keyframes show {
+  0% {
+    opacity: 0;
+    transform: rotateY(180deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+    transform: rotateY(180deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotateY(360deg);
+  }
+}
+
+.left_tabbar_item {
+  color: #353535;
+  position: relative;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box; 
+}
+
+.left_tabbar_item .text{
+  padding: 30rpx;
+}
+
+
+.left_tabbar .left_tabbar_item.active {
+  background: #fff;
+  transition: all 0.5s;
+  animation: show 0.5s;
+}
+
+.left_tabbar_item::after{
+  content:" ";
+  position: absolute;
+  left: 20rpx;
+  right: 20rpx;
+  border-bottom:1rpx dotted #dadada;
+}
+.left_tabbar_item.active::after{
+  border: 0
+}
+
+.right_content {
+  width: 75%;
+  background-color: #fff;
+}
+.right_content_wrap{
+  height: 100%;
+  width: 100%;
+}
+
+.goods-list {
+  background-color: #fff;
+}
+
+.weui-media-box__desc, .sales {
+  font-size: 22rpx;
+  color: #999;
+  padding: 8rpx 0;
+  line-height: 30rpx;
+}
+
+.goods-list .price {
+  color: #f45d49;
+  font-size: 30rpx;
+  flex: 1;
+  text-align: left;
+}
+
+.icon {
+  width: 36rpx;
+  height: 36rpx;
+  margin: 0 20rpx 4rpx 0;
+}
+

@@ -1,0 +1,57 @@
+<view class="category white_bg">
+  <!--logs.wxml-->
+  <view class="page">
+    <view class="category_top_fixed">
+      <view class="weui-search-bar">
+        <view class="weui-search-bar__form">
+          <view class="weui-search-bar__box">
+            <navigator url="./search/search" hover-class="none">
+              <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+              <view class="weui-search-bar__input">搜索</view>
+            </navigator>
+          </view>
+        </view>
+      </view>
+      <view class="weui-tab">
+        <view class="weui-navbar">
+          <block wx:for-items="{{tabs}}" wx:key="{{index}}">
+            <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick" data-categoryId="{{item.categoryId}}">
+              <view class="weui-navbar__title">{{item.categoryName}}</view>
+            </view>
+          </block>
+
+          <!--用sliderLeft进行偏移量计算-->
+          <view class="weui-navbar__slider" style="left: {{sliderLeft/2}}px; transform: translateX({{sliderLeft/2}}px); -webkit-transform: translateX({{sliderLeft/2}}px);width:{{sliderWidth}}px"></view>
+        </view>
+      </view>
+    </view>
+    <view class="category_top_gap"></view>
+
+    <!--商品列表-->
+    <view class="category_commodity_list">
+      <view class="category_commodity_box" wx:for="{{commodityList}}">
+        <navigator url="../home/commodity_detail/commodity_detail?commodityId={{item.commodityId}}">
+          <view class="category_commodity_border">
+            <view class="category_commodity_picture_box">
+              <image src="{{item.commodityIcon}}" mode="aspectFit" class="category_commodity_picture"></image>
+            </view>
+            <view class="category_commodity_name">
+              {{item.commodityName}}
+            </view>
+            <view>
+              <text class="category_commodity_price">￥{{item.maxDiscount==item.minDiscount?item.maxDiscount/100:item.minDiscount/100+'~'+item.maxDiscount/100}}</text>
+              <text class="category_commodity_count">已售{{item.baseSaleCount+item.realSaleCount?item.baseSaleCount+item.realSaleCount:0}}</text>
+            </view>
+          </view>
+        </navigator>
+      </view>
+    </view>
+  </view>
+  <view class="weui-loadmore" wx:if="{{nextPageStatus}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+  <view class="weui-loadmore weui-loadmore_line" wx:if="{{!nextPageStatus}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">已经到底啦</view>
+  </view>
+</view>

@@ -1,0 +1,87 @@
+.searchbar-result {
+  margin-top: 0;
+  font-size: 14px;
+}
+
+.searchbar-result:before {
+  display: none;
+}
+
+.weui-cell {
+  padding: 12px 15px 12px 35px;
+}
+
+.weui-tab__content {
+  text-align: center;
+}
+
+.weui-search-bar__cancel-btn {
+  background: transparent;
+  border: 0 solid transparent;
+  font-size: 30rpx;
+}
+
+.category_commodity_list {
+  width: 100%;
+  overflow-x: hidden;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+
+.category_commodity_list {
+  width: 100%;
+  overflow-x: hidden;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+
+.category_commodity_box {
+  width: 50%;
+  float: left;
+  overflow: hidden;
+}
+
+.category_commodity_border {
+  background: #fff;
+  border-top: 1rpx solid #e5e5e5;
+  border-right: 1rpx solid #e5e5e5;
+  height: 100%;
+  overflow: hidden;
+  padding-bottom: 16rpx;
+}
+
+.category_commodity_picture_box {
+  overflow: hidden;
+  width: 94%;
+  margin: 0 3% 0 3%;
+}
+
+.category_commodity_picture {
+  width: 100%;
+  height: 330rpx;
+  margin: 0 0 10rpx 0;
+}
+
+.category_commodity_name {
+  font-size: 30rpx;
+  color: #222;
+  padding: 0 20rpx;
+  overflow: hidden;
+  height: 90rpx;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.category_commodity_price {
+  font-size: 30rpx;
+  color: #e04904;
+  margin-left: 20rpx;
+}
+
+.category_commodity_count {
+  font-size: 24rpx;
+  color: #999;
+  float: right;
+  margin-right: 20rpx;
+  margin-top: 10rpx;
+}

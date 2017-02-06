@@ -1,0 +1,43 @@
+<form class="address_detail" bindsubmit="submitAddress">
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">收货人</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" type="text" auto-focus placeholder="姓名" bindblur="setStorageName" name="recipientName" value="{{addressDetail.recipientName?addressDetail.recipientName:''}}"/>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input weui-cell_vcode">
+      <view class="weui-cell__hd">
+        <view class="weui-label">联系电话</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="手机或固话" bindblur="setStorageTel" type="number" name="phoneNumber" value="{{addressDetail.phoneNumber?addressDetail.phoneNumber:''}}" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_select">
+      <view class="weui-cell__hd weui-cell__hd_in-select-after">
+        <view class="weui-label">选择地区</view>
+      </view>
+      <navigator url="address_city_list/address_city_list" class="weui-cell__bd">
+        <view class="weui-input">
+        {{addressDetail.province+addressDetail.city+addressDetail.district?addressDetail.province+addressDetail.city+addressDetail.district:''}}
+        </view>
+      </navigator>
+      <view class="weui-cell__ft weui-cell__ft_in-access" style="margin-right:30rpx;"></view>
+    </view>
+    <view class="weui-cell weui-cell_select">
+      <view class="weui-cell__hd weui-cell__hd_in-select-after">
+        <view class="weui-label">详细地址</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input type="text" class="weui-input" name="detailAddress" bindblur="setStorageDetailAddress" value="{{addressDetail.detailAddress}}" placeholder="街道门牌信息" auto-height />
+      </view>
+    </view>
+  </view>
+  <view class="address_detail_btn_box">
+    <button class="address_detail_btn_active" formType="submit">确定</button>
+    <!--<button class="address_detail_btn_disabled" formType="submit" wx:if="{{!clickStatus}}">按钮</button>-->
+  </view>
+</form>

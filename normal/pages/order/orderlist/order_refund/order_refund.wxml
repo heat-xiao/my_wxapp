@@ -1,0 +1,18 @@
+<form bindsubmit="submitRefund">
+  <view class="order_refund white_bg">
+    <view class="weui-cells__title">选择退款理由</view>
+    <view class="weui-cells weui-cells_after-title">
+      <radio-group bindchange="radioChange">
+        <label class="weui-cell weui-check__label" wx:for="{{radioItems}}" wx:key="{{item.value}}">
+          <radio class="weui-check" value="{{item}}" checked="{{item==reason}}" />
+          <view class="weui-cell__bd">{{item}}</view>
+          <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item==reason}}">
+            <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+          </view>
+        </label>
+      </radio-group>
+    </view>
+    <textarea name="remark" class="order_refund_textarea" auto-height placeholder="备注" />
+  </view>
+  <button class="order_refund_btn" formType="submit">确定</button>
+</form>

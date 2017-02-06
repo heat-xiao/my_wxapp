@@ -1,0 +1,73 @@
+<view class="order_list">
+  <view class="page">
+    <view class="page__bd">
+      <view class="weui-tab">
+        <view class="weui-navbar">
+          <block wx:for-items="{{tabs}}" wx:key="{{index}}">
+            <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick" data-index="{{index}}">
+              <view class="weui-navbar__title">{{item}}</view>
+            </view>
+          </block>
+          <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);width:{{sliderWidth}}px"></view>
+        </view>
+
+        <!--若接口只有一个，可一次性获取，分发到不同的tabcontent，如果是不同的接口，则点击tab分别获取-->
+
+        <!--<view class="weui-tab__panel">
+                <view class="weui-tab__content" hidden="{{activeIndex != 0}}">选项一的内容</view>
+                <view class="weui-tab__content" hidden="{{activeIndex != 1}}">选项二的内容</view>
+                <view class="weui-tab__content" hidden="{{activeIndex != 2}}">选项三的内容</view>
+            </view>-->
+      </view>
+    </view>
+  </view>
+  <view class="order_list_box">
+    <view wx:for="{{orderList}}">
+      <view catchtap="setOrderDetailStorage" data-index="{{index}}">
+        <view class="weui-cells__title bottom_border">订单号：{{item.orderNo}}</view>
+        <view class="weui-flex bottom_border" wx:for="{{item.orderCommodities}}">
+          <view>
+            <view class="placeholder">
+              <image src="{{item.commodityIcon}}" class="order_commodity_icon"></image>
+            </view>
+          </view>
+          <view class="weui-flex__item">
+            <view class="placeholder">
+              <view class="order_commodity_info">
+                <view class="order_commodity_name">{{item.commodityName}}</view>
+                <view class="order_commodity_price">
+                  <text>￥{{item.commodityPrice/100}}</text>
+                  <text class="gray_text pull_right order_commodity_amounts">×{{item.amounts}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="order_total_price white_bg">总计：￥{{item.totalPrice/100}}
+        <text class="order_postage">(含运费：￥{{item.postage/100}})</text>
+      </view>
+      <view class="white_bg">
+      <view wx:if="{{item.orderStatus=='OVERDUE'}}" class="order_status_desc">已过期</view>
+      <view wx:if="{{item.orderStatus=='REFUNDING'}}" class="order_status_desc">退款中</view>
+      <view wx:if="{{item.orderStatus=='FINISHED'}}" class="order_status_desc">交易完成</view>
+        <view wx:if="{{item.orderStatus=='UNPAID'}}" catchtap="payOrder" data-index="{{index}}" class="order_primary_btn">付款</view>
+        <view wx:if="{{item.orderStatus=='DELIVERED'}}" catchtap="finishOrder" data-index="{{index}}" class="order_primary_btn">确认收货</view>
+      <navigator wx:if="{{item.orderStatus=='DELIVERED'}}" class="order_default_btn"
+url="order_express/order_express?expressCode={{item.expressCode}}&trackingNo={{item.trackingNo}}&commodityIcon={{item.orderCommodities[0].commodityIcon}}" >查看物流{{item.commodityIcon}}</navigator>
+        <navigator url="order_refund/order_refund?orderNo={{item.orderNo}}" wx:if="{{item.orderStatus=='UNDELIVER' || item.orderStatus=='DELIVERED'}}" class="order_default_btn">申请退款</navigator>
+        <view catchtap="goToComment" data-index="{{index}}" wx:if="{{item.orderStatus=='WAITCOMMENT'}}" class="order_primary_btn">去评价</view>
+      </view>
+    </view>
+  </view>
+  <view class="weui-loadmore" wx:if="{{nextPageStatus}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+  <view class="weui-loadmore weui-loadmore_line" wx:if="{{!nextPageStatus && orderList.length}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">已经到底啦</view>
+  </view>
+   <view wx:if="{{!orderList.length}}" class="text_center gray_text tip_top">
+  还没有订单哦~
+  </view>
+</view>

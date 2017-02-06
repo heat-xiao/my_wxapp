@@ -1,0 +1,39 @@
+<view class="white_bg">
+  <view class="weui-cells weui-cells_after-title">
+    <view wx:for="{{addressList}}" class="weui-cell weui-cell_access address_list_item">
+      <view class="weui-cell__bd">
+        <checkbox-group bindchange="checkboxChange" data-index="{{index}}">
+          <label class="weui-cell weui-check__label" style="margin-left:-40rpx;">
+            <checkbox class="weui-check" value="{{item.addressId}}" />
+            <view class="weui-cell__hd weui-check__hd_in-checkbox">
+              <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked && !addressCheckHide}}"></icon>
+              <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked && !addressCheckHide}}"></icon>
+            </view>
+            <view class="weui-cell__bd">
+              <navigator url="address_detail/address_detail?addressId={{item.addressId}}" bindtap="editAddressDetail"  hover-class="none" data-index="{{index}}">
+                <view class="weui-flex">
+                  <view class="weui-flex__item">
+                    <view class="placeholder">
+                      <view class="address_list_user_name">{{item.recipientName}} {{item.phoneNumber}}</view>
+                      <view class="address_list_address_detail">{{item.province+item.city+item.district+item.detailAddress}}</view>
+                    </view>
+                  </view>
+                </view>
+              </navigator>
+            </view>
+          </label>
+        </checkbox-group>
+      </view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+       <view class="address_list_delete" catchtap="deleteAddress" data-id="{{item.addressId}}">删除</view>
+    </view>
+  </view>
+  <view bindtap="editAddressDetail" class="weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+        <image src="/images/address_add.png" class="address_list_add_icon"></image>
+      </view>
+      <view class="weui-cell__bd">新增收货地址</view>
+    </view>
+  </view>
+</view>

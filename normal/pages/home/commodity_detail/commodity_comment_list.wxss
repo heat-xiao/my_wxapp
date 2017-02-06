@@ -1,0 +1,58 @@
+.commodity_detail_comment {
+  font-size: 26rpx;
+  color: #999;
+  padding: 34rpx 0 16rpx 0;
+}
+
+.commodity_detail_container {
+  padding: 0 30rpx;
+}
+
+.commodity_detail_comment_list {
+}
+
+.commodity_detail_comment_item {
+}
+
+.commodity_detail_comment_user {
+  padding: 18rpx 0 17rpx 0;
+}
+
+.commodity_detail_comment_avatar {
+  width: 54rpx;
+  height: 54rpx;
+  border-radius: 50%;
+  background: #ccc;
+  float: left;
+}
+
+.commodity_detail_comment_nickname {
+  color: #222;
+  font-size: 30rpx;
+  margin-left: 18rpx;
+}
+
+.commodity_detail_comment_content {
+  font-size: 26rpx;
+  color: #999;
+  margin-bottom: 21rpx;
+}
+
+.commodity_detail_comment_time {
+  font-size: 26rpx;
+  color: #cecece;
+  margin-bottom: 30rpx;
+}
+
+.commodity_detail_comment_link_all {
+  font-size: 26rpx;
+  color: #158447;
+  text-align: center;
+  margin: 24rpx 0;
+}
+
+.commodity_detail_comment_img {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}

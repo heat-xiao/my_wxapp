@@ -1,0 +1,11 @@
+<view class="white_bg server">
+  <view class="weui-cell" style="font-size:30rpx;">
+    <view class="weui-cell__bd">客服电话</view>
+    <view class="weui-cell__ft" style="color:#158447">7383－38383838</view>
+  </view>
+  <view class="line"></view>
+  <view class="server_qrcode_box">
+    <image src="../../home/images/pic_160.png" class="server_qrcode_img"></image>
+  </view>
+  <view class="text_center">长按识别图中二维码与客服交谈</view>
+</view>

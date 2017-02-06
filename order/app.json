@@ -1,0 +1,22 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/commodity_detail/index",
+    "pages/order_comment/index",
+    "pages/order_list/index", 
+    "pages/about_us/index",
+    "pages/login/index",
+    "pages/order_confirm/index",
+    "pages/msg/pay_success/index",
+    "pages/msg/order_success/index"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#f6a623",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "",
+    "backgroundColor": "#efeff4",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": "true"
+  },
+  "debug": false
+}

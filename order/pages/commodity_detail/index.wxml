@@ -1,0 +1,71 @@
+<import src="../common/cart.wxml" />
+<swiper wx:if="imgUrls.length>0" class="swiper_box" indicator-dots="{{swiper.indicatorDots}}" interval="{{swiper.interval}}" duration="{{swiper.duration}}">
+  <block wx:for="{{imgUrls}}" wx:key="{{index}}" wx:if="{{item}}">
+    <swiper-item>
+      <image src="{{item}}" style="height:100%;" />
+    </swiper-item>
+  </block>
+</swiper>
+<view class="weui-panel_access">
+  <view class="weui-panel__bd">
+    <view class="weui-media-box" hover-class="weui-cell_active">
+      <view class="weui-media-box__bd">
+        <view class="weui-media-box__title">{{commodityInfo.commodityName}}</view>
+        <view class="flex-row score-wraper">
+          <view class="sales">已售 {{commodityInfo.baseSaleCount}}</view>
+          <text>评分 </text>
+          <view class="score">        
+            <image src="../../assets/images/icon_star_small.png" wx:if="{{commodityInfo.score>0}}"></image>
+            <image src="../../assets/images/icon_star_small.png" wx:if="{{commodityInfo.score>1}}"></image>
+            <image src="../../assets/images/icon_star_small.png" wx:if="{{commodityInfo.score>2}}"></image>
+            <image src="../../assets/images/icon_star_small.png" wx:if="{{commodityInfo.score>3}}"></image>
+            <image src="../../assets/images/icon_star_small.png" wx:if="{{commodityInfo.score>4}}"></image>
+          </view>
+        </view>
+        <view class="flex-row quantity-wrapper">
+          <text class="price">{{commodityInfo.commodityPrice/100}}</text>
+          <view class="quantity-decrease" wx:if="{{!!amount4List[commodityInfo.commodityId]}}" data-type="decrease" bindtap="addToCart" data-id="{{ commodityInfo.commodityId }}">
+            <image src="../../assets/images/icon_reduce.png"></image>
+          </view>
+          <text class="quantity" wx:if="{{!!amount4List[commodityInfo.commodityId]}}">{{ amount4List[commodityInfo.commodityId] }}</text>
+          <view class="quantity-increase" data-type="increase" bindtap="addToCart" data-id="{{ commodityInfo.commodityId }}">
+            <image src="../../assets/images/icon_add.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="weui-panel_access"  wx:if="{{commodityInfo.commodityDesc!=null}}">
+  <view class="weui-panel__hd">
+    商品简介
+  </view>
+  <view class="weui-panel__bd">
+    <view class="weui-media-box weui-media-box_text">
+      {{commodityInfo.commodityDesc}}
+    </view>
+  </view>
+</view>
+<view class="weui-panel_access comments">
+  <view class="weui-panel__hd">评论（{{commodityInfo.commentNum}}）</view>
+  <view class="weui-panel__hd" wx:if="{{commodityInfo.commentNum}}" wx:for="{{commodityInfo.comment}}"  wx:key="item.commentId" >
+    <view class="flex-row">
+      <view class="avatar">
+        <image src="{{item.avatar}}"></image>
+      </view>
+      <view class="name">{{item.nickname}}</view>
+      <view class="time">{{item.commentTime}}</view>
+    </view>
+    <view class="comment-content">
+      <text>{{item.content}}</text>
+      <view class="score">
+        <image src="../../assets/images/icon_star_small.png" wx:if="{{item.score>0}}"></image>
+        <image src="../../assets/images/icon_star_small.png" wx:if="{{item.score>1}}"></image>
+        <image src="../../assets/images/icon_star_small.png" wx:if="{{item.score>2}}"></image>
+        <image src="../../assets/images/icon_star_small.png" wx:if="{{item.score>3}}"></image>
+        <image src="../../assets/images/icon_star_small.png" wx:if="{{item.score>4}}"></image>
+      </view>
+    </view>
+  </view>
+</view>
+<template is="cart" data="{{deviceHeight, isShowCart, shoppingCart, totalPrice,totalAmounts}}" />

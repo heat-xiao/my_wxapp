@@ -1,0 +1,77 @@
+<view class="order">
+  <view class="order_info_bg">
+    <image src="{{userInfo.avatar}}" class="order_info_avatar"></image>
+    <view>
+      <text class="order_info_nickname">{{userInfo.nickname}}</text>
+    </view>
+    <view>
+      <text class="order_info_desc">积分 {{userInfo.score}}</text>
+    </view>
+  </view>
+  <view class="line"></view>
+  <view class="weui-cells weui-cells_after-title">
+    <navigator hover-class="none" url="orderlist/orderlist" bindtap="setOrderType" data-type="全部" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">全部订单</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+  </view>
+  <view class="weui-flex">
+    <view class="weui-flex__item">
+      <view class="placeholder">
+        <navigator hover-class="none" url="orderlist/orderlist" bindtap="setOrderType" data-type="待付款" class="order_type_box">
+          <image class="order_type_icon" src="/images/one/icon_purse.png"></image>
+          <view class="weui-badge bage_position" wx:if="{{nonPaymentCount}}">{{nonPaymentCount}}</view>
+          <view class="order_type_name">待付款</view>
+        </navigator>
+      </view>
+    </view>
+    <view class="weui-flex__item">
+      <view class="placeholder">
+        <navigator hover-class="none" url="orderlist/orderlist" bindtap="setOrderType" data-type="待发货" class="order_type_box">
+          <image class="order_type_icon" src="/images/one/icon_packed.png"></image>
+          <view class="weui-badge bage_position" wx:if="{{waitDeliverCount}}">{{waitDeliverCount}}</view>
+          <view class="order_type_name">待发货</view>
+        </navigator>
+      </view>
+    </view>
+    <view class="weui-flex__item">
+      <view class="placeholder">
+        <navigator hover-class="none" url="orderlist/orderlist" bindtap="setOrderType" data-type="待收货" class="order_type_box">
+          <image class="order_type_icon" src="/images/one/icon_delivery.png"></image>
+          <view class="weui-badge bage_position" wx:if="{{waitReceiverCount}}">{{waitReceiverCount}}</view>
+          <view class="order_type_name">待收货</view>
+        </navigator>
+      </view>
+    </view>
+    <view class="weui-flex__item">
+      <view class="placeholder">
+        <navigator hover-class="none" url="orderlist/orderlist" bindtap="setOrderType" data-type="待评价" class="order_type_box">
+          <image class="order_type_icon" src="/images/one/icon_comment.png"></image>
+          <view class="weui-badge bage_position" wx:if="{{waitCommentCount}}">{{waitCommentCount}}</view>
+          <view class="order_type_name">待评价</view>
+        </navigator>
+      </view>
+    </view>
+  </view>
+  <view class="line"></view>
+  <view class="weui-cells weui-cells_after-title">
+    <navigator hover-class="none" url="../address_list/address_list?addressCheckHide=1" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">收货地址</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+    <navigator hover-class="none" url="my_coupon/my_coupon" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">优惠券</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+    
+      <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">客服</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        <contact-button class="contact_position" type="default-light" size="27" session-from="weapp"></contact-button>
+      </view>
+    <navigator hover-class="none" url="about_us/about_us" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">关于我们</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+  </view>
+</view>

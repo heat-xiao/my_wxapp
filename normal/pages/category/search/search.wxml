@@ -1,0 +1,69 @@
+<form bindsubmit="searchInput">
+  <view class="page">
+    <view class="weui-search-bar">
+      <view class="weui-search-bar__form">
+        <view class="weui-search-bar__box">
+          <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+          <input type="text" class="weui-search-bar__input" placeholder="搜索" name="keyword" value="{{inputVal}}" focus="{{inputShowed}}"/>
+          <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+            <icon type="clear" size="14"></icon>
+          </view>
+        </view>
+        <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+          <icon class="weui-icon-search" type="search" size="14"></icon>
+          <view class="weui-search-bar__text">搜索</view>
+        </label>
+      </view>
+
+      <!--<view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>-->
+      <button class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" formType="submit">搜索</button>
+    </view>
+
+    <!--<view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}">
+    <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">
+        <view>实时搜索文本</view>
+      </view>
+    </navigator>
+    <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">
+        <view>实时搜索文本</view>
+      </view>
+    </navigator>
+    <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">
+        <view>实时搜索文本</view>
+      </view>
+    </navigator>
+    <navigator url="" class="weui-cell" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">
+        <view>实时搜索文本</view>
+      </view>
+    </navigator>
+  </view>-->
+    <view class="category_commodity_list">
+      <view class="category_commodity_box" wx:for="{{commodityList}}">
+        <navigator url="../../home/commodity_detail/commodity_detail?commodityId={{item.commodityId}}" open-type="redirect">
+          <view class="category_commodity_border">
+            <view class="category_commodity_picture_box">
+              <image src="{{item.commodityIcon}}" mode="aspectFit" class="category_commodity_picture"></image>
+            </view>
+            <view class="category_commodity_name">
+              {{item.commodityName}}
+            </view>
+            <view>
+              <text class="category_commodity_price">￥{{item.maxDiscount==item.minDiscount?item.maxDiscount/100:item.minDiscount/100+'~'+item.maxDiscount/100}}</text>
+              <text class="category_commodity_count">已售{{item.baseSaleCount+item.realSaleCount?item.baseSaleCount+item.realSaleCount:0}}</text>
+            </view>
+          </view>
+        </navigator>
+      </view>
+    </view>
+  </view>
+  <view class="weui-loadmore weui-loadmore_line" wx:if="{{!nextPageStatus && commodityList.length}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">已经到底啦</view>
+  </view>
+  <view wx:if="{{!commodityList.length}}" class="text_center gray_text tip_top">
+    暂无相关商品
+  </view>
+</form>

@@ -1,0 +1,15 @@
+.server{
+    padding-bottom: 50rpx;
+}
+.server_qrcode_box{
+    width:100%;
+}
+.server_qrcode_img{
+    width:60%;
+    margin:70rpx 20% 10rpx 20%;
+}
+.text_center{
+    color:#222222;
+    font-size:26rpx;
+    text-align: center;
+}

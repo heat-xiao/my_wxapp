@@ -1,0 +1,17 @@
+<view class="page">
+    <view class="weui-msg">
+        <view class="weui-msg__icon-area">
+            <icon type="success" size="93"></icon>
+        </view>
+        <view class="weui-msg__text-area">
+            <view class="weui-msg__title">交易成功</view>
+            <view class="weui-msg__desc">卖家将收到你的打款</view>
+        </view>
+        <view class="weui-msg__opr-area">
+            <view class="weui-btn-area">
+                <view  catchtap="goToComment"><button class="weui-btn" style="background:#158447;" type="primary">去评价</button></view>
+                <navigator url="../order_detail/order_detail" style="margin-top:30rpx;"><button class="weui-btn" type="default">订单详情</button></navigator>
+            </view>
+        </view>
+    </view>
+</view>

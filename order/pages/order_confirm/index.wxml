@@ -1,0 +1,29 @@
+<view class="order-wraper">
+  <view class="weui-cells">
+    <view class="order-item" wx:if="{{shoppingCart.length>0}}">
+      <view class="flex-row" wx:for="{{shoppingCart}}"  wx:key="{{index}}">
+        <view class="weui-cell__bd" style="padding-right:30rpx;">{{item.commodityName}}</view>
+        <view>¥{{item.commodityPrice/100}} x {{item.amounts}}</view>
+      </view>
+    </view>
+    <view class="weui-cell" wx:if="{{deductPrice}}">
+      <view class="weui-cell__bd">店铺活动</view>
+      <view class="weui-cell__ft" style="color:#f6a623">- ¥{{deductPrice/100}}</view>
+    </view>
+  </view>
+</view>
+<view class="weui-cells remark">
+  <view class="label" style="padding-bottom:10rpx;">备注</view>
+  <view class="flex-row select-btns" wx:if="{{tag.length>0}}" >
+    <block wx:for="{{tag}}" wx:key="{{index}}">
+      <button bindtap="selectTag" data-id="{{item.tagId}}" data-content="{{item.content}}" class="border {{activeTagId===item.tagId?'active':''}}">{{item.content}}</button>
+    </block>
+    <view class="weui-cell__bd"></view>
+  </view>
+  <textarea bindfocus="getRemark" placeholder="如：不要辣" value="{{remark}}" />
+</view>
+<view class="ft-cart flex-row">
+  <view class="cart-icon"> 待支付</view>
+  <view class="price">{{(totalPrice-deductPrice)/100}}</view>
+  <view class="topay-btn" bindtap="submitOrder">提交订单</view>
+</view>

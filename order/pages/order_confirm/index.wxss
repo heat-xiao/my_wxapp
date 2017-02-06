@@ -1,0 +1,47 @@
+.order-wraper {
+  color: #353535;
+}
+
+.order-item {
+  margin: 0 30rpx;
+  padding: 20rpx 0;
+  border-top: 1rpx #e5e5e5 solid;
+}
+
+.order-item .flex-row {
+  height: auto;
+  padding: 18rpx 0;
+}
+
+.order-wraper .weui-cell::before {
+  right: 30rpx;
+}
+
+.remark {
+  margin: 20rpx 0 0 0;
+  padding: 30rpx;
+}
+
+.remark .select-btns {
+  margin: 30rpx 0;
+}
+
+.remark .select-btns button {
+  border: 1rpx solid #999;
+  color: #353535;
+  margin-right: 28rpx;
+  border-radius: 5rpx;
+}
+
+.remark .select-btns button.active {
+  border: 1rpx solid #f45d49;
+  color: #f45d49;
+}
+
+.remark textarea {
+  width: 100%;
+  min-height: 168rpx;
+  background-color: #f9f9f9;
+  padding: 20rpx 24rpx;
+  box-sizing: border-box;
+}

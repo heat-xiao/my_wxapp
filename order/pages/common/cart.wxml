@@ -1,0 +1,30 @@
+<template name="cart">
+  <view class="ft-cart flex-row">
+    <view class="cart-icon" bindtap="toggleShow">
+      <image src="../../assets/images/icon_basket.png"></image>
+      <view wx:if="{{shoppingCart.length}}" class="quantity-badge" style="top:0">{{ totalAmounts }}</view>
+    </view>
+    <view class="price">{{ totalPrice/100 }}</view>
+    <view class="topay-btn" bindtap="balance">去结算</view>
+  </view>
+  <view wx:if="{{isShowCart&&shoppingCart.length>0}}" class="masklayer" style="height:{{deviceHeight}}px" bindtap="toggleShow"></view>
+  <view class="cart-info" style="bottom:{{isShowCart&&shoppingCart.length>0? '98rpx':-(deviceHeight/2+40)+ 'px'}};">
+    <view class="clear-cart weui-cell">
+      <view class="weui-cell__bd">菜篮子</view>
+    </view>
+    <view class="weui-cells" style="max-height:{{deviceHeight/2+ 'px'}}; overflow: auto;">
+      <view class="weui-cell" wx:for="{{shoppingCart}}" hover-class="weui-cell_active" id="{{item.commodityId}}" wx:key="{{item.commodityId}}">
+        <view class="weui-cell__bd"  style="padding-right:30rpx;">{{ item.commodityName }}</view>
+        <view class="quantity-wrapper flex-row">
+          <view class="quantity-decrease" data-type="decrease" bindtap="addToCart" data-id="{{ item.commodityId }}">
+              <image src="../../assets/images/icon_reduce.png"></image>
+            </view>
+            <text class="quantity">{{ item.amounts }}</text>
+            <view class="quantity-increase" data-type="increase" bindtap="addToCart" data-id="{{ item.commodityId }}">
+              <image src="../../assets/images/icon_add.png"></image>
+            </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

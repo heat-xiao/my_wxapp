@@ -1,0 +1,26 @@
+.address_detail {
+  width: 100%;
+  overflow: hidden;
+}
+
+.address_detail .weui-label, .address_detail .weui-input,
+.address_detail .weui-textarea {
+  font-size: 30rpx;
+}
+
+.address_detail_btn_box {
+  margin-top: 60rpx;
+  width: 90%;
+  margin-left: 5%;
+}
+
+.address_detail_btn_disabled {
+  background: #158447;
+  color: #fff;
+  opacity: 0.5;
+}
+
+.address_detail_btn_active {
+  background: #158447;
+  color: #fff;
+}

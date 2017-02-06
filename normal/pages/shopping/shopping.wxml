@@ -1,0 +1,48 @@
+<view>
+  <view class="weui-cells weui-cells_after-title">
+    <checkbox-group bindchange="checkboxChange">
+      <label class="weui-cell weui-check__label shopping_commodity_item" wx:for="{{shoppingList}}" style="padding-bottom:0rpx;">
+        <checkbox class="weui-check" value="{{item.priceId}}" />
+        <view class="weui-cell__hd weui-check__hd_in-checkbox">
+          <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
+          <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
+        </view>
+        <view class="weui-cell__bd">
+          <view class="weui-flex">
+            <view>
+              <view class="placeholder">
+                <image class="shopping_commodity_icon" src="{{item.commodityIcon}}"></image>
+              </view>
+            </view>
+            <view class="weui-flex__item">
+              <view class="placeholder">
+                <text class="shopping_commodity_name">{{item.commodityName}}</text>
+                <view class="shopping_commodity_info">
+                  <text class="shopping_commodity_price">￥{{item.commodityPrice/100}}</text>
+                  <view class="shopping_commodity_count_box">
+                    <view class="shopping_count_btn" catchtap="nagativeAmounts" data-amounts="{{item.amounts}}" data-index="{{index}}">－</view>
+                    <text class="shopping_commodity_count">{{item.amounts}}</text>
+                    <view class="shopping_count_btn" catchtap="positiveAmounts" data-stock="{{item.stock}}" data-amounts="{{item.amounts}}" data-index="{{index}}">＋</view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="shopping_commodity_delete_btn" catchtap="deleteCommodity" data-id="{{item.cartId}}">删除</view>
+      </label>
+    </checkbox-group>
+  </view>
+  <view wx:if="{{!shoppingList.length}}" class="text_center gray_text tip_top">
+    购物车空空如也~
+  </view>
+  <view class="shopping_gap"></view>
+  <view class="shopping_total_box">
+    <view class="shopping_total_left">
+      <text class="shopping_total_label">总计：</text>
+      <text class="shopping_total_price">￥{{totalPrice/100}}</text>
+    </view>
+    <navigator url="confirm_order/confirm_order" wx:if="{{!!confirmOrderList.length}}" class="shopping_total_right" catchtap="confirmOrder">结算</navigator>
+    <navigator wx:if="{{!confirmOrderList.length}}" class="shopping_total_right" style="background:#8ac2a3;">结算</navigator>
+  </view>
+</view>

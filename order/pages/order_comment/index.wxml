@@ -1,0 +1,40 @@
+<form bindsubmit="submitComment">
+  <view class="order-wraper">
+    <view class="order-item" wx:for="{{commodities}}" wx:key="{{commodities.commodityId}}">
+      <view class="flex-row">
+        <view class="commodity-icon">
+          <image src="{{item.commodityIcon}}"></image>
+        </view>
+        <view class="weui-cell__bd">{{item.commodityName}}</view>
+      </view>
+      <textarea placeholder="味道不错，服务很好" name="content_{{index}}"/>
+      <view class="flex-row score">
+        <view>打分</view>
+        <view class="weui-cell__bd">
+         
+          <view class="star" data-index="{{index}}"  data-value="1" bindtap="selectScore">
+            <image src="{{score[index]>0?'../../assets/images/icon_star_small.png':'../../assets/images/icon_star.png'}}"></image>
+          </view>
+
+          <view class="star" data-index="{{index}}"  data-value="2" bindtap="selectScore">
+            <image src="{{score[index]>1?'../../assets/images/icon_star_small.png':'../../assets/images/icon_star.png'}}"></image>
+          </view>
+
+          <view class="star" data-index="{{index}}"  data-value="3" bindtap="selectScore">
+            <image src="{{score[index]>2?'../../assets/images/icon_star_small.png':'../../assets/images/icon_star.png'}}"></image>
+          </view>
+
+          <view class="star" data-index="{{index}}"  data-value="4" bindtap="selectScore">
+            <image src="{{score[index]>3?'../../assets/images/icon_star_small.png':'../../assets/images/icon_star.png'}}"></image>
+          </view>
+
+          <view class="star" data-index="{{index}}"  data-value="5" bindtap="selectScore">
+            <image src="{{score[index]>4?'../../assets/images/icon_star_small.png':'../../assets/images/icon_star.png'}}"></image>
+          </view>
+        </view>
+        <view style="color:#888888;">{{score[index]}}星</view>
+      </view>
+    </view>
+  </view>
+  <button style="height:90rpx;line-height:90rpx;background:#f6a623;border-radius:10rpx; margin:0 40rpx 40rpx 40rpx;" class="weui-btn" type="primary" formType="submit">确定</button>
+</form>

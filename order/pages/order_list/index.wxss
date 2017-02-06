@@ -1,0 +1,31 @@
+
+.order-list .order-wraper {
+  margin: 30rpx 30rpx 0 30rpx;
+  border-radius: 10rpx;
+  background-color: #fff;
+}
+.order-wraper view{
+  font-size: 26rpx;
+}
+view.time {
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  color: #f6a623;
+  font-size: 30rpx;
+}
+
+.order-item {
+  margin: 0 30rpx;
+  padding: 20rpx 0;
+  border-top: 1rpx #e5e5e5 solid;
+}
+
+.order-item .flex-row {
+  height: auto;
+  padding: 18rpx 0;
+}
+
+.order-wraper .weui-cell::before{
+    right: 30rpx;
+}

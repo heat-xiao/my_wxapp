@@ -1,0 +1,99 @@
+<view class="store_bg_area" style="height:{{storeBgHeight}}rpx;">
+  <image class="store_bg" src="{{homeData.store.storeBg}}"></image>
+  <view class="weui-flex store_logo">
+    <image src="{{homeData.store.storeLogo}}"></image>
+    <view class="store_name">
+      <text>{{homeData.store.storeName}}</text>
+    </view>
+  </view>
+</view>
+<view wx:if="{{homeData.store.storeNotice}}" class="notice">
+  <view class="notice_padding">
+    <text>好消息：{{homeData.store.storeNotice}}!</text>
+  </view>
+</view>
+<swiper wx:if="{{homeData.topAds.length>0}}" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <block wx:for="{{homeData.topAds}}">
+   <navigator url="./ad/ad_detail?activityPictures={{item.activityPictures}}">
+    <swiper-item>
+      <image src="{{item.adPicture}}" mode="scaleToFill" style="width:100%" />
+    </swiper-item>
+     </navigator>
+  </block>
+</swiper>
+<view class="main_area">
+
+  <!-- 优惠券区域-->
+  <block>
+    <view class="weui-flex coupon_area" wx:for="{{homeData.coupons}}">
+      <view class="weui-flex__item placeholder">
+        <view class="coupon_require">
+          <text>{{item.limitPrice>0? '满'+item.limitPrice/100+'元使用':'使用无限制'}}</text>
+        </view>
+        <view class="coupon_price">
+          <text>{{item.deductPrice/100}}元代金券</text>
+        </view>
+      </view>
+      <view class="coupon_btn">
+        <button size="mini" plain="true" bindtap="getCoupon" data-id="{{item.couponId}}">领取</button>
+      </view>
+    </view>
+  </block>
+
+  <!--推荐区域，可能有多组推荐-->
+  <block wx:for="{{homeData.recommendArea}}" wx:for-item="recommend">
+    <view class="recommend_title">{{recommend.areaTitle}}</view>
+    <view wx:for="{{recommend.commodities}}" wx:for-item="commodity" class="white_bg bottom_border">
+      <navigator url="commodity_detail/commodity_detail?commodityId={{commodity.commodityId}}">
+        <view class="weui-cell__bd" style="margin:10rpx 10rpx 0 10rpx;">
+          <view class="weui-flex">
+            <view>
+              <view class="placeholder">
+                <image src="{{commodity.commodityIcon}}" class="commodity_icon"></image>
+              </view>
+            </view>
+            <view class="weui-flex__item" style="margin:10rpx;">
+              <view class="placeholder">
+                <text class="commodityName">{{commodity.commodityName}}</text>
+                <view class=" commodity_info">
+                  <text class="commodity_price">￥{{commodity.maxDiscount==commodity.minDiscount?commodity.maxDiscount/100:commodity.minDiscount/100+'~'+commodity.maxDiscount/100}}</text>
+                  <view class="commodity_count">
+                    <text>已售{{commodity.baseSaleCount+commodity.realSaleCount}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </block>
+
+  <!-- 热卖区域 -->
+  <view class="recommend_title">热卖商品</view>
+  <view class="category_commodity_list">
+    <view class="category_commodity_box" wx:for="{{hotsale}}">
+      <navigator url="commodity_detail/commodity_detail?commodityId={{item.commodityId}}" class="{{index%2?'category_commodity_oriental_padding_right':'category_commodity_oriental_padding_left'}}">
+        <view class="category_commodity_border">
+          <view class="category_commodity_picture_box">
+            <image src="{{item.commodityIcon}}" mode="scaleToFill" class="category_commodity_picture"></image>
+          </view>
+          <view class="category_commodity_name">
+            {{item.commodityName}}
+          </view>
+          <view class="category_commodity_price_box">
+            <text class="category_commodity_price">￥{{item.maxDiscount==item.minDiscount?item.maxDiscount/100:item.minDiscount/100+'~'+item.maxDiscount/100}}</text>
+            <text class="category_commodity_count">已售{{item.baseSaleCount+item.realSaleCount}}</text>
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+  <view class="weui-loadmore" wx:if="{{nextPageStatus}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+  <view class="weui-loadmore weui-loadmore_line" wx:if="{{!nextPageStatus}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">已经到底啦</view>
+  </view>
+</view>

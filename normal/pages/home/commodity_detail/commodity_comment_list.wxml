@@ -1,0 +1,25 @@
+<view class="white_bg">
+  <view class="commodity_detail_comment_list">
+    <view class="commodity_detail_comment_item" wx:for="{{commentList}}">
+      <view class="commodity_detail_container bottom_border">
+        <view class="commodity_detail_comment_user">
+          <image src="{{item.avatar}}" class="commodity_detail_comment_avatar"></image>
+          <text class="commodity_detail_comment_nickname">{{item.nickname}}</text>
+        </view>
+        <view class="commodity_detail_comment_content">
+          {{item.content}}
+        </view>
+        <view class="commodity_detail_comment_time">
+          {{item.commentTime}}
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="weui-loadmore" wx:if="{{nextPageStatus}}">
+  <view class="weui-loading"></view>
+  <view class="weui-loadmore__tips">正在加载</view>
+</view>
+<view class="weui-loadmore weui-loadmore_line" wx:if="{{!nextPageStatus}}">
+  <view class="weui-loadmore__tips weui-loadmore__tips_in-line">已经到底啦</view>
+</view>

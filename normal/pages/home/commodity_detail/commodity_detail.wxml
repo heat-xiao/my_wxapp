@@ -1,0 +1,114 @@
+<view class="commodity_detail white_bg" style="position:{{showModalStatus?'fixed':'relative'}}">
+  <swiper style="height:{{windowWidth}};" wx:if="{{commodityIcon.length>0}}" indicator-dots="{{commodityIcon.length>1}}" autoplay="{{commodityIcon.length>1}}" interval="5000">
+    <block wx:for="{{commodityIcon}}">
+      <swiper-item>
+        <image src="{{item}}" class="commodity_detail_picture" mode="widthFix"/>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <!--<image src="{{commodity.commodityIcon}}" class="commodity_detail_picture" mode="aspectFit"></image>-->
+  <view class="commodity_detail_name">
+    {{commodity.commodityName}}
+  </view>
+  <view class="commodity_detail_container">
+    <text class="commodity_detail_price_new">¥{{commodity.minDiscount==commodity.maxDiscount?commodity.minDiscount/100:commodity.minDiscount/100+'~'+commodity.maxDiscount/100}}</text>
+    <text class="commodity_detail_price_old" wx:if="{{commodity.minDiscount!=commodity.minPrice && commodity.maxDiscount!=commodity.maxPrice}}">¥{{commodity.minPrice==commodity.maxPrice?commodity.minPrice/100:commodity.minPrice/100+'~'+commodity.maxPrice/100}}</text>
+    <text class="commodity_detail_info pull_right">已售 {{commodity.realSaleCount+commodity.baseSaleCount}}</text>
+  </view>
+  <view class="commodity_detail_container commodity_discount_text">{{commodity.deliverStatus?'包邮':''}} {{commodity.couponStatus?'':'不可使用优惠券'}}</view>
+
+  <!--<view class="commodity_detail_container commodity_detail_info">
+    <view class="pull_left" wx:if="{{!commodity.deliverStatus}}">运费 ¥{{commodity}}</view>
+    <view class="pull_left" wx:if="{{commodity.deliverStatus}}">已包邮</view> 
+  </view>-->
+  <view class="line"></view>
+  <view wx:if="{{commodity.commentNum}}">
+    <view class="commodity_detail_container bottom_border">
+      <view class="commodity_detail_comment gray_text bottom_border">评论（{{commodity.commentNum}}）</view>
+      <view class="commodity_detail_comment_list">
+        <view class="commodity_detail_comment_item">
+          <view class="commodity_detail_comment_user">
+            <image src="{{commodity.lastComment.avatar}}" class="commodity_detail_comment_avatar"></image>
+            <text class="commodity_detail_comment_nickname">{{commodity.lastComment.nickname}}</text>
+          </view>
+          <view class="commodity_detail_comment_content">
+            {{commodity.lastComment.content}}
+          </view>
+          <view class="commodity_detail_comment_time">
+            {{commodity.lastComment.commentTime}}
+          </view>
+        </view>
+      </view>
+    </view>
+    <navigator url="./commodity_comment_list?commodityId={{commodity.commodityId}}" class="commodity_detail_comment_link_all">查看全部评论</navigator>
+    <view class="line"></view>
+  </view>
+  <view class="commodity_detail_container">
+    <view class="commodity_detail_comment">商品详情</view>
+    <view class="commodity_detail_comment_imgs">
+      <image wx:for="{{descPictureList}}" mode="widthFix" class="commodity_detail_comment_img" src="{{item}}" data-index='{{index}}' binderror="imgaeErrorHandle"></image>
+    </view>
+  </view>
+  <view class="commodity_detail_btn_box">
+    <view class="commodity_detail_btn_default" catchtap="buy">立即购买</view>
+    <view wx:for="{{descPictureList}}" class="commodity_detail_btn_primary" catchtap="addToCart">加入购物车</view>
+  </view>
+</view>
+
+<!--选择属性和个数-->
+
+<!--遮罩层-->
+<view class="commodity_screen" catchtap="hideModal" wx:if="{{showModalStatus}}"></view>
+<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+  <view class="commodity_attr_info bottom_border">
+    <image class="commodity_attr_picture" src="{{commodityIcon[0]}}"></image>
+    <view class="commodity_attr_padding_horizontal">
+      <view class="commodity_attr_name">{{commodity.commodityName}}</view>
+      <view class="commodity_attr_price_box">
+        <text class="pull_left commodity_detail_price_new" wx:if="{{commodityPrice/100}}"> ¥{{commodityPrice/100}}</text>
+        <text class="pull_left commodity_detail_price_new" wx:if="{{!(commodityPrice/100)}}"> ¥{{commodityPrice/100?commodityPrice/100:commodity.minDiscount==commodity.maxDiscount?commodity.minDiscount/100:commodity.minDiscount/100+'~'+commodity.maxDiscount/100}}</text>
+        <text class="pull_right commodity_attr_storage">
+          <text>库存</text>
+          <text class="commodity_detail_price_new commodity_attr_storage"> {{stock}} </text>件</text>
+      </view>
+    </view>
+  </view>
+
+  <!--属性组-->
+  <scroll-view class="commodity_attr_scroll" scroll-y="true">
+
+    <!--临时方案-->
+    <view class="commodity_attr_group_tmp bottom_border">
+      <view style="background:{{curAttrIndex==index?'#1aad19':'#fff'}};color:{{curAttrIndex==index?'#fff':'#999'}};border:{{curAttrIndex==index?'1px solid #fff':'1px solid #999;'}};" class="commodity_attr_value_group" catchtap="selectAttrTmp" wx:for="{{commodityAttr}}"
+      is="objectCombine" data-index="{{index}}" data-priceid="{{item.priceId}}">
+        <text wx:for="{{item.attrValueList}}">
+          <text class="commodity_detail_attr_gap">{{item.attrKey}}:{{item.attrValue}} </text>
+        </text>
+      </view>
+    </view>
+
+    <!--临时解决-->
+  </scroll-view>
+
+  <!--数量-->
+  <view class="commodity_attr_group bottom_border">
+    <view class="weui-flex" style="padding:30rpx;">
+      <view>
+        <view class="placeholder">
+          <text class="commodity_attr_item">数量</text>
+        </view>
+      </view>
+      <view class="weui-flex__item">
+        <view class="placeholder">
+          <view class="commodity_attr_count_btn" catchtap="nagativeCount">－</view>
+          <text class="commodity_attr_count">{{count}}</text>
+          <view class="commodity_attr_count_btn" catchtap="positiveCount">＋</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!--确定-->
+  <view class="commodity_attr_primary_btn" catchtap="confirmCommdity">确定</view>
+</view>

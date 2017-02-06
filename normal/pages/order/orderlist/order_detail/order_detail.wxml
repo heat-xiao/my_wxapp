@@ -1,0 +1,86 @@
+<view class="order_detail">
+
+  <!--收货地址-->
+  <view class="weui-cells weui-cells_after-title order_detail_address_box">
+    <view class="weui-cell weui-cell_access">
+      <view class="weui-cell__bd">
+        <view class="weui-flex">
+          <view>
+            <view class="placeholder">
+              <text class="order_detail_to">发货至</text>
+            </view>
+          </view>
+          <view class="weui-flex__item">
+            <view class="placeholder order_detail_address_line_height">
+              <text class="order_detail_address">{{orderDetail.recipientName}}，{{orderDetail.address}}，{{orderDetail.phoneNumber}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="line"></view>
+  <view class="weui-cells__title order_detail_orderNo">订单号：{{orderDetail.orderNo}}</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell" wx:for="{{commodityList}}" style="background:#f7f7fa;">
+      <view>
+        <view class="placeholder">
+          <image src="{{item.commodityIcon}}" class="order_detail_commodity_icon"></image>
+        </view>
+      </view>
+      <view class="weui-flex__item">
+        <view class="placeholder">
+          <view class="order_detail_commodity_info">
+            <view class="order_detail_commodity_name">{{item.commodityName}}</view>
+            <view class="order_detail_commodity_price">￥{{item.commodityPrice/100}}
+              <text class="order_detail_count">×{{item.amounts}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cell">
+      <text class="gray_text small_text">备注：{{orderDetail.remark}}</text>
+    </view>
+    <view class="weui-cell">
+      <view>
+        <view class="gray_text small_text">{{orderDetail.postage/100?'运费：￥'+orderDetail.postage/100:'已包邮'}}</view>
+
+        <!--<view class="gray_text small_text">{{'优惠券抵扣：-￥'}}</view>-->
+        <view>
+          <text class="small_text">总价：</text>
+          <text class="order_detail_commodity_price">￥{{orderDetail.totalPrice/100+(orderDetail.postage/100?orderDetail.postage/100:0)}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="line"></view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view>
+        <view class="gray_text small_text">下单时间：{{orderDetail.createTime}}</view>
+
+        <!--<view class="gray_text small_text">付款时间：2016.10.20 10:29</view>-->
+
+        <!--<view class="gray_text small_text">发货时间：2016.10.20 10:29</view>-->
+      </view>
+    </view>
+  </view>
+</view>
+<view class="order_detail_gap" wx:if="{{orderDetail.orderStatus=='DELIVERED' && orderDetail.orderStatus=='UNDELIVER'}}"></view>
+<!--底部固定按钮-->
+<view class="order_detail_btn_box" wx:if="{{orderDetail.orderStatus=='DELIVERED' || orderDetail.orderStatus=='UNDELIVER'}}">
+  <view class="pull_right order_detail_btn">
+    <button class="weui-btn mini-btn" wx:if="{{orderDetail.orderStatus=='DELIVERED'}}" type="primary" style="background:#158447;" size="mini" catchtap="finishOrder">确认收货</button>
+  </view>
+  <view class="pull_right order_detail_btn">
+    <navigator url="../order_express/order_express?expressCode={{orderDetail.expressCode}}&trackingNo={{orderDetail.trackingNo}}&orderPicture={{orderDetail.commodityIcon}}" wx:if="{{orderDetail.orderStatus=='DELIVERED'}}" class="order_default_btn">
+      <button class="weui-btn mini-btn" type="default" size="mini">查看物流</button>
+    </navigator>
+  </view>
+  <view class="pull_right order_detail_btn">
+   <navigator url="../order_refund/order_refund?orderNo={{orderDetail.orderNo}}" wx:if="{{orderDetail.orderStatus=='UNDELIVER' || orderDetail.orderStatus=='DELIVERED'}}" class="order_default_btn">
+    <button class="weui-btn mini-btn"type="default" size="mini">申请退款</button>
+    </navigator>
+  </view>
+</view>

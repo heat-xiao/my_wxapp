@@ -1,0 +1,26 @@
+.order_express_info {
+  padding: 20rpx;
+  font-size: 30rpx;
+  color: #222;
+}
+
+.order_express_icon {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.order_express_deliver_list {
+}
+
+.order_express_deliver_item {
+  padding: 24rpx 0;
+  margin:0 30rpx;
+  font-size:30rpx;
+}
+
+.order_express_deliver_desc, .order_express_deliver_time {
+  color: #999;
+}
+.order_express_deliver_time{
+    font-size:26rpx;
+}

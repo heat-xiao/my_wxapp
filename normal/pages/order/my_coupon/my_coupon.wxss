@@ -1,0 +1,52 @@
+.coupon_item {
+  width: 90%;
+  height: 150rpx;
+  margin: 30rpx 5% 0 5%;
+  background: #fff;
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPAAAAA+CAYAAAAVt5ZWAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALcSURBVHhe7d29ixRBEMbhRUPxMNfESFEDs0MzUUMFc+HMNVDwQPA0EzRQMDA88SMWTUQDA0FMTvxAQ+E0O4TFBTXZmd7Wt6drbeH8A6rg98Cy01XxS+3N7G2N5vq+P/obgHuz2eyOxbZR8Zn1ATimrG7knHcPwdXFKRWeWw9AAMrsut7OjOoRQEQEGAiMAAOBlZtXya4BBDOaTqf7FeJbdgYQw8uc86HhTnShEK9aA4BjyupnhXebRbdSYdH6ABxTgK9ZbBvVD9Y2AM9SSlctto1SfcP6ABxTVt9abIePzgt6nVWxtz4A55TX+8rtzjJ5N6wGIBBld8IXOYDACDAQGAEGAhullC7qs/RHOwMIQJn9oVd9Hpxz3q7DG+sBcExZ/anMtq9RFiqcsD4AxxTgVYttowDvsz4Ax5TVZYtto+KS9QE4pgn8yGJbqbZXxS+1DcAzZTVp4J4ewqvDA70m1gMQhHL7hOfAQGAEGAiMAAOBlW9ivbZrAIHob+APw42svu+P6/Dd6gCcyzmv6G3rEOBChfO1BcAzDdsXFttGAT5gfQC+XbLYNgrwEWsCcEwT+LbFtlGR9aJAAMrqNw3cv+tFT6rw1HoAAlBm15XdJZ4DA4ERYCAwAgwEVm5esV4UCKrcxNqjEN+0M4AYynrRxeFOdKEQ37UGAMeU1c3rRbuuY70oEIACzHpRICpN3ysW20b167UNwLOU0juL7RDcHSqc01juahuAd8rrQ03iXeUf+lkvCgSk7LJeFIiMAAOBEWAgsPJNrGV9lv5kZwABzP5dLzoejxd0WLMeAMc0cH91XXd4CO+cJjHrRYEANGxZLwpEVf7stdg2KrJeFAhAE/i/60W/1jYAz5TVtl5U53sqsJUBCEa5fcxzYCAwAgwERoCBwMpP6byyawCBKLvv5zeyjukwqWUA3uWcL+ttyxDgIqV0obYAeKZhu3m9qOr8JhYQgKbvSk3taPQHG+D0BvJ6y5cAAAAASUVORK5CYII=') no-repeat;
+  background-size: cover;
+}
+
+.coupon_money_box {
+  color: #e04904;
+  width: 42%;
+  float: left;
+  height: 100%;
+  margin: 0;
+  border-right: 1px dotted #e5e5e5;
+  line-height: 150rpx;
+}
+
+.coupon_money_box view {
+  float: left;
+}
+
+.coupon_money {
+  font-weight: bold;
+  font-size: 64rpx;
+}
+
+.coupon_info_box {
+  float: left;
+  margin: 0;
+  color: #999;
+  font-size: 26rpx;
+}
+
+.coupon_money_signal {
+  font-size: 24rpx;
+  margin-left: 25rpx;
+}
+
+.coupon_info_rule {
+  margin-top: 39rpx;
+}
+
+.coupon_money_desc {
+  font-size: 26rpx;
+  margin-left: 12rpx;
+}
+
+.coupon_info_rule, .coupon_info_time {
+  margin-left: 28rpx;
+}

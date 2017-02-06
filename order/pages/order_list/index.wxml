@@ -1,0 +1,34 @@
+<import src="../common/prompt.wxml" />
+
+<view class="order-list">
+  <view class="order-wraper" wx:if="{{orderList.length > 0}}" wx:for="{{orderList}}"  wx:for-item="i" wx:key="{{i.orderNo}}">
+    <view class="weui-cells">
+      <view class="time">{{i.createTime}}</view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">订单号：{{i.orderNo}}</view>
+        <view>合计：¥{{i.totalPrice/100}}</view>
+      </view>
+        <view class="order-item">
+          <view class="flex-row" wx:for="{{i.orderCommodities}}"  wx:for-item="j" wx:key="{{j.commodityId}}">
+            <view class="weui-cell__bd">{{j.commodityName}}</view>
+            <view class="weui-cell__ft" style="width:60rpx;">x1</view>
+          </view>
+      </view>
+      <view class="weui-cell" wx:if="{{i.deductPrice}}">
+        <view class="weui-cell__bd" style="color:#999999">店铺活动</view>
+        <view class="weui-cell__ft">- ¥{{i.deductPrice/100}}</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd"></view>             
+          <button wx:if="{{i.orderStatus!='OVERDUE'}}" data-orderno="{{i.orderNo}}" class="border" bindtap="addSameOrder">加入菜篮</button>
+          <button wx:if="{{i.orderStatus=='WAITCOMMENT'}}"  data-orderno="{{i.orderNo}}" class="border" style="margin:0 0 0 20rpx" bindtap="toComment">点评</button>
+          <button wx:if="{{i.orderStatus=='UNPAID'}}" data-orderno="{{i.orderNo}}" bindtap="orderPay" class="background" style="margin:0 0 0 20rpx">去支付</button>
+          <view wx:if="{{i.orderStatus=='OVERDUE'}}" class="weui-cell__ft">已过期</view>
+          <view wx:if="{{i.orderStatus=='FINISHED'}}" style="margin:0 0 0 20rpx" class="weui-cell__ft">已完成</view>             
+      </view>
+    </view>
+    <!--<view class="lastpage-tip" wx:if="{{!nextPageStatus}}">已经到底啦</view>-->
+  </view>  
+</view>
+
+<template is="prompt" data="{{ prompt }}" />

@@ -1,0 +1,3 @@
+<block wx:for="{{realPics}}">
+      <image src="{{item}}" mode="widthFix" style="width:100%" />
+</block>

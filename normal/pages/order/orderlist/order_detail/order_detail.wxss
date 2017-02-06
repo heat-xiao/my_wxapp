@@ -1,0 +1,105 @@
+.order_detail_list_box .weui-flex {
+  padding: 20rpx 0 0 0;
+}
+
+.order_detail_commodity_icon {
+  width: 134rpx;
+  height: 134rpx;
+  margin: 0 30rpx -10rpx 0;
+  padding: 0;
+}
+
+.order_detail_commodity_info {
+  height: 134rpx;
+  overflow: hidden;
+}
+
+.order_detail_commodity_name {
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  height: 72rpx;
+  overflow: hidden;
+}
+
+.order_detail_commodity_name, .order_detail_commodity_price {
+  color: #222;
+  font-size: 26rpx;
+  margin-right: 28rpx;
+}
+
+.order_detail_commodity_price {
+  margin-top: 16rpx;
+  color: #e04904;
+}
+
+.order_detail_count {
+  float: right;
+  color: #999;
+  font-size: 22rpx;
+  margin-right: 10rpx;
+}
+
+.order_detail .weui-cell__bd {
+  font-size: 30rpx;
+}
+
+.order_detail_to {
+  color: #999;
+  font-size: 26rpx;
+  margin-right: 30rpx;
+  line-height: 120rpx;
+}
+
+.order_detail_address_box {
+  height: 150rpx;
+  overflow: hidden;
+}
+
+.order_detail_address_line_height {
+  margin-top: 18rpx;
+  height: 80rpx;
+  overflow: hidden;
+}
+
+.order_detail_address {
+  color: #222;
+  font-size: 26rpx;
+}
+
+.gray_text {
+  color: #999;
+}
+
+.small_text {
+  font-size: 26rpx;
+}
+
+.order_detail_btn_box {
+  position: fixed;
+  bottom: -10rpx;
+  width: 94%;
+  padding: 0 3%;
+  background: #fff;
+}
+
+.order_detail_gap {
+  width: 100%;
+  height: 110rpx;
+}
+
+.pull_right {
+  float: right;
+}
+
+.order_detail_btn {
+  margin: 20rpx 10rpx;
+}
+
+.order_detail_orderNo {
+  font-size: 26rpx;
+  padding: 25rpx 30rpx;
+  background: #fff;
+  margin: 0;
+}

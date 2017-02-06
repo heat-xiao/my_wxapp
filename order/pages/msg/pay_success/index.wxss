@@ -1,0 +1,12 @@
+page{
+    background-color: #FFFFFF;
+}
+
+.page{
+    padding: 16% 0 0 0
+}
+
+.weui-btn{
+    height: 94rpx;
+    line-height: 94rpx;
+}

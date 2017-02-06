@@ -1,0 +1,17 @@
+<view>
+  <view class="coupon_item" wx:for="{{couponList}}">
+    <view class="coupon_money_box">
+      <view class="coupon_money_box_view coupon_money_signal">￥</view>
+      <view class="coupon_money_box_view coupon_money">{{item.deductPrice/100}}</view>
+      <view class="coupon_money_box_view coupon_money_desc">优惠券</view>
+    </view>
+    <view class="coupon_info_box">
+      <view class="coupon_info_rule" wx:if="{{item.limitPrice}}">满{{item.limitPrice/100}}减使用</view>
+      <view class="coupon_info_rule" wx:if="{{!item.limitPrice}}">使用无限制</view>
+      <view class="coupon_info_time">{{item.endDate}}</view>
+    </view>
+  </view>
+  <view wx:if="{{!couponList.length}}" class="text_center gray_text tip_top">
+    还没有优惠券哦~
+  </view>
+</view>

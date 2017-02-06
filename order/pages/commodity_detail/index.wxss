@@ -1,0 +1,76 @@
+.swiper_box {
+  width: 100%;
+  height: 500rpx;
+}
+
+.swiper_box .wx-swiper-dot {
+  width: 15rpx;
+  height: 15rpx;
+  display: inline-flex;
+  margin: 0 10rpx;
+}
+
+.swiper_box .wx-swiper-dot::before {
+  content: '';
+  background: rgba(255, 255, 255, 0.3);
+  flex-grow: 1;
+  border-radius: 50%;
+}
+
+.swiper_box .wx-swiper-dot-active::before {
+  background: rgba(255, 255, 255, 1);
+}
+
+.weui-panel_access{
+  background-color: #fff;
+  margin:0 0 20rpx 0;
+}
+.score-wraper{
+    font-size: 22rpx;
+    color: #999999;
+    height: 60rpx;
+}
+.sales{
+    margin: 0 40rpx 0 0;
+}
+.score{
+  height: 30rpx;
+}
+
+.score image{
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 5rpx;
+  vertical-align: top;
+}
+
+.comments{
+  margin: 0 0 120rpx 0;
+}
+
+.comments .weui-panel__hd:last-child::after{
+  border: 0
+}
+
+.comments .name{
+  flex: 1;
+  color: #222222;
+  font-size:30rpx;
+}
+.avatar{
+  width: 72rpx;
+  height: 54rpx;
+}
+.avatar image{
+  width: 54rpx;
+  height: 54rpx;
+  display: block;
+}
+
+.comment-content{
+  padding: 20rpx 0 0 72rpx;
+}
+
+.comment-content .score{
+  padding: 20rpx 0 10rpx 0;
+}

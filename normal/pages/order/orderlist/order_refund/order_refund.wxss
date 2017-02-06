@@ -1,0 +1,17 @@
+.order_refund .weui-cell__bd {
+  font-size: 30rpx;
+}
+
+.order_refund_textarea {
+  font-size: 30rpx;
+  padding: 22rpx 30rpx;
+  min-height: 150rpx;
+}
+
+.order_refund_btn {
+  width: 90%;
+  margin: 60rpx 5%;
+  background: #158447;
+  color: #fff;
+  font-size: 30rpx;
+}
