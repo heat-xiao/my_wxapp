@@ -1,17 +1,17 @@
 <view class="page">
-    <view class="weui-msg">
-        <view class="weui-msg__icon-area">
-            <icon type="success" size="93"></icon>
-        </view>
-        <view class="weui-msg__text-area">
-            <view class="weui-msg__title">支付成功</view>
-            <view class="weui-msg__desc">厨房已收到您的菜单，请耐心等待</view>
-        </view>
-        <view class="weui-msg__opr-area">
-            <view class="weui-btn-area">
-                <button class="weui-btn" style="background:#f6a623;" type="primary" bindtap="continueOrder">继续点菜</button>
-                <button class="weui-btn" type="default" bindtap="toOrderList">我的订单</button>
-            </view>
-        </view>
+  <view class="weui-msg">
+    <view class="weui-msg__icon-area">
+      <icon type="success" size="93"></icon>
     </view>
+    <view class="weui-msg__text-area">
+      <view class="weui-msg__title">支付成功</view>
+      <view class="weui-msg__desc">厨房已收到您的菜单，请耐心等待</view>
+    </view>
+    <view class="weui-msg__opr-area">
+      <view class="weui-btn-area">
+        <button class="weui-btn" style="background:#f6a623;" type="primary" bindtap="continueOrder">继续点菜</button>
+        <button class="weui-btn" type="default" bindtap="toOrderList">我的订单</button>
+      </view>
+    </view>
+  </view>
 </view>
