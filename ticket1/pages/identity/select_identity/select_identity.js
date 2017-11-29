@@ -16,7 +16,7 @@ Page({
                  if (res.data && res.data != {}&&res.data.resultStatus) {
                     that.setData({
                         allIdentitys: res.data.resultData,
-                        selectIds: this.transfer2Obj(wx.getStorageSync('selectIds'))
+                        selectIdentitys: this.transfer2Obj(wx.getStorageSync('selectIds'))
                     });
 
                     wx.setStorageSync('allIdentitys', res.data.resultData);
@@ -29,7 +29,7 @@ Page({
     checkboxChange: function (e) {
         let checkedIds = e.detail.value;
         wx.setStorageSync('selectIds', checkedIds)
-        this.setData({ selectIds: this.transfer2Obj(checkedIds) })
+        this.setData({ selectIdentitys: this.transfer2Obj(checkedIds) })
     },
 
     transfer2Obj: function (arr) {
