@@ -32,7 +32,8 @@ App({
 				});
 			})
 			.then(r3 => {
-				this.WxService.setStorageSync("token", r3.resultData);
+				this.globalData.userInfo = r3.resultData;
+				// this.WxService.setStorageSync("token", r3.resultData);
 			});
 	},
 	getUserInfo() {
