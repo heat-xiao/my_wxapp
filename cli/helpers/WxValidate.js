@@ -39,7 +39,7 @@ class WxValidate {
 			messages: {
 				required: "这是必填字段。",
 				email: "请输入有效的电子邮件地址。",
-				tel: "请输入11位的手机号码。",
+				phone: "请输入11位的手机号码。",
 				url: "请输入有效的网址。",
 				date: "请输入有效的日期。",
 				dateISO: "请输入有效的日期（ISO），例如：2009-06-23，1998/01/22。",
@@ -87,7 +87,7 @@ class WxValidate {
 			/**
 			 * 验证手机格式
 			 */
-			tel(value) {
+			phone(value) {
 				return that.optional(value) || /^1[34578]\d{9}$/.test(value);
 			},
 			/**

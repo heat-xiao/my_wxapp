@@ -4,8 +4,8 @@
         <view class="page__desc">表单输入</view>
     </view>
     <view class="page__bd">
-        <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">错误提示</view>
-
+        <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{errorTip}}</view>
+        <form bindsubmit="submitForm">
         <view class="weui-cells__title">单选列表项</view>
         <view class="weui-cells weui-cells_after-title">
             <radio-group bindchange="radioChange">
@@ -48,7 +48,7 @@
                     <view class="weui-label">qq</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input class="weui-input" placeholder="请输入qq"/>
+                    <input class="weui-input" placeholder="请输入qq" name="qq"/>
                 </view>
             </view>
             <view class="weui-cell weui-cell_input weui-cell_vcode">
@@ -56,7 +56,7 @@
                     <view class="weui-label">手机号</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input class="weui-input" placeholder="请输入手机号" />
+                    <input class="weui-input" placeholder="请输入手机号" name="phone"/>
                 </view>
                 <view class="weui-cell__ft">
                     <view class="weui-vcode-btn">获取验证码</view>
@@ -87,7 +87,7 @@
                     <view class="weui-label">验证码</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input class="weui-input" placeholder="请输入验证码" />
+                    <input class="weui-input" placeholder="请输入验证码" name="pin"/>
                 </view>
                 <view class="weui-cell__ft">
                     <image class="weui-vcode-img" src="../images/vcode.jpg" style="width: 108px"></image>
@@ -125,7 +125,7 @@
         <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell weui-cell_input">
                 <view class="weui-cell__bd">
-                    <input class="weui-input" placeholder="请输入文本" />
+                    <input class="weui-input" placeholder="请输入文本" name="content" />
                 </view>
             </view>
         </view>
@@ -149,7 +149,7 @@
                     </picker>
                 </view>
                 <view class="weui-cell__bd weui-cell__bd_in-select-before">
-                    <input class="weui-input" placeholder="请输入号码" />
+                    <input class="weui-input" placeholder="请输入号码"/>
                 </view>
             </view>
         </view>
@@ -188,7 +188,8 @@
         </checkbox-group>
 
         <view class="weui-btn-area">
-            <button class="weui-btn" type="primary" bindtap="showTopTips">确定</button>
+            <button class="weui-btn" type="primary" formType="submit">确定</button>
         </view>
+    </form>
     </view>
 </view>

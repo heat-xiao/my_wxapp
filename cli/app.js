@@ -19,11 +19,10 @@ App({
 					const rdSession = r1.resultData.rdSession;
 					const unionId = r1.resultData.unionId;
 					if(r1.resultData.user){
-						this.WxService.setStorageSync("userInfo", r1.resultData.user);
+						this.globalData.userInfo = r1.resultData.user;
 					}else{
 						const getSystemInfoPromise = this.WxService.getSystemInfo();
-						const getLocationPromise = this.WxService.getLocation({type: "wgs84"});
-                        
+						const getLocationPromise = this.WxService.getLocation({type: "wgs84"});                       
 						Promise.all([
 							getSystemInfoPromise,
 							getLocationPromise,
@@ -50,7 +49,7 @@ App({
 												area
 											}).then(r6=>{
 												if(r6.resultStatus){
-													this.WxService.setStorageSync("userInfo", r6.resultData);
+													this.globalData.userInfo = r6.resultData;
 												}                                           
 											});
 										});
@@ -62,16 +61,16 @@ App({
 				}
 			});
 	},
-	getUserInfo() {
-		return this.WxService.login()
-			.then(() => {
-				return this.WxService.getUserInfo();
-			})
-			.then(data => {
-				this.globalData.userInfo = data.userInfo;
-				return this.globalData.userInfo;
-			});
-	},
+	// getUserInfo() {
+	// 	return this.WxService.login()
+	// 		.then(() => {
+	// 			return this.WxService.getUserInfo();
+	// 		})
+	// 		.then(data => {
+	// 			this.globalData.userInfo = data.userInfo;
+	// 			return this.globalData.userInfo;
+	// 		});
+	// },
 	globalData: {
 		userInfo: null
 	},
