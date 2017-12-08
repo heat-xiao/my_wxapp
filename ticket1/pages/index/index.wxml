@@ -4,18 +4,6 @@
       <image src="{{iconUrl[0]}}"></image>
       <view>订单</view>
     </navigator>
-    <navigator url="../user_center/user_center" class="nav-item" open-type="switchTab" >
-      <image src="{{iconUrl[1]}}"></image>
-      <view>我的</view>
-    </navigator>
-    <navigator url="../traffic_guide/traffic_guide" class="nav-item">
-      <image src="{{iconUrl[2]}}"></image>
-      <view>交通</view>
-    </navigator>
-    <navigator url="" class="nav-item">
-      <image src="{{iconUrl[3]}}"></image>
-      <view>客服</view>
-    </navigator>
   </view>
   <view class="booking-wrap">
     <view class="weui-cells__title">订票</view>

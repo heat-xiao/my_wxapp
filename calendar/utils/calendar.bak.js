@@ -145,7 +145,7 @@ function calElement(sYear, sMonth, sDay, week, lYear, lMonth, lDay, isLeap) {
   //节日记录
   this.lunarFestival = ''; //农历节日
   this.solarFestival = ''; //公历节日
-  // this.solarTerms = ''; //节气
+  this.solarTerms = ''; //节气
 }
 //返回某年的第n个节气为几日(从0小寒起算)
 function sTerm(y, n) {
@@ -197,8 +197,8 @@ function calendar(y, m) {
   //节气
   tmp1 = sTerm(y, m * 2) - 1;
   tmp2 = sTerm(y, m * 2 + 1) - 1;
-  // this[tmp1].solarTerms = solarTerm[m * 2];
-  // this[tmp2].solarTerms = solarTerm[m * 2 + 1];
+  this[tmp1].solarTerms = solarTerm[m * 2];
+  this[tmp2].solarTerms = solarTerm[m * 2 + 1];
   if ((this.firstWeek + 12) % 7 == 5) //黑色星期五
     this[12].solarFestival += '黑色星期五';
   if (y == tY && m == tM) this[tD - 1].isToday = true; //今日
@@ -311,7 +311,7 @@ function drawCld(SY, SM, startD, endD) {
 
     }
 
-    dateItem.push({ "date": date, "yinDate": yinDate, "yangDate": yangDate})
+    dateItem.push({ "date": date, "yinDate": yinDate, "yangDate": yangDate, "isAbledDate": isAbledDate })
   }
   return { 'yearMonth': `${SY}年${SM + 1}月`, 'dateItem': dateItem }
 }
@@ -326,19 +326,19 @@ function getCalender(months) {
   var nextMonths = new Array();
   var startD = new Date().setDate(new Date().getDate() - 1)
   var endD = new Date().setDate(new Date().getDate() + 30 * (months - 1))
-  var i = months;
-  var newMonth = tM
-  var newYear = tY
+  var i = 0;
   do {
-    if (newMonth > 11) {
+    let newMonth = tM + i;
+    let newYear = tY;
+    if (newMonth > 12) {
       newYear = tY + 1;
-      newMonth = 0;
+      newMonth = 1;
     }
+
     nextMonths.push(drawCld(newYear, newMonth, startD, endD))
-    newMonth = newMonth - 1;
-    i--;
+    i++;
   }
-  while (i)
+  while (i < months)
   return nextMonths
 }
 

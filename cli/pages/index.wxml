@@ -1,2 +1,20 @@
-<!--pages/index.wxml-->
-<text>pages/index.wxml</text>
+<button bindtap='showCompomentDialog'>弹框1</button>
+<button bindtap='clock'>弹框2</button>
+
+<component-dialog
+  bind:confirmevent="onMyEvent"
+  dialog-open="{{isOpen}}"
+  dialog-title="提示"
+  cancle-btn="{{true}}"
+>
+  <view>弹框1内容</view>
+</component-dialog>
+
+<component-dialog
+  bind:confirmevent="onMyEvent2"
+  dialog-open="{{isOpenClock}}"
+  dialog-title="打卡成功"
+  cancle-btn="{{false}}"
+>
+  <view>弹框2内容</view>
+</component-dialog>

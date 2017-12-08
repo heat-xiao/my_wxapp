@@ -47,7 +47,11 @@
   color: #999;
 }
 
-.dates .date-item.clocked-date {
+.dates .date-item.abled-date {
+  color: #2c2c2c;
+}
+
+.dates .date-item.abled-date.selected-date {
   color: #fff;
   background-color: #2c2c2c;
 }

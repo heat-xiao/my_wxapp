@@ -1,24 +1,49 @@
 import calendar from '../../utils/calendar.js'
 Page({
   data: {
-    todayDate: new Date(), //用于限制时间选择当天前的时间
+    todayDate: new Date(),
   },
   onLoad: function () {
-    var that = this
-    var selectedDate = '2017-01-18'
-    var calendarData = calendar.getCalender(3)
+    const that = this
+    const clockDate = [{
+      date: '2017-12-08',
+      clockStatus: true,
+      clockTime:'6:00'
+    },{
+      date: '2017-12-07',
+      clockStatus: false,
+      clockTime:'7:00'
+    },{
+      date: '2017-11-26',
+      clockStatus: true,
+      clockTime: null
+    }]
+    const monthNum = this.getMonthNumber(clockDate[clockDate.length-1].date,clockDate[0].date);
+    const calendarData = calendar.getCalender(monthNum)
+    clockDate.forEach(i1=>{
+      calendarData.map(i2=>{
+        return i2.dateItem.map(i3=>{
+          if(i3.date==i1.date){
+            i3.clockStatus = i1.clockStatus
+            i3.clockTime = i1.clockTime
+            return i3
+          }
+        })   
+      })      
+    })
     console.log(calendarData)
+    
     that.setData({
-      selectedDate:selectedDate,
-      calendarData: calendarData
+      calendarData,
+      clockDate
     });
   },
-
-  selectDate:function(e){
-    var that = this
-    console.log(e.currentTarget.dataset.date)
-    that.setData({
-      selectedDate:e.currentTarget.dataset.date
-    });
+  getMonthNumber(sDate, eDate){
+    var y1 = new Date(sDate).getFullYear();
+    var y2 = new Date(eDate).getFullYear()
+    var m1 = new Date(sDate).getMonth();
+    var m2 = new Date(eDate). getMonth()
+    var len = (y2 - y1) * 12 + (m2 - m1) + 1;
+    return len;
   }
 })
