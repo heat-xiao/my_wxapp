@@ -6,7 +6,10 @@ import Tools from "helpers/Tools";
 import Config from "etc/config";
 
 App({
-	onLaunch() {
+	onLaunch(){
+
+	},
+	onLaunchBak() {
 		this.WxService.login()
 			.then(r0 => {
 				return this.HttpService.loginByCode({
